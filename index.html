@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate RAG Lab</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  :root{
+    --bg:#0a0a0c;
+    --surface:#111114;
+    --border:#1e1e24;
+    --text:#c8c8d0;
+    --text-bright:#f0f0f5;
+    --thermal:#00bfff;
+    --red:#ff3c3c;
+    --lime:#a8e61d;
+    --dim:#555;
+  }
+
+  html{scroll-behavior:smooth}
+
+  body{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* ── noise overlay ── */
+  body::before{
+    content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+    opacity:.03;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── layout ── */
+  .container{max-width:780px;margin:0 auto;padding:0 32px}
+
+  /* ── hero ── */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:flex-start;
+    position:relative;
+  }
+
+  .hero-eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--thermal);
+    margin-bottom:24px;
+    opacity:0;animation:fadeIn .8s .2s forwards;
+  }
+
+  .hero-title{
+    font-family:'Syne',sans-serif;
+    font-size:clamp(42px,8vw,80px);
+    font-weight:800;
+    line-height:1;
+    color:var(--text-bright);
+    letter-spacing:-.02em;
+    margin-bottom:20px;
+    opacity:0;animation:fadeIn .8s .4s forwards;
+  }
+
+  .hero-title span{color:var(--thermal)}
+
+  .hero-sub{
+    font-size:clamp(18px,2.5vw,22px);
+    font-weight:300;
+    color:var(--text);
+    max-width:540px;
+    margin-bottom:40px;
+    opacity:0;animation:fadeIn .8s .6s forwards;
+  }
+
+  .hero-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--dim);
+    opacity:0;animation:fadeIn .8s .8s forwards;
+  }
+
+  .hero-meta a{color:var(--dim);text-decoration:none;border-bottom:1px solid var(--border)}
+  .hero-meta a:hover{color:var(--thermal);border-color:var(--thermal)}
+
+  /* ── scroll cue ── */
+  .scroll-cue{
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    opacity:0;animation:fadeIn 1s 1.2s forwards;
+  }
+  .scroll-cue span{
+    font-family:'JetBrains Mono',monospace;font-size:9px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+  }
+  .scroll-line{width:1px;height:32px;background:var(--border);position:relative;overflow:hidden}
+  .scroll-line::after{
+    content:'';position:absolute;top:-100%;left:0;width:1px;height:100%;
+    background:var(--thermal);
+    animation:scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── section shared ── */
+  section{padding:120px 0;border-top:1px solid var(--border)}
+
+  .section-num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.2em;
+    color:var(--thermal);margin-bottom:12px;
+    display:block;
+  }
+
+  .section-title{
+    font-family:'Syne',sans-serif;
+    font-size:clamp(28px,5vw,42px);
+    font-weight:600;color:var(--text-bright);
+    line-height:1.15;margin-bottom:24px;
+  }
+
+  .section-body{
+    font-size:18px;font-weight:300;
+    max-width:600px;
+    margin-bottom:32px;
+  }
+
+  /* ── cards ── */
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;margin-top:32px;
+  }
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:24px;
+    transition:border-color .3s,transform .3s;
+  }
+  .card:hover{border-color:var(--thermal);transform:translateY(-2px)}
+
+  .card-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .card-label.blue{color:var(--thermal)}
+  .card-label.green{color:var(--lime)}
+  .card-label.red{color:var(--red)}
+
+  .card h3{
+    font-family:'Syne',sans-serif;
+    font-size:16px;font-weight:600;
+    color:var(--text-bright);
+    margin-bottom:6px;
+  }
+  .card p{font-size:14px;color:var(--dim);line-height:1.5}
+
+  /* ── tech table ── */
+  .tech-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+  }
+  .tech-row:last-child{border-bottom:none}
+  .tech-key{color:var(--dim);text-transform:uppercase;letter-spacing:.1em;font-size:10px}
+  .tech-val{color:var(--text-bright)}
+
+  /* ── video section ── */
+  .video-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;margin-top:32px;
+  }
+
+  .video-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:6px;overflow:hidden;
+    transition:border-color .3s;
+  }
+  .video-card:hover{border-color:var(--thermal)}
+
+  .video-card .embed-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+    padding:12px 16px;color:var(--dim);
+    display:flex;align-items:center;gap:8px;
+  }
+
+  .dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+  .dot.yt{background:var(--red)}
+  .dot.vm{background:var(--thermal)}
+
+  .video-card iframe{
+    width:100%;aspect-ratio:16/9;display:block;border:none;
+  }
+
+  /* ── links / buttons ── */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    text-decoration:none;
+    color:var(--text-bright);
+    padding:12px 24px;
+    border:1px solid var(--border);
+    border-radius:4px;
+    transition:all .3s;
+    margin-right:12px;margin-bottom:12px;
+  }
+  .btn:hover{border-color:var(--thermal);color:var(--thermal);transform:translateY(-1px)}
+  .btn svg{width:14px;height:14px;fill:currentColor}
+
+  /* ── footer ── */
+  footer{
+    padding:48px 0;
+    border-top:1px solid var(--border);
+    text-align:center;
+  }
+  footer p{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--dim);
+  }
+  footer a{color:var(--thermal);text-decoration:none}
+
+  /* ── reveal ── */
+  .reveal{
+    opacity:0;transform:translateY(24px);
+    transition:opacity .7s ease,transform .7s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ── keyframes ── */
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(16px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes scrollPulse{
+    0%{top:-100%}50%{top:100%}100%{top:100%}
+  }
+
+  /* ── responsive ── */
+  @media(max-width:600px){
+    .container{padding:0 20px}
+    section{padding:80px 0}
+    .card-grid{grid-template-columns:1fr}
+    .video-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<div class="container">
+  <div class="hero">
+    <div class="hero-eyebrow">NLP / LLM Teaching Lab</div>
+    <h1 class="hero-title">Climate<br><span>RAG</span> Lab</h1>
+    <p class="hero-sub">
+      An open-source teaching framework for retrieval-augmented generation
+      with local LLMs, applied to climate and environmental justice data.
+    </p>
+    <div class="hero-meta">
+      Sriya Thotakura &middot; Columbia University GSAPP &middot;
+      <a href="https://github.com/sriyathotakura/climate_rag_lab" target="_blank">GitHub</a>
+    </div>
+
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ ABOUT ════════ -->
+<section>
+  <div class="container">
+    <span class="section-num reveal">01</span>
+    <h2 class="section-title reveal">What is this?</h2>
+    <p class="section-body reveal">
+      Climate RAG Lab is a hands-on classroom tool for building and evaluating
+      retrieval-augmented generation pipelines using open-source models. Students
+      wire up a local Streamlit app, compare prompt strategies, and measure
+      retrieval quality &mdash; all on their own laptops with Docker + Ollama.
+    </p>
+
+    <div class="card-grid">
+      <div class="card reveal">
+        <div class="card-label blue">Prompt Styles</div>
+        <h3>Three Modes</h3>
+        <p>Zero-shot, few-shot, and evidence-first chain-of-thought prompting for direct comparison.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-label green">Evaluation</div>
+        <h3>Built-in Harness</h3>
+        <p>Retrieval hit rate, lexical groundedness, keyword coverage, and optional LLM-as-judge scoring.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-label red">Local-First</div>
+        <h3>No API Keys</h3>
+        <p>Runs entirely on Ollama + ChromaDB. No cloud dependencies, no cost per query.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ STACK ════════ -->
+<section>
+  <div class="container">
+    <span class="section-num reveal">02</span>
+    <h2 class="section-title reveal">Technical Stack</h2>
+    <p class="section-body reveal">
+      Designed to run on student laptops. Docker handles orchestration;
+      Ollama manages model inference.
+    </p>
+
+    <div class="reveal" style="max-width:480px">
+      <div class="tech-row"><span class="tech-key">Generator</span><span class="tech-val">Qwen 2.5 7B via Ollama</span></div>
+      <div class="tech-row"><span class="tech-key">Embeddings</span><span class="tech-val">BAAI/bge-small-en-v1.5</span></div>
+      <div class="tech-row"><span class="tech-key">Vector Store</span><span class="tech-val">ChromaDB</span></div>
+      <div class="tech-row"><span class="tech-key">Frontend</span><span class="tech-val">Streamlit</span></div>
+      <div class="tech-row"><span class="tech-key">Runtime</span><span class="tech-val">Docker + Docker Compose</span></div>
+      <div class="tech-row"><span class="tech-key">Fallback</span><span class="tech-val">Google Colab notebook</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ VIDEO ════════ -->
+<section>
+  <div class="container">
+    <span class="section-num reveal">03</span>
+    <h2 class="section-title reveal">TRENCH &mdash; Video</h2>
+    <p class="section-body reveal">
+      The broader research context: computational design practice for
+      environmental justice in the South Bronx.
+    </p>
+
+    <div class="video-grid">
+      <div class="video-card reveal">
+        <div class="embed-label"><span class="dot yt"></span> YouTube</div>
+        <iframe
+          src="https://www.youtube.com/embed/zAAOLtFyFTc?rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="video-card reveal">
+        <div class="embed-label"><span class="dot vm"></span> Vimeo</div>
+        <iframe
+          src="https://player.vimeo.com/video/1190937450"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ GET STARTED ════════ -->
+<section>
+  <div class="container">
+    <span class="section-num reveal">04</span>
+    <h2 class="section-title reveal">Get Started</h2>
+    <p class="section-body reveal">
+      Clone the repo, spin up Docker, and pull a model.
+    </p>
+
+    <div class="reveal">
+      <a class="btn" href="https://github.com/sriyathotakura/climate_rag_lab" target="_blank">
+        <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="container">
+    <p>Climate RAG Lab &middot; <a href="https://github.com/sriyathotakura/climate_rag_lab">sriyathotakura</a> &middot; 2026</p>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for scroll reveals
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
