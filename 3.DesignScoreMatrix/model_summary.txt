@@ -1,0 +1,83 @@
+========================================================
+CBX ENSEMBLE VULNERABILITY MODEL SUMMARY
+========================================================
+
+Generated: 2026-04-28T04:29:46.849536+00:00
+
+DATASET
+  Zones: 57
+  Features: 26
+  CV morphology: yes
+  Train/test split: 39/18
+
+TARGET: Composite Vulnerability Score
+  = (Asthma_I_R_mean / 355.8) * 0.5 + CVI_norm * 0.3 + trauma_max * 0.2
+  Range: [0.0001, 0.7447]
+
+  Weight justification:
+  Asthma inpatient rate (50%): direct health outcome, from DOHMH real data
+  Climate vulnerability index (30%): composite environmental risk, from GIS analysis
+  RAG trauma intensity (20%): community-reported evidence of harm, from cbx_trauma
+
+MODEL PERFORMANCE
+  Model                    CV R2 (mean +/- std)    Test R2  Test RMSE
+  ------------------------------------------------------------------
+  Random Forest            0.5438 +/- 0.2783      0.9134     0.0429
+  XGBoost                  0.5517 +/- 0.5086      0.9722     0.0243
+  Gradient Boosting        0.8204 +/- 0.0924      0.9601     0.0291
+  Weighted Ensemble                                 0.9761     0.0225
+
+  Ensemble weights: Random Forest: 0.284 | XGBoost: 0.288 | Gradient Boosting: 0.428
+
+FEATURE IMPORTANCE (Top 10)
+  1   Asthma_I_R_mean                     0.6163  (gis)
+  2   CVI_mean                            0.2463  (gis)
+  3   trauma_max_intensity                0.1018  (trauma)
+  4   trivariate_canopy                   0.0066  (gis)
+  5   nearest_hospital_m                  0.0051  (facilities)
+  6   trauma_exact_count                  0.0044  (trauma)
+  7   dist_to_cbe_m                       0.0040  (distance)
+  8   trauma_noise_density                0.0036  (trauma)
+  9   facilities_500m                     0.0028  (facilities)
+  10  trauma_air_density                  0.0025  (trauma)
+
+NOVEL FINDING CHECK
+  Trauma features total importance: 10.8%
+  RAG trauma contribution: 10.8% -- physical/health indicators dominate as expected from literature. Trauma scores serve as corroborating evidence.
+
+TOP 5 PRIORITY INTERVENTION ZONES
+
+  Zone fid=41.0 (priority #1)
+    Asthma rate:    355.8
+    CVI:            0.69
+    Trauma max:     0.00
+    Vulnerability:  0.7447
+    Predicted:      0.7185
+
+  Zone fid=6.0 (priority #2)
+    Asthma rate:    355.8
+    CVI:            -0.08
+    Trauma max:     0.00
+    Vulnerability:  0.7231
+    Predicted:      0.7042
+
+  Zone fid=17.0 (priority #3)
+    Asthma rate:    287.9
+    CVI:            1.30
+    Trauma max:     0.00
+    Vulnerability:  0.6662
+    Predicted:      0.6553
+
+  Zone fid=52.0 (priority #4)
+    Asthma rate:    266.2
+    CVI:            2.25
+    Trauma max:     0.00
+    Vulnerability:  0.6623
+    Predicted:      0.6532
+
+  Zone fid=29.0 (priority #5)
+    Asthma rate:    199.5
+    CVI:            0.69
+    Trauma max:     0.00
+    Vulnerability:  0.5250
+    Predicted:      0.5513

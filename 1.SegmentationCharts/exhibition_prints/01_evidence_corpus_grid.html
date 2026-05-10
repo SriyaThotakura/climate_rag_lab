@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBx Evidence Corpus — Wall Grid</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:       #050608;
+    --ground:     #0A0B0E;
+    --surface:    #111318;
+    --surface-2:  #181C22;
+    --wire:       #1E232C;
+    --text-1:     #E8E5E0;
+    --text-2:     #8A8780;
+    --text-3:     #4A4845;
+    --signal:     #E84A3A;
+    --signal-dim: #2A0E0C;
+    --lime:       #C8F04A;
+    --lime-dim:   #1A2108;
+    --blue:       #4A9EE8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--void);
+    color: var(--text-1);
+    font-family: 'Syne', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PRINT SETUP ── */
+  @media print {
+    @page { size: 36in 48in; margin: 0.5in; }
+    body { background: var(--void) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .no-print { display: none !important; }
+  }
+
+  /* ── HEADER STRIP ── */
+  .header {
+    padding: 40px 48px 32px;
+    border-bottom: 2px solid var(--signal);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .header-left h1 {
+    font-size: 52px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 0.9;
+    color: var(--text-1);
+  }
+
+  .header-left .subtitle {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-top: 10px;
+  }
+
+  .header-right {
+    text-align: right;
+  }
+
+  .header-right .stat {
+    display: inline-block;
+    margin-left: 40px;
+    text-align: center;
+  }
+
+  .header-right .stat-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--signal);
+    line-height: 1;
+  }
+
+  .header-right .stat-label {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-top: 4px;
+  }
+
+  /* ── LEGEND BAR ── */
+  .legend {
+    display: flex;
+    gap: 24px;
+    padding: 16px 48px;
+    border-bottom: 1px solid var(--wire);
+    align-items: center;
+  }
+
+  .legend-title {
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-right: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+
+  .legend-swatch {
+    width: 10px;
+    height: 10px;
+    border: 1px solid;
+  }
+
+  .swatch-minutes { background: var(--signal-dim); border-color: var(--signal); }
+  .swatch-health { background: var(--lime-dim); border-color: var(--lime); }
+  .swatch-ej { background: rgba(74,158,232,0.12); border-color: var(--blue); }
+  .swatch-news { background: rgba(245,158,11,0.1); border-color: #F59E0B; }
+  .swatch-history { background: rgba(168,85,247,0.1); border-color: #A855F7; }
+  .swatch-spatial { background: rgba(20,184,166,0.1); border-color: #14B8A6; }
+  .swatch-cv { background: rgba(236,72,153,0.1); border-color: #EC4899; }
+  .swatch-ocr { background: var(--surface-2); border-color: var(--text-3); }
+
+  /* ── YEAR SECTIONS ── */
+  .year-section {
+    padding: 20px 48px 8px;
+  }
+
+  .year-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--signal);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--wire);
+    margin-bottom: 12px;
+  }
+
+  .year-label::before {
+    content: '// ';
+    color: var(--text-3);
+    font-weight: 400;
+  }
+
+  /* ── DOCUMENT GRID ── */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 6px;
+    padding: 0 48px 16px;
+  }
+
+  .doc-card {
+    border: 1px solid var(--wire);
+    padding: 10px 10px 8px;
+    position: relative;
+    transition: border-color 0.2s;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .doc-card:hover { border-color: var(--signal); }
+
+  .doc-card.cat-minutes { border-left: 3px solid var(--signal); background: var(--signal-dim); }
+  .doc-card.cat-health { border-left: 3px solid var(--lime); background: var(--lime-dim); }
+  .doc-card.cat-ej { border-left: 3px solid var(--blue); background: rgba(74,158,232,0.06); }
+  .doc-card.cat-news { border-left: 3px solid #F59E0B; background: rgba(245,158,11,0.04); }
+  .doc-card.cat-history { border-left: 3px solid #A855F7; background: rgba(168,85,247,0.04); }
+  .doc-card.cat-spatial { border-left: 3px solid #14B8A6; background: rgba(20,184,166,0.04); }
+  .doc-card.cat-cv { border-left: 3px solid #EC4899; background: rgba(236,72,153,0.04); }
+  .doc-card.cat-ocr { border-left: 3px solid var(--text-3); background: var(--surface-2); }
+
+  .doc-tag {
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .tag-pdf { color: var(--signal); border: 1px solid var(--signal); }
+  .tag-csv { color: var(--lime); border: 1px solid var(--lime); }
+  .tag-txt { color: var(--text-2); border: 1px solid var(--text-3); }
+  .tag-geojson { color: #14B8A6; border: 1px solid #14B8A6; }
+  .tag-html { color: var(--blue); border: 1px solid var(--blue); }
+  .tag-json { color: #F59E0B; border: 1px solid #F59E0B; }
+
+  .doc-name {
+    font-size: 8px;
+    color: var(--text-2);
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    word-break: break-all;
+    flex-grow: 1;
+  }
+
+  .doc-size {
+    font-size: 7px;
+    color: var(--text-3);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* ── UNDATED SECTION ── */
+  .section-divider {
+    padding: 24px 48px 8px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    border-top: 1px solid var(--wire);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 24px 48px;
+    border-top: 2px solid var(--signal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .footer-left {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    line-height: 1.8;
+  }
+
+  .footer-right {
+    text-align: right;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    line-height: 1.8;
+  }
+
+  .footer .signal { color: var(--signal); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>The Evidence<br>Corpus</h1>
+    <div class="subtitle">Cross Bronx Expressway Corridor &mdash; Multi-Method Computational Archive</div>
+  </div>
+  <div class="header-right">
+    <div class="stat">
+      <div class="stat-num">149</div>
+      <div class="stat-label">Source documents</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">101</div>
+      <div class="stat-label">PDF records</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">11</div>
+      <div class="stat-label">Datasets (CSV)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Years span</div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <span class="legend-title">Category</span>
+  <div class="legend-item"><div class="legend-swatch swatch-minutes"></div>Board Minutes</div>
+  <div class="legend-item"><div class="legend-swatch swatch-health"></div>Health Data</div>
+  <div class="legend-item"><div class="legend-swatch swatch-ej"></div>Env. Justice</div>
+  <div class="legend-item"><div class="legend-swatch swatch-news"></div>Journalism</div>
+  <div class="legend-item"><div class="legend-swatch swatch-history"></div>History / Academic</div>
+  <div class="legend-item"><div class="legend-swatch swatch-spatial"></div>Spatial / GIS</div>
+  <div class="legend-item"><div class="legend-swatch swatch-cv"></div>Computer Vision</div>
+  <div class="legend-item"><div class="legend-swatch swatch-ocr"></div>OCR / Digitized</div>
+</div>
+
+<!-- ═══════════════════════ 2018 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2018</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">january-23-2018-general-board-final.pdf</div><div class="doc-size">214 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ 2019 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2019</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">january_22_2019_general_board_final.pdf</div><div class="doc-size">239 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - January 23rd, 2019_ocr.txt</div><div class="doc-size">6 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">february_26_2019_general_board_final.pdf</div><div class="doc-size">226 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - February 27, 2019_ocr.txt</div><div class="doc-size">9 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">march_26_2019_general_board_final.pdf</div><div class="doc-size">235 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - March 27, 2019_ocr.txt</div><div class="doc-size">7 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">april_23,_2019_general_board_final.pdf</div><div class="doc-size">282 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - April 24, 2019_ocr.txt</div><div class="doc-size">9 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">may_28_2019_general_board_final.pdf</div><div class="doc-size">218 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - May 22, 2019_ocr.txt</div><div class="doc-size">9 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">june_25_2019_general_board_final.pdf</div><div class="doc-size">301 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - June 26, 2019_ocr.txt</div><div class="doc-size">11 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">september_24_2019_general_board_draft.pdf</div><div class="doc-size">290 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - September 25, 2019_ocr.txt</div><div class="doc-size">19 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">october_22__2019_general_board_draft.pdf</div><div class="doc-size">316 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - October 23rd, 2019_ocr.txt</div><div class="doc-size">13 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">minutes-20191126.pdf</div><div class="doc-size">238 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - November 13, 2019_ocr.txt</div><div class="doc-size">12 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Meeting Minutes - December 11, 2019_ocr.txt</div><div class="doc-size">17 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ 2020 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2020</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">General Board Minutes - January 22, 2020_ocr.txt</div><div class="doc-size">21 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">minutes-20200128.pdf</div><div class="doc-size">287 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">february_25_2020_general_board_minutes.pdf</div><div class="doc-size">266 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">February-2020-General-Board-minutes.pdf</div><div class="doc-size">445 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">April-2020-Genmeral-Board-meeting-minutes.pdf</div><div class="doc-size">247 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">June-2020-General-Board-meeting-notes.pdf</div><div class="doc-size">377 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">September-2020-General-Board-minutes.pdf</div><div class="doc-size">470 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">september_22_2020_general_board_draft_minutes.pdf</div><div class="doc-size">310 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">October-2020-General-Board-meeting-minutes.pdf</div><div class="doc-size">422 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">october_27_2020_general_board_draft.pdf</div><div class="doc-size">254 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">November-2020-General-Board-meeting-minutes.pdf</div><div class="doc-size">448 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">november_24_2020_meeting_minutes_v1.pdf</div><div class="doc-size">185 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">December-16-2020-General-Board-meeting-minutes.pdf</div><div class="doc-size">542 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ 2021 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2021</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">January-2021-General-Board-meeting-minutes.pdf</div><div class="doc-size">585 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">january_26_2021_cb4_full_board_minutes_v1.pdf</div><div class="doc-size">210 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">February-2021-General-Board-meeting-notes.pdf</div><div class="doc-size">486 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">2-23-21_cb4_full_board_meeting_minutes_v2.pdf</div><div class="doc-size">170 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">March-24-2021-General-Board-meeting-minutes.pdf</div><div class="doc-size">540 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">minutes-20210323.pdf</div><div class="doc-size">219 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">2021-april-board-minutes.pdf</div><div class="doc-size">698 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">4-27-21-cb4-full-board-meeting-minutes.pdf</div><div class="doc-size">180 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">May-2021-General-Board-meeting-minutes.pdf</div><div class="doc-size">371 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">5-25-21-cb4-full-board-meeting minutes_v1.pdf</div><div class="doc-size">184 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">minutes-20210622.pdf</div><div class="doc-size">160 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">2021-september-general-board-minutes.pdf</div><div class="doc-size">550 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">9-28-21-cb4-board-minutes.pdf</div><div class="doc-size">205 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">2021-october-general-board-minutes.pdf</div><div class="doc-size">277 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">10-26-21-cb4-full-board-meeting-minutes.pdf</div><div class="doc-size">223 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">November-2021-Bronx-Community-Board-5-Minutes.pdf</div><div class="doc-size">566 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">minutes-20211123.pdf</div><div class="doc-size">161 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">2021_december_general_board_meeting_minutes.pdf</div><div class="doc-size">1.1 MB</div></div>
+</div>
+
+<!-- ═══════════════════════ 2022 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2022</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">Board-Meeting-Minutes-1-25-22.pdf</div><div class="doc-size">188 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">January-2022-General-Board-Meeting-Minutes.pdf</div><div class="doc-size">1.4 MB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">Board-Meeting Minutes-2-22-22.pdf</div><div class="doc-size">286 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">Board-Meeting-Minutes-3-22-22.pdf</div><div class="doc-size">267 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">General-Board-minutes-March-2022.pdf</div><div class="doc-size">478 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">General-Board-minutes-April-2022.pdf</div><div class="doc-size">1.6 MB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">Board_Meeting_Minutes_4-26-22.pdf</div><div class="doc-size">263 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">minutes-20220614_ocr.txt</div><div class="doc-size">28 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">minutes-20220921.pdf</div><div class="doc-size">517 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">streetsblog_cbx_2022_05.txt</div><div class="doc-size">5 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ 2023 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2023</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">March-2023-General-Board-meeting-minutes.pdf</div><div class="doc-size">592 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">April-2023-General-Board-meeting-minutes.pdf</div><div class="doc-size">224 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">May-2023-General-Board-minutes.pdf</div><div class="doc-size">543 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">September-2023-General-Board-minutes.pdf</div><div class="doc-size">291 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">September-26-2023-Meeting-Minutes.pdf</div><div class="doc-size">211 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">October-2023-General-Board-minutes.pdf</div><div class="doc-size">619 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">October-24-2023-Meeting-Minutes-Attendance.pdf</div><div class="doc-size">217 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">November-2023-General-Board-Minutes.pdf</div><div class="doc-size">246 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">November-28-2023-General-Board-Meeting-Minutes.pdf</div><div class="doc-size">251 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">December-2023-General-Board-minutes.pdf</div><div class="doc-size">269 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">December-2023-Public-Hearing.pdf</div><div class="doc-size">201 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">streetsblog_cbx_2023_05.txt</div><div class="doc-size">5 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ 2024 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2024</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">January-2024-General-Board-minutes.pdf</div><div class="doc-size">798 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">January-23-2024-General-Board-Meeting-Minutes.pdf</div><div class="doc-size">134 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">February-2024-General-Board-Meeting-Minutes.pdf</div><div class="doc-size">221 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">March-2024-General-Board-minutes.pdf</div><div class="doc-size">244 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">march-26-2024-meeting-minutes.pdf</div><div class="doc-size">125 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">April-2024-Board-meeting-minutes.pdf</div><div class="doc-size">251 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">April-23-2024-Meeting-Minutes.pdf</div><div class="doc-size">145 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">May-2024-Public-Hearing-and-General-Board-meeting-minutes.pdf</div><div class="doc-size">257 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">May-28-2024-Meeting-Minutes.pdf</div><div class="doc-size">146 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">General-Board-Meeting-June-26-2024-minutes.pdf</div><div class="doc-size">219 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">June-27-2024-Meeting-Minutes-Attendance.pdf</div><div class="doc-size">217 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">CB4-Minutes-September-24-2024.pdf</div><div class="doc-size">185 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">October-2024-Public-Hearing-and-General-Board-meeting-minutes.pdf</div><div class="doc-size">676 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">October-22-2024-General-Board-Meeting-Minutes.pdf</div><div class="doc-size">152 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">November-2024-General-Board-meeting-minutes.pdf</div><div class="doc-size">422 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">November-26-2024-General-Board-Meeting-Minutes.pdf</div><div class="doc-size">141 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">gothamist_cbx_2024_01.txt</div><div class="doc-size">3 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">streetsblog_cbx_2024_03.txt</div><div class="doc-size">10 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">streetsblog_cbx_2024_11.txt</div><div class="doc-size">4 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">streetsblog_cbx_2024_12.txt</div><div class="doc-size">4 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ 2025 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2025</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">January-2025-General-Board-minutes.pdf</div><div class="doc-size">245 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">January-28-2025-General-Board-Meeting-Minutes.pdf</div><div class="doc-size">197 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">2.26.2025-Public-Hearing-and-General-Board.pdf</div><div class="doc-size">237 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">BXCB4-General-Board-Meeting-Minutes-February-25-2025.pdf</div><div class="doc-size">260 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">BxCB4-General-Board-Meeting-Minutes-March-25-2025.pdf</div><div class="doc-size">208 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">May-27-2025-General-Board-Meeting-Minutes.pdf</div><div class="doc-size">302 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">May-2025-General-Board-meeting-minutes_ocr.txt</div><div class="doc-size">11 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">June-26-2025-Board-Meeting-Minutes.pdf</div><div class="doc-size">295 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">September-2025-General-Board-meeting-minutes.pdf</div><div class="doc-size">313 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">September-23-2025-Meeting-Minutes.pdf</div><div class="doc-size">253 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">BXCB4-General-Board-Meeting-Agenda-with-Public-Hearing-Notice-10.28.25.pdf</div><div class="doc-size">882 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">October-28-2025-Meeting-Minutes.pdf</div><div class="doc-size">328 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">November-2025-General-Board-meeting-minutes.pdf</div><div class="doc-size">346 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">December-2025-General-Board-minutes-copy.pdf</div><div class="doc-size">268 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">December-2025-General-Board-Meeting-minutes_ocr.txt</div><div class="doc-size">13 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">20250529163737_ocr.txt</div><div class="doc-size">18 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">20251001092329_ocr.txt</div><div class="doc-size">15 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">streetsblog_cbx_2025_03.txt</div><div class="doc-size">6 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">streetsblog_cbx_2025_09.txt</div><div class="doc-size">5 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ 2026 ═══════════════════════ -->
+<div class="year-section"><div class="year-label">2026</div></div>
+<div class="doc-grid">
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">January-28-2026-General-Board-meeting-agenda.pdf</div><div class="doc-size">478 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">february-2026-general-board-meeting-agenda.pdf</div><div class="doc-size">290 KB</div></div>
+  <div class="doc-card cat-ocr"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">BXCB4-General-Board-Meeting-agenda-3242026_ocr.txt</div><div class="doc-size">2 KB</div></div>
+  <div class="doc-card cat-news"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">streetsblog_cbx_2026_04.txt</div><div class="doc-size">12 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ CROSS-TEMPORAL EVIDENCE ═══════════════════════ -->
+<div class="section-divider">// Cross-Temporal Evidence &mdash; Health, Environmental Justice, Spatial, Historical, Computer Vision</div>
+
+<div class="doc-grid">
+  <!-- Health datasets -->
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">NYC EH Data Portal - Asthma emergency department visits (adults) (full table).csv</div><div class="doc-size">63 KB</div></div>
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">NYC EH Data Portal - Asthma emergency department visits (adults), by NTA (full table).csv</div><div class="doc-size">23 KB</div></div>
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">NYC EH Data Portal - Asthma emergency department visits (age 4 and under) (full table).csv</div><div class="doc-size">58 KB</div></div>
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">NYC EH Data Portal - Asthma emergency department visits (age 4 and under), by NTA (full table).csv</div><div class="doc-size">11 KB</div></div>
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv</div><div class="doc-size">58 KB</div></div>
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">NYC EH Data Portal - Asthma emergency department visits (age 5 to 17), by NTA (full table).csv</div><div class="doc-size">21 KB</div></div>
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">NYC EH Data Portal - Asthma hospitalizations (adults) (full table).csv</div><div class="doc-size">59 KB</div></div>
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">NYC EH Data Portal - Asthma hospitalizations (age 5 to 17) (full table).csv</div><div class="doc-size">56 KB</div></div>
+  <div class="doc-card cat-health"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">311_complaints_real.csv</div><div class="doc-size">34 MB</div></div>
+  <div class="doc-card cat-cv"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">segmentation_metrics.csv</div><div class="doc-size">5 KB</div></div>
+  <div class="doc-card cat-cv"><span class="doc-tag tag-csv">CSV</span><div class="doc-name">Segmentation_results.csv</div><div class="doc-size">4 KB</div></div>
+
+  <!-- EJ -->
+  <div class="doc-card cat-ej"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">ejscreen_cbx_corridor.txt</div><div class="doc-size">2.7 MB</div></div>
+  <div class="doc-card cat-ej"><span class="doc-tag tag-json">JSON</span><div class="doc-name">ejscreen_cbx_raw.json</div><div class="doc-size">2.7 MB</div></div>
+  <div class="doc-card cat-ej"><span class="doc-tag tag-txt">TXT</span><div class="doc-name">EJScreen_ocr.txt</div><div class="doc-size">3 KB</div></div>
+
+  <!-- Spatial -->
+  <div class="doc-card cat-spatial"><span class="doc-tag tag-geojson">GEO</span><div class="doc-name">Freight_Routes.geojson</div><div class="doc-size">43 KB</div></div>
+  <div class="doc-card cat-spatial"><span class="doc-tag tag-geojson">GEO</span><div class="doc-name">Intervention_Zones_3D.geojson</div><div class="doc-size">20 KB</div></div>
+  <div class="doc-card cat-spatial"><span class="doc-tag tag-geojson">GEO</span><div class="doc-name">Vulnerability_facilities.geojson</div><div class="doc-size">1.0 MB</div></div>
+  <div class="doc-card cat-spatial"><span class="doc-tag tag-geojson">GEO</span><div class="doc-name">Secondary_Intervention_Residential.geojson</div><div class="doc-size">402 KB</div></div>
+  <div class="doc-card cat-spatial"><span class="doc-tag tag-geojson">GEO</span><div class="doc-name">Secondary_Intervention_Residential_TRIVARIATE.geojson</div><div class="doc-size">127 KB</div></div>
+  <div class="doc-card cat-spatial"><span class="doc-tag tag-html">HTML</span><div class="doc-name">accurate_terrain_v2.html</div><div class="doc-size">5.3 MB</div></div>
+  <div class="doc-card cat-spatial"><span class="doc-tag tag-html">HTML</span><div class="doc-name">CV_map.html</div><div class="doc-size">99 KB</div></div>
+
+  <!-- Historical / Academic -->
+  <div class="doc-card cat-history"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">AJPH.2017.304243.pdf</div><div class="doc-size">570 KB</div></div>
+  <div class="doc-card cat-history"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">JillJonnes_2022_8.TheDiasporaafterthe_SouthBronxRisingTheRi.pdf</div><div class="doc-size">3.2 MB</div></div>
+  <div class="doc-card cat-history"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">JillJonnes_2022_10.MosesThinksHesGo_SouthBronxRisingTheRi.pdf</div><div class="doc-size">2.4 MB</div></div>
+  <div class="doc-card cat-history"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">JillJonnes_2022_18.TheWholePlaceWasC_SouthBronxRisingTheRi.pdf</div><div class="doc-size">1.5 MB</div></div>
+  <div class="doc-card cat-history"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">JillJonnes_2022_20.CharlotteStreetItW_SouthBronxRisingTheRi.pdf</div><div class="doc-size">1.5 MB</div></div>
+  <div class="doc-card cat-history"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">JillJonnes_2022_22.CharlotteStreetThe_SouthBronxRisingTheRi.pdf</div><div class="doc-size">1.4 MB</div></div>
+  <div class="doc-card cat-history"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">JillJonnes_2022_35.SouthBronxRising_SouthBronxRisingTheRi.pdf</div><div class="doc-size">12 MB</div></div>
+  <div class="doc-card cat-history"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">JillJonnes_2022_36.StillthePoorestUrb_SouthBronxRisingTheRi.pdf</div><div class="doc-size">600 KB</div></div>
+
+  <!-- Misc -->
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">General-Board-Meeting-Minutes-final.pdf</div><div class="doc-size">233 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">October-General-Board-meeting-minutes.pdf</div><div class="doc-size">296 KB</div></div>
+  <div class="doc-card cat-minutes"><span class="doc-tag tag-pdf">PDF</span><div class="doc-name">feb-27-minutes.pdf</div><div class="doc-size">215 KB</div></div>
+</div>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<div class="footer">
+  <div class="footer-left">
+    <span class="signal">CBx RAG</span> &mdash; Cross Bronx Expressway Corridor<br>
+    Multi-Method Computational Design Practice<br>
+    Bronx Community Board 4 &mdash; District 3/4
+  </div>
+  <div class="footer-right">
+    Columbia GSAPP &mdash; Computational Design<br>
+    149 source documents &bull; 8 file formats &bull; 8 years (2018&ndash;2026)<br>
+    <span class="signal">Retrieval-Augmented Generation over Democratic Process</span>
+  </div>
+</div>
+
+</body>
+</html>

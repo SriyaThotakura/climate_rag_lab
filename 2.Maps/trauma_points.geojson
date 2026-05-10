@@ -1,0 +1,2676 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated": "2026-04-27T02:53:02.517295+00:00",
+    "total_features": 133,
+    "collection": "cbx_trauma",
+    "trauma_categories": {
+      "noise": 40,
+      "air_quality": 19,
+      "health": 35,
+      "displacement": 39
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908961,
+          40.853836
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.71,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 35 WEST BURNSIDE AVENUE, 10453. Filed: 2024-10-15",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908911,
+          40.85383
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.71,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 33 WEST BURNSIDE AVENUE, 10453. Filed: 2024-10-12",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.920989,
+          40.844065
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.71,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: NELSON AVENUE, 10452. Filed: 2024-09-20",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.919679,
+          40.847902
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.7,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: ANDREWS AVENUE, 10453. Filed: 2024-11-13",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.915322,
+          40.843556
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.7,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 1545 JEROME AVENUE, 10452. Filed: 2024-10-06",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.917497,
+          40.850178
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.7,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 1730 ANDREWS AVENUE SOUTH, 10453. Filed: 2024-10-01",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.929825,
+          40.833896
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.7,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 1027 SUMMIT AVENUE, 10452. Filed: 2024-11-12",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.915643,
+          40.841465
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.7,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 1474 TOWNSEND AVENUE, 10452. Filed: 2024-10-25",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911194,
+          40.854823
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.7,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: MARTIN LUTHER KING JR BOULEVARD, 10453. Filed: 2024-11-28",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908961,
+          40.853836
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.7,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Car/Truck Music. Address: 35W WEST BURNSIDE AVENUE, 10453. Filed: 2024-12-26",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.913579,
+          40.844387
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.7,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 1605 TOWNSEND AVENUE, 10452. Filed: 2024-11-02",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.925264,
+          40.834775
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: ANDERSON AVENUE, 10452. Filed: 2024-10-12",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.915948,
+          40.845827
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Car/Truck Music. Address: 47 FEATHERBED LANE, 10452. Filed: 2024-10-16",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908911,
+          40.85383
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Car/Truck Music. Address: 33 WEST BURNSIDE AVENUE, 10453. Filed: 2024-09-27",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908961,
+          40.853836
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Car/Truck Music. Address: 35 WEST BURNSIDE AVENUE, 10453. Filed: 2024-12-08",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.916104,
+          40.845668
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Car/Truck Music. Address: 54 FEATHERBED LANE, 10452. Filed: 2024-10-24",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.91401,
+          40.840791
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Car/Truck Music. Address: 1475 WYTHE PLACE, 10452. Filed: 2024-12-15",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.929843,
+          40.833861
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 1025 SUMMIT AVENUE, 10452. Filed: 2024-11-11",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.928935,
+          40.831434
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 953 WOODYCREST AVENUE, 10452. Filed: 2024-09-19",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.907194,
+          40.853771
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.69,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Car/Truck Music. Address: 1 EAST BURNSIDE AVENUE, 10453. Filed: 2024-12-02",
+        "query_used": "noise from highway trucks cars engines",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.903963,
+          40.850136
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.29,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma hospitalizations (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2013. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 25.3. Number: 34",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911794,
+          40.834853
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.29,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 4 and under) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2013. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 327.4. Number: 173",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.904697,
+          40.84044
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.29,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 4 and under) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2016. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 284.7. Number: 135",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.901548,
+          40.849755
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 4 and under) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2007. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 339.9. Number: 174",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.900632,
+          40.842404
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma hospitalizations (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2007. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 23.0. Number: 33",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.913461,
+          40.835695
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2012. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 213.5. Number: 288",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.907565,
+          40.850499
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2013. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 188.3. Number: 253",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908358,
+          40.829165
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2008. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 142.7. Number: 207",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.893859,
+          40.838341
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2007. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 160.1. Number: 230",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.902008,
+          40.834325
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2016. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 166.7. Number: 223",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911568,
+          40.832295
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2005. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 181.1. Number: 260",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908949,
+          40.840853
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 4 and under) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2011. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 379.9. Number: 203",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.893865,
+          40.833267
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 4 and under) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2005. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 374.5. Number: 188",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911483,
+          40.828879
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 4 and under) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2005. GeoType: UHF42. GeoID: 409. GeoRank: 4. Geography: Southeast Queens. Estimated annual rate per 10,000: 310.2. Number: 341",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.912122,
+          40.847971
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2021. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 83.6. Number: 117",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.910171,
+          40.84835
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 4 and under) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2012. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 359.2. Number: 191",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.901214,
+          40.847271
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2017. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 147.8. Number: 209",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.895292,
+          40.84426
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma hospitalizations (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2008. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 13.1. Number: 19",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.91448,
+          40.831903
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2009. GeoType: UHF42. GeoID: 501. GeoRank: 4. Geography: Port Richmond. Estimated annual rate per 10,000: 167.1. Number: 244",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.909844,
+          40.840757
+        ]
+      },
+      "properties": {
+        "trauma_category": "noise",
+        "trauma_intensity": 0.28,
+        "source_type": "health_data",
+        "source_file": "NYC EH Data Portal - Asthma emergency department visits (age 5 to 17) (full table).csv",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "TimePeriod: 2013. GeoType: UHF42. GeoID: 409. GeoRank: 4. Geography: Southeast Queens. Estimated annual rate per 10,000: 120.6. Number: 379",
+        "query_used": "can't sleep loud traffic rumbling constant",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.907653,
+          40.844522
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.62,
+        "source_type": "document",
+        "source_file": "ejscreen_cbx_corridor.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "\">Nitrogen Dioxide (NO2)</td> <td>18.8</td> <td>10.3</td> <td>93</td> <td>7.8</td> <td>99</td> <td style=\"background-color: orange;\">2.4</td> <td style=\"background-color: yellow;\">1.8</td> </tr> <tr> ",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.897779,
+          40.834411
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.6,
+        "source_type": "document",
+        "source_file": "ejscreen_cbx_corridor.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "US, 93%ile in State)<br>Diesel PM: 0.632 (µg/m3) (97%ile in US, 76%ile in State)<br>Toxic Releases to Air: 280 (toxicity-weighted concentration) (37%ile in US, 55%ile in State)<br>Traffic: 8600000 (da",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.918929,
+          40.849531
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.6,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Air Quality: Air: Odor/Fumes, Vehicle Idling (AD3). Address: 130 WEST  176 STREET, 10453. Filed: 2024-10-01",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911635,
+          40.852523
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.59,
+        "source_type": "document",
+        "source_file": "gothamist_cbx_2024_01.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "Truck Pollution: Focus on the \"Asthma Alley\" and diesel idling. How should NYC fix Cross Bronx Expressway pollution and 'Asthma Alley' issues? By Naim Ali-Pacheco Published Jun 8, 2024 47 comments Spe",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911339,
+          40.836934
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.58,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2026_04.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "ion. South Bronx residents experience relatively higher levels of respiratory illnesses as a result. Yet Hochul’s proposal to widen the highway shoulder lanes would saddle the area with more truck tra",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.919306,
+          40.84531
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.57,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Car/Truck Music. Address: CROSS BRONX EXPRESSWAY, 10452. Filed: 2024-12-05",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.912284,
+          40.842209
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.56,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 1555 GRAND CONCOURSE, 10452. Filed: 2024-10-09",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.920826,
+          40.83453
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.55,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Noise - Vehicle: Engine Idling. Address: 1165 GERARD AVENUE, 10452. Filed: 2024-09-21",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911771,
+          40.840534
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.55,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2023_05.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "ell at a press conference on congestion pricing and air quality in the Bronx. Photo: Dave Colon Rep. Ritchie Torres with Loving the Bronx Founder Nilka Martell at a press conference on congestion pric",
+        "query_used": "diesel fumes exhaust smell pollution highway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.923314,
+          40.836722
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.55,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Air Quality: Air: Smoke, Chimney or vent (AS1). Address: 1200 SHAKESPEARE AVENUE, 10452. Filed: 2024-11-04",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.925716,
+          40.834171
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.55,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Air Quality: Air: Dust, Other (Use Comments) (AE5). Address: 1080 ANDERSON AVENUE, 10452. Filed: 2024-10-10",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": "10452"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.91443,
+          40.85451
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.54,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Air Quality: Air: Other Air Problem (Use Comments) (AZZ). Address: 1912 LORING PLACE, 10453. Filed: 2024-10-25",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.907836,
+          40.854571
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.53,
+        "source_type": "311_complaint",
+        "source_file": "311_complaints_real.csv",
+        "geo_confidence": "exact",
+        "text_excerpt": "Air Quality: Air: Dust, Construction/Demolition (AE4). Address: 2073 DAVIDSON AVENUE, 10453. Filed: 2024-09-19",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": "10453"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.90286,
+          40.848539
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.64,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2026_04.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "re small, they do have health risks,” said Zander De Jesus, a PhD student who worked on the project. Respiratory illnesses increase by 2.07 percent, and hospital visits by 8 percent, for every additio",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.897533,
+          40.841354
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "ejscreen_cbx_corridor.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "r> <tr> <td headers=\"data-indicators-table-selected-variables\">% with Heart Diseases</td> <td>6</td> <td style=\"background-color: ;\">NA</td> <td style=\"background-color: ;\">NA</td> </tr> <tr> <td head",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.916539,
+          40.844784
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.51,
+        "source_type": "document",
+        "source_file": "ejscreen_cbx_corridor.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "ate, which is the Agency&#39;s ongoing, comprehensive evaluation of air toxics in the United States. This effort aims to prioritize air toxics, emission sources, and locations of interest for further ",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.898486,
+          40.837515
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2026_04.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "e in these NYCHA developments to experience cleaner air where they sleep, where they live,” he said. “We want some of that mitigation money to go to actually making sure that all the schools are getti",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.906459,
+          40.845599
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.5,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2026_04.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "roving quality of life.” Johnson said he’d like to see a longer mitigation timeline with more funding for efforts designed to protect more people breathing dirty air, as well as a more committed effor",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908265,
+          40.844112
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.49,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2026_04.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "percent, according to air quality monitors run by the city Department of Health and Mental Hygiene. It’s a small spike, but a significant one for residents of The Bronx, who have historically suffered",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.906826,
+          40.835884
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.52,
+        "source_type": "document",
+        "source_file": "AJPH.2017.304243.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "n costs are considerably lower. However, our study is a case study designed as a thought experiment. Because of the mon- etary and health–beneﬁt exclusions, our model should not be used as a basis for",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.895735,
+          40.833016
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.48,
+        "source_type": "document",
+        "source_file": "January-2022-General-Board-Meeting-Minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "afternoon. It's insane. But keep that in mind. If that goes off that you want to replace the alarm. It sets off because it's a combination of one that makes two different noises. It will make one set ",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911547,
+          40.834763
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "January-2022-General-Board-Meeting-Minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "e detectors know only if it starts right underneath you, then possibly, but yes, it is a denser gas. However, it is still slightly lighter than the air. Carbon monoxide does still rise, and the smoke,",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.896358,
+          40.841359
+        ]
+      },
+      "properties": {
+        "trauma_category": "air_quality",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "January-2021-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "orkers have trepidation; I believe that I have family members concerned about it. Also, I know that. One of the things I hear from you though, Pablo, is that we need to try to educate our community me",
+        "query_used": "air quality breathing difficult asthma fumes",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.901252,
+          40.85229
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "september_22_2020_general_board_draft_minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "rogram to combat child obesity. They go into schools and teach children about nutrition and cooking. The Chair encourages everyone to get their influenza vaccine since the COVID and Flu are very simil",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.904518,
+          40.846465
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "ejscreen_cbx_corridor.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "-indicators-table-pm\">Particulate Matter (PM 2.5 in ug/m3)</td> <td>8.24</td> <td>7.47</td> <td>89</td> <td>8.45</td> <td>53</td> <td style=\"background-color: yellow;\">1.0</td> <td style=\"background-c",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.902133,
+          40.837163
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "January-2021-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "on to that, all new patients and established patients will be scheduled for follow- up appointments. We will ensure that that patient has everything they need, such as pharmacies. Patients follow up w",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.89976,
+          40.84628
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.5,
+        "source_type": "document",
+        "source_file": "february_25_2020_general_board_minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "ar long. Additionally, the Norwood at Dekalb Avenue will also be opened all year round on Thursdays. The committee continued their discussion on the District Needs Statement and they are asking for a ",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.901414,
+          40.846319
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.49,
+        "source_type": "document",
+        "source_file": "october_27_2020_general_board_draft.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "r long. Additionally, the Norwood at Dekalb Avenue will also b e opened all year round on Thursdays. The committee continued their discussion on the District Needs Statement and they are asking for a ",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.905213,
+          40.849641
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.49,
+        "source_type": "document",
+        "source_file": "General Board Meeting Minutes - May 22, 2019_ocr.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "HOSPITAL HAS OPENED AN EXPRESS CARE SERVICE WITHIN ITS EMERGENCY ROOM FROM 8AM TO 8PM PLUS HOLIDAYS. SAMUEL ANSAH, DIRECTOR OF THE SEDGEWICK LIBRARY LOCATED AT 1701 UNIVERSITY AVENUE WILL OPEN A PHOTO",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.912643,
+          40.849292
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.53,
+        "source_type": "document",
+        "source_file": "february_25_2020_general_board_minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "and/or a fever. The corona virus has been named by the World Health Organization (WHO) as COVID-19. Youth Services & Education – The committee didn’t have any voting it ems. They had two presentations",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.901285,
+          40.837325
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.49,
+        "source_type": "document",
+        "source_file": "january_26_2021_cb4_full_board_minutes_v1.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "tors to join the Committee • Health & Human Resources o Committee Chair Jason A. Caraballo reported. o Discussed telehealth services at BronxCare  Patients may call 99-Bronx for a BronxCare appointme",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908669,
+          40.831039
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.49,
+        "source_type": "document",
+        "source_file": "January-2022-General-Board-Meeting-Minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "and flu and answer your questions. We can set up an appointment for you. It's an excellent facility. And if it isn't close to where you want to do a flu shot or COVID shot, I'll put my phone number in",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.903067,
+          40.850272
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.48,
+        "source_type": "document",
+        "source_file": "May-27-2025-General-Board-Meeting-Minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "rculosis and colon cancer). o Reminders: scheduling annual physical, and CDC guidelines for safety . Additionally, M ental Health- resources by dialing 988 or visiting NYC Well for support and for fur",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.902501,
+          40.844806
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.48,
+        "source_type": "document",
+        "source_file": "september_22_2020_general_board_draft_minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "yone is not able to quarantine themselves, there are free hotel rooms available from the City. Msgr. Sakano of Highbridge Community Development Corp requested a mobile unit for COVID testing for their",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.906538,
+          40.841871
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "october_27_2020_general_board_draft.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "• Free vaccination for children in over 1000 facilities. Through its Vaccine for Children’s program. The number to call is 844-nycnyc. • Free air conditioners through the Department of the Aging, HPD,",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.912178,
+          40.83245
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "January-2021-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "s to our district, other than budget issues which the councilmen will speak upon himself. Thank you. • Presentation by Morris Heights Health Center on Covid-19 updates and status of new Urgent Care Ce",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908404,
+          40.845665
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "october_27_2020_general_board_draft.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "e at 718-585-7500 or at district16bronx@councilnyc.gov. • Giving out face masks and hand sanitizers. • Working with many organizations • Three issues facing our community o Food Access o COVID 19 test",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.915888,
+          40.849279
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "January-2022-General-Board-Meeting-Minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "ing, boosters, anything that you're interested in hearing about. I'm happy to come back and present. We also set up vans, tents, indoor events for COVID, and we have a flu clinic in your community. We",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.903337,
+          40.839751
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "minutes-20211123.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "er, receives federal funds to make services available to anyone regardless of the ability to pay. a. Services Provide - COVID testing and vaccination (Monday to Friday 8 am to 4 pm) , Flu vaccine (Mon",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908072,
+          40.850988
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "November-2020-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "as many families as possible. The final thing I want to say is the Bronx testing site for COVID-19. The antibody the rapid testing and self-testing are at several healthcare clinics hospital. • Help c",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.901744,
+          40.845861
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "March-2023-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "on will be asked if a stop can be accommodated o Melissa Guzman, representing St. Barnabas Hospital. The Wellness Center is open and has services for the community. These include a Health Plex, which ",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.913432,
+          40.848134
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.47,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2026_04.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "doing business — whether it’s to build major highways, trash incinerators or Fresh Direct warehouses. “Everyone who lives in this community has lost someone due to a respiratory problem,” said Johnson",
+        "query_used": "asthma respiratory hospital emergency sick",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.897339,
+          40.850375
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "minutes-20210323.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "; 10452 – 8.08%; 10456 – 7.7% • Vaccination data o 10451 – 26.44% at least one dose; 10452 – 23.92%; 10456 – 20.69% o Recapped presentation by Project HOPE  Free service program available to adults, ",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.915235,
+          40.828615
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.53,
+        "source_type": "document",
+        "source_file": "september_22_2020_general_board_draft_minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "ation – The committee discussed COVID’s effect on kids and suggestions on how to alleviate concerns. Such as, portable electronic devices for kids that can’t afford them as well as free wi-fi access. ",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.903238,
+          40.843588
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.52,
+        "source_type": "document",
+        "source_file": "ejscreen_cbx_corridor.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "88%ile in State)<br>%Limited English: 21% (93%ile in US, 88%ile in State)<br>%Unemployed: 12% (88%ile in US, 86%ile in State)<br>%< High School: 30% (92%ile in US, 91%ile in State)<br>%< age 5: 8% (74",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.894373,
+          40.830154
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.52,
+        "source_type": "document",
+        "source_file": "October-2020-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "is 1.7%, and we're at 2.5, so it's a little bit above. We are still not out of the Covid19 pandemic. • · We are preparing for the second wave before there is a vaccine that comes to us, so we have to ",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.896521,
+          40.840714
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.52,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2026_04.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "drops in PM2.5 were located near by the El Coqui Community Garden and Latino Pastoral Action Center. The latter is surrounded by trees and sits across the street from two leafy parks. “There are a num",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.911316,
+          40.849675
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.52,
+        "source_type": "document",
+        "source_file": "ejscreen_cbx_corridor.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "tyle=\"background-color: ;\">NA</td> <td style=\"background-color: ;\">NA</td> </tr> <tr> <td headers=\"data-indicators-table-selected-variables\">Count of Population for whom Poverty Status is Determined</",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.897377,
+          40.848788
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.51,
+        "source_type": "document",
+        "source_file": "November-2020-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "ay. Once again, I am thankful to all of you for everything you've done over the last several months. • And indeed, I pray that you and your families are all healthy and safe during this Covid 19 pande",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.905711,
+          40.84768
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.5,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2026_04.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "d around Port Morris and Mott Haven, two neighborhoods surrounded by highways and industrial zoning. Of the 19 monitors, 17 showed upticks in air pollutants in the first year of congestion pricing tol",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.898743,
+          40.835987
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.5,
+        "source_type": "document",
+        "source_file": "December-16-2020-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "There are many vaccines; however, it's not going to be enough for the entire city, all at one stop. It's sort of in waves, so the first wave is our heroes, our central workers working in the medical f",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.90035,
+          40.849502
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.5,
+        "source_type": "document",
+        "source_file": "November-2021-Bronx-Community-Board-5-Minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "half of the mayor to provide peace sick leave for parents to allow their children to get vaccinated. They need to take time off from work or amend the current page simply law and let any New Yorker ge",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.898276,
+          40.847751
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.5,
+        "source_type": "document",
+        "source_file": "2021_december _general_board_meeting_minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "on into currently laid over in the New York City Council Committee on fire and emergency management. This ongoing pandemic has highlighted an already existing data showing a 36% increase post-pandemic",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.909505,
+          40.84424
+        ]
+      },
+      "properties": {
+        "trauma_category": "health",
+        "trauma_intensity": 0.5,
+        "source_type": "document",
+        "source_file": "September-2020-General-Board-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "otosho Report: • Proceedings: ▪ Good Evening to all the Board Members and all the Elected Officials. 2 ▪ We are in the Pandemic Season, and all of us in this community are practicing social distancing",
+        "query_used": "children health breathing problems PM2.5",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.910708,
+          40.835326
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.62,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_18.“TheWholePlaceWasC_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "t would continue to bail out, but subsequent experience would reveal a more complicated explanation. Who, with the exception of a few perspicacious scholars, could have imagined that entire neighborho",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.898501,
+          40.841393
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.6,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_35.“SouthBronxRising”_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "artment houses made it very difficult to renovate them later. (Camilo Jose Vergara) In June or 1982. when Vergara returned two years later, he found the building largely abandoned but still accessible",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.899549,
+          40.831979
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.64,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_10.“MosesThinksHe’sGo_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "would be a better place be- cause of the expressway - more accessible, more attractive to business. And so, block by block, the sturdy apartment buildings in its way were emptied, as were the multitud",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.906186,
+          40.850979
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.59,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_10.“MosesThinksHe’sGo_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "in a friendly word. As each project was com- pleted, it altered the old neighborhood surrounding it. And would any self-respecting street singer serenade beneath proj- ect towers? The New York City Ho",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.901417,
+          40.834756
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.58,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_8.TheDiasporaafterthe_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "dilapidated old-law tenements at the Lower East Side's Third Street and Avenue A from Vincent Astor. Dispatching WPA labor and materials, the Housing Authority demolished every third building to let i",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.898319,
+          40.841428
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.58,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_18.“TheWholePlaceWasC_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "New York City was diminishing for the first time in a century. Landlords abandoned their properties. Almost one hundred thousand apartments were already \"boarded up, vandalized, burnt-out or otherwise",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.899408,
+          40.845446
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.57,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_18.“TheWholePlaceWasC_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "a state of affairs that made it more profitable to abandon or destroy than to preserve and maintain. By late 1969 and throughout 1970 officials and housing ex- perts in the Bronx were all singing dirg",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.896544,
+          40.845231
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "General-Board-minutes-March-2022.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "leeping there, the top part of the stairs is an ample open space that you eliminated in your design. It looks like the ramp like how you made the DA compliant when it reached the top where Morris's lo",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.90391,
+          40.828176
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_10.“MosesThinksHe’sGo_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "it of attention to the public, nor to a consensus. He just rode roughshod over the political system. He demolished it or contributed in great part to its demolition.\" Nowhere had this been more starkl",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.91172,
+          40.849752
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_35.“SouthBronxRising”_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "abandoned apartment house. They are doing just this on Morris Avenue. On the corner of Morris and E. I 681h sits an incredible eyesore, what City planners say is the largest remaining abandoned and va",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.898238,
+          40.849569
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "2021-september-general-board-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "Baptist Church. They had a pile of dirt so tall that you couldn't even park in front of the church.  I feel the church is vital as any other building and being put in all that mess right in front of ",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.899701,
+          40.84167
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.55,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_10.“MosesThinksHe’sGo_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "olition and ensuing excavation for the roadbed generated tremendous chaos in the contiguous streets. There were mountains of debris crawling with rats and roaches. By day (and often by night) powerful",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.900351,
+          40.846595
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.55,
+        "source_type": "document",
+        "source_file": "June-2020-General-Board-meeting-notes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "went live today. ➢ We received from FHA information about the homeownership foreclosure moritorium. The rental eviction moritorium expires on the 20th of this month and the moratorium on foreclosure o",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.905423,
+          40.84335
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_18.“TheWholePlaceWasC_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "0 billion over the years. But they were clearly about to stop. The City chose to ignore this threat. It continued to play by the old rules, even though the landlords began to drop out in droves, for t",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.909269,
+          40.844764
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "December-16-2020-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "f those evictions are in the Bronx, northern Manhattan, and parts of Brooklyn. That is our district. Those are our people that have fallen behind in lost income and lost revenue, and 11 they are rent-",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.901493,
+          40.841578
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_35.“SouthBronxRising”_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "ed. From this time on, few apartment houses in the South Bronx were torn down, for Mayor Ed- ward I. Koch's $5 bil- lion housing plan at long last provided money to save these great old buildings. Fro",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.90649,
+          40.831782
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "General-Board-Meeting-Minutes-final.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": ". A truck is currently located on East Burnside and Ryer Avenue (has been there since the pandemic). Another is on Grand Concourse and either 182nd or 183rd Street and has been selling fruits/taking u",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.905925,
+          40.850336
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "2021-september-general-board-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "there are also putting their boards and all the stuff they need for the work they don’t clean it up. They need to clean up themselves when they leave in after they took the parking spaces away and mad",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.902875,
+          40.846772
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_18.“TheWholePlaceWasC_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "asm. Newly savvy tenants learned to ferret out violations, and rent rolls soon dropped dramatically. It made life far more difficult for landlords: rather than raise rents, they now had to go to court",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.906073,
+          40.845195
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.54,
+        "source_type": "document",
+        "source_file": "JillJonnes_2022_35.“SouthBronxRising”_SouthBronxRisingTheRi.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "ry, very slowly these sites are being transformed into parks or filled in with stores or row houses. But it will probably take another decade ( or more) before all these eyesores are finally eradicate",
+        "query_used": "moved away forced out housing demolished",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.908108,
+          40.842116
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.62,
+        "source_type": "document",
+        "source_file": "gothamist_cbx_2024_01.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "as built between 1948 and 1972 and has been widely linked to high asthma rates in Bronx communities. It has also been blamed for displacing and isolating communities of color, in addition to a whole h",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.905538,
+          40.843472
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.59,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2024_12.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "al traffic would also need to merge off of the ramp and onto a single northbound lane on West Farms. As a result, transit advocates are unimpressed with the idea of rejiggering bus routes and building",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.897065,
+          40.835821
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.59,
+        "source_type": "document",
+        "source_file": "January-2021-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "because of that. o That way, the police department or the traffic department could issue a summons. On the cut curb, the blind and those with walkers and wheelchairs cannot come off that curb because ",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.900624,
+          40.841151
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.59,
+        "source_type": "document",
+        "source_file": "January-2021-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "r they call it the Washington Bridge, the 183 Street Bridge, where the bus went down on the Cross Bronx, a traffic study needs to look at this again. o Again, it's an accident waiting to happen, and I",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.912122,
+          40.838692
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.59,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2024_03.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "d some of that land for itself for green space, bike lanes, housing, and other more productive uses. The state already turned the Sheridan Expressway into a surface-level boulevard with crosswalks, bi",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.897469,
+          40.84159
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.58,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2022_05.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "e effort to possibly send the hated highway straight to hell will be funded by a grant from the U.S. Department of Transportation, which handed out plenty of cash to local communities to look at teari",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.906966,
+          40.831765
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.58,
+        "source_type": "document",
+        "source_file": "September-2020-General-Board-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "ed the sign down. ▪ The looting hit us hard on West Burnside Avenue which affected Amalgamated Bank. ▪ Every Monday, we set up a meeting with the 46th Precinct to keep the BJT merchant association in ",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.904698,
+          40.8444
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.58,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2024_03.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "r pollution. Meanwhile, the Sheridan’s transformation hasn’t caused a traffic nightmare in the area. Cities that pursued more ambitious teardowns saw similar benefits. Several case studies around the ",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.898954,
+          40.84173
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.57,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2025_09.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "Infrastructure Violence: Detailed community pushback on the \"connector road.\" Cross Bronx Expressway State DOT Partially Backs Off Cross Bronx Expwy. Expansion Advocates are still concerned about a pr",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.90804,
+          40.839292
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.57,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2022_05.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "got national attention when the infrastructure bill passed in 2021, as Sen. Chuck Schumer and Reps. Jerry Nadler and Ritchie Torres highlighted the fact that “Reconnecting Communities” grants in the l",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.905527,
+          40.829635
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "March-2024-General-Board-minutes.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "significant disappointment that the flower beds on the Grand Concourse are being used as trash bins.  She would like to hear an update by the next community board meeting she attends (in June) o Qual",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.904784,
+          40.845002
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "minutes-20220921.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "t was done the in the rezoning corridor in a way that is healthy and helpful to the current economy. I represent community 45 in collaboration. We have probably two meetings a week, one of the things ",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.916822,
+          40.831107
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "General-Board-minutes-March-2022.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "number one is the alternative means of transportation because those steps are in decrepit condition. It is a major transportation route between Marvis Avenue and Grand Concourse. Those steps, so what ",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.897548,
+          40.852609
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2024_03.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "lex, endeavors like the Big Dig in Boston, mean the investment would be returned several times over. Highway Teardowns The Bronx is choked by dozens of miles of highways that primarily serve drivers f",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.904737,
+          40.840944
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "General-Board-minutes-April-2022.pdf",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "ecent areas for cars to park or teachers to park their vehicles there. And it just looks unsanitary. On East 182 Street to Jerome, Tremont, and Webster Avenues. They also started from PS 85 on Webster",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.905696,
+          40.839422
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2025_09.txt",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "ject is not an expansion of the highway” because it doesn’t add new travel lanes to the Cross Bronx. But the roadway will be wider, because state DOT does plan to add shoulders to bring the 1940s stru",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.899734,
+          40.84261
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "December-2025-General-Board-Meeting-minutes_ocr.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "o: 929-921-0350 © Question from community: o Concerns about cars illegally parked on Andrews Avenue. A member of the community states that she has reported it to 311 numerous times. * Inspector: it ma",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.90328,
+          40.840741
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.56,
+        "source_type": "document",
+        "source_file": "streetsblog_cbx_2022_05.txt",
+        "geo_confidence": "centroid_fallback",
+        "text_excerpt": "ack and Latino communities who have dealt with noise and air pollution from the highway for decades. Although the engagement and outreach on the study won’t begin until later this year, the city’s lis",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.900487,
+          40.838164
+        ]
+      },
+      "properties": {
+        "trauma_category": "displacement",
+        "trauma_intensity": 0.55,
+        "source_type": "document",
+        "source_file": "March-2023-General-Board-meeting-minutes.pdf",
+        "geo_confidence": "bronx_anchor",
+        "text_excerpt": "algamated Bank along Burnside Avenue on February 13th. Business owners were engaged in conversation. The needs of businesses were discussed and there is an expectation that Amalgamated Bank will deplo",
+        "query_used": "community destroyed neighbourhood changed expressway",
+        "zip_code": null
+      }
+    }
+  ]
+}

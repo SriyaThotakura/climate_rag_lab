@@ -1,0 +1,3 @@
+Scope 1 emissions come from sources owned or controlled directly by an organization.
+Scope 2 emissions come from purchased electricity, steam, heating, and cooling.
+Scope 3 emissions are indirect emissions across the value chain, including suppliers, transportation, product use, and end-of-life treatment.

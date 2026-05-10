@@ -1,0 +1,4289 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated": "2026-04-28T04:29:46.839506+00:00",
+    "total_zones": 57,
+    "model": "weighted_ensemble_rf_xgb_gb",
+    "cv_used": true,
+    "target": "composite_vulnerability_score",
+    "ensemble_test_r2": 0.9761,
+    "ensemble_test_rmse": 0.0225
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.929829,
+              40.818947
+            ],
+            [
+              -73.932541,
+              40.822507
+            ],
+            [
+              -73.937965,
+              40.822507
+            ],
+            [
+              -73.940677,
+              40.818947
+            ],
+            [
+              -73.937965,
+              40.815386
+            ],
+            [
+              -73.932541,
+              40.815386
+            ],
+            [
+              -73.929829,
+              40.818947
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 1.792115,
+        "hds_score": 19.682887,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 930.9,
+        "nearest_school_m": 219.9,
+        "facilities_500m": 2.0,
+        "dist_to_cbe_m": 2935.5,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244945,
+        "rf_prediction": 0.245654,
+        "xgb_prediction": 0.244373,
+        "gb_prediction": 0.24486,
+        "intervention_priority": 28.0,
+        "fid": 1.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.929829,
+              40.826068
+            ],
+            [
+              -73.932541,
+              40.829629
+            ],
+            [
+              -73.937965,
+              40.829629
+            ],
+            [
+              -73.940677,
+              40.826068
+            ],
+            [
+              -73.937965,
+              40.822507
+            ],
+            [
+              -73.932541,
+              40.822507
+            ],
+            [
+              -73.929829,
+              40.826068
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.761905,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 1.792115,
+        "hds_score": 19.682887,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1350.2,
+        "nearest_school_m": 219.2,
+        "facilities_500m": 4.0,
+        "dist_to_cbe_m": 2168.3,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.24473,
+        "rf_prediction": 0.244587,
+        "xgb_prediction": 0.244678,
+        "gb_prediction": 0.24486,
+        "intervention_priority": 28.0,
+        "fid": 2.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.921694,
+              40.822507
+            ],
+            [
+              -73.924406,
+              40.826068
+            ],
+            [
+              -73.929829,
+              40.826068
+            ],
+            [
+              -73.932541,
+              40.822507
+            ],
+            [
+              -73.929829,
+              40.818947
+            ],
+            [
+              -73.924406,
+              40.818947
+            ],
+            [
+              -73.921694,
+              40.822507
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 1.81612,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 7.142857,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 7.142857,
+        "hds_score": 19.682887,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 643.8,
+        "nearest_school_m": 246.5,
+        "facilities_500m": 9.0,
+        "dist_to_cbe_m": 2476.7,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.276104,
+        "predicted_vulnerability": 0.279426,
+        "rf_prediction": 0.282268,
+        "xgb_prediction": 0.278481,
+        "gb_prediction": 0.278178,
+        "intervention_priority": 21.0,
+        "fid": 3.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.929829,
+              40.804703
+            ],
+            [
+              -73.932541,
+              40.808264
+            ],
+            [
+              -73.937965,
+              40.808264
+            ],
+            [
+              -73.940677,
+              40.804703
+            ],
+            [
+              -73.937965,
+              40.801142
+            ],
+            [
+              -73.932541,
+              40.801142
+            ],
+            [
+              -73.929829,
+              40.804703
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 2.702703,
+        "hds_score": 19.80065,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1645.1,
+        "nearest_school_m": 106.9,
+        "facilities_500m": 9.0,
+        "dist_to_cbe_m": 4494.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244549,
+        "rf_prediction": 0.244732,
+        "xgb_prediction": 0.244547,
+        "gb_prediction": 0.24443,
+        "intervention_priority": 28.0,
+        "fid": 4.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.929829,
+              40.811825
+            ],
+            [
+              -73.932541,
+              40.815386
+            ],
+            [
+              -73.937965,
+              40.815386
+            ],
+            [
+              -73.940677,
+              40.811825
+            ],
+            [
+              -73.937965,
+              40.808264
+            ],
+            [
+              -73.932541,
+              40.808264
+            ],
+            [
+              -73.929829,
+              40.811825
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.112867,
+        "hds_score": 19.682887,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1077.4,
+        "nearest_school_m": 322.6,
+        "facilities_500m": 4.0,
+        "dist_to_cbe_m": 3712.7,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244945,
+        "rf_prediction": 0.245514,
+        "xgb_prediction": 0.244636,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 5.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.921694,
+              40.808264
+            ],
+            [
+              -73.924406,
+              40.811825
+            ],
+            [
+              -73.929829,
+              40.811825
+            ],
+            [
+              -73.932541,
+              40.808264
+            ],
+            [
+              -73.929829,
+              40.804703
+            ],
+            [
+              -73.924406,
+              40.804703
+            ],
+            [
+              -73.921694,
+              40.808264
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 355.8,
+        "CVI_mean": -0.079533,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 6.976744,
+        "hds_score": 20.036176,
+        "zone_dist_int": 6.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1001.5,
+        "nearest_school_m": 140.2,
+        "facilities_500m": 7.0,
+        "dist_to_cbe_m": 4058.0,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.723054,
+        "predicted_vulnerability": 0.704172,
+        "rf_prediction": 0.657069,
+        "xgb_prediction": 0.723135,
+        "gb_prediction": 0.72264,
+        "intervention_priority": 2.0,
+        "fid": 6.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.929829,
+              40.83319
+            ],
+            [
+              -73.932541,
+              40.836751
+            ],
+            [
+              -73.937965,
+              40.836751
+            ],
+            [
+              -73.940677,
+              40.83319
+            ],
+            [
+              -73.937965,
+              40.829629
+            ],
+            [
+              -73.932541,
+              40.829629
+            ],
+            [
+              -73.929829,
+              40.83319
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.761905,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 4.761905,
+        "hds_score": 19.682887,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2007.7,
+        "nearest_school_m": 322.2,
+        "facilities_500m": 4.0,
+        "dist_to_cbe_m": 1427.1,
+        "sky_ratio": 0.0678,
+        "vegetation_ratio": 0.1471,
+        "concrete_ratio": 0.7834,
+        "canyon_ar": 11.554572,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244764,
+        "rf_prediction": 0.244633,
+        "xgb_prediction": 0.244749,
+        "gb_prediction": 0.24486,
+        "intervention_priority": 28.0,
+        "fid": 7.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.929829,
+              40.840312
+            ],
+            [
+              -73.932541,
+              40.843872
+            ],
+            [
+              -73.937965,
+              40.843872
+            ],
+            [
+              -73.940677,
+              40.840312
+            ],
+            [
+              -73.937965,
+              40.836751
+            ],
+            [
+              -73.932541,
+              40.836751
+            ],
+            [
+              -73.929829,
+              40.840312
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2072.6,
+        "nearest_school_m": 138.6,
+        "facilities_500m": 10.0,
+        "dist_to_cbe_m": 789.1,
+        "sky_ratio": 0.0678,
+        "vegetation_ratio": 0.1471,
+        "concrete_ratio": 0.7834,
+        "canyon_ar": 11.554572,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.24503,
+        "rf_prediction": 0.24599,
+        "xgb_prediction": 0.244851,
+        "gb_prediction": 0.244513,
+        "intervention_priority": 28.0,
+        "fid": 8.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.921694,
+              40.836751
+            ],
+            [
+              -73.924406,
+              40.840312
+            ],
+            [
+              -73.929829,
+              40.840312
+            ],
+            [
+              -73.932541,
+              40.836751
+            ],
+            [
+              -73.929829,
+              40.83319
+            ],
+            [
+              -73.924406,
+              40.83319
+            ],
+            [
+              -73.921694,
+              40.836751
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.848409,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.761905,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 4.761905,
+        "hds_score": 19.682887,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 3.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 2.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.7,
+        "trauma_exact_count": 5.0,
+        "nearest_hospital_m": 1548.5,
+        "nearest_school_m": 134.1,
+        "facilities_500m": 10.0,
+        "dist_to_cbe_m": 896.9,
+        "sky_ratio": 0.0678,
+        "vegetation_ratio": 0.1471,
+        "concrete_ratio": 0.7834,
+        "canyon_ar": 11.554572,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.389023,
+        "predicted_vulnerability": 0.386196,
+        "rf_prediction": 0.378064,
+        "xgb_prediction": 0.388819,
+        "gb_prediction": 0.389823,
+        "intervention_priority": 9.0,
+        "fid": 9.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.921694,
+              40.843872
+            ],
+            [
+              -73.924406,
+              40.847433
+            ],
+            [
+              -73.929829,
+              40.847433
+            ],
+            [
+              -73.932541,
+              40.843872
+            ],
+            [
+              -73.929829,
+              40.840312
+            ],
+            [
+              -73.924406,
+              40.840312
+            ],
+            [
+              -73.921694,
+              40.843872
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -0.310581,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.761905,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 4.761905,
+        "hds_score": 19.682887,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1357.1,
+        "nearest_school_m": 290.2,
+        "facilities_500m": 3.0,
+        "dist_to_cbe_m": 123.1,
+        "sky_ratio": 0.4774,
+        "vegetation_ratio": 0.0,
+        "concrete_ratio": 0.4467,
+        "canyon_ar": 0.935693,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.216588,
+        "predicted_vulnerability": 0.219397,
+        "rf_prediction": 0.224591,
+        "xgb_prediction": 0.217209,
+        "gb_prediction": 0.217427,
+        "intervention_priority": 52.0,
+        "fid": 10.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.921694,
+              40.815386
+            ],
+            [
+              -73.924406,
+              40.818947
+            ],
+            [
+              -73.929829,
+              40.818947
+            ],
+            [
+              -73.932541,
+              40.815386
+            ],
+            [
+              -73.929829,
+              40.811825
+            ],
+            [
+              -73.924406,
+              40.811825
+            ],
+            [
+              -73.921694,
+              40.815386
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 1.180029,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 6.976744,
+        "hds_score": 20.036176,
+        "zone_dist_int": 6.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 288.6,
+        "nearest_school_m": 211.7,
+        "facilities_500m": 12.0,
+        "dist_to_cbe_m": 3267.3,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.258303,
+        "predicted_vulnerability": 0.257548,
+        "rf_prediction": 0.256244,
+        "xgb_prediction": 0.258242,
+        "gb_prediction": 0.257945,
+        "intervention_priority": 23.0,
+        "fid": 11.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.905422,
+              40.829629
+            ],
+            [
+              -73.908134,
+              40.83319
+            ],
+            [
+              -73.913558,
+              40.83319
+            ],
+            [
+              -73.91627,
+              40.829629
+            ],
+            [
+              -73.913558,
+              40.826068
+            ],
+            [
+              -73.908134,
+              40.826068
+            ],
+            [
+              -73.905422,
+              40.829629
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 1.629057,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.545455,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 4.545455,
+        "hds_score": 17.583981,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 4.0,
+        "trauma_health_density": 3.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 1.0,
+        "trauma_max_intensity": 0.56,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 672.9,
+        "nearest_school_m": 237.1,
+        "facilities_500m": 15.0,
+        "dist_to_cbe_m": 2051.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.382869,
+        "predicted_vulnerability": 0.375759,
+        "rf_prediction": 0.357794,
+        "xgb_prediction": 0.382657,
+        "gb_prediction": 0.383027,
+        "intervention_priority": 11.0,
+        "fid": 12.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.913558,
+              40.840312
+            ],
+            [
+              -73.91627,
+              40.843872
+            ],
+            [
+              -73.921694,
+              40.843872
+            ],
+            [
+              -73.924406,
+              40.840312
+            ],
+            [
+              -73.921694,
+              40.836751
+            ],
+            [
+              -73.91627,
+              40.836751
+            ],
+            [
+              -73.913558,
+              40.840312
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 1.527267,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 1.724138,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 1.724138,
+        "hds_score": 19.682887,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 2.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.7,
+        "trauma_exact_count": 2.0,
+        "nearest_hospital_m": 756.9,
+        "nearest_school_m": 27.3,
+        "facilities_500m": 14.0,
+        "dist_to_cbe_m": 730.1,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0095,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.408021,
+        "predicted_vulnerability": 0.402962,
+        "rf_prediction": 0.392301,
+        "xgb_prediction": 0.407287,
+        "gb_prediction": 0.407119,
+        "intervention_priority": 7.0,
+        "fid": 13.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.913558,
+              40.847433
+            ],
+            [
+              -73.91627,
+              40.850994
+            ],
+            [
+              -73.921694,
+              40.850994
+            ],
+            [
+              -73.924406,
+              40.847433
+            ],
+            [
+              -73.921694,
+              40.843872
+            ],
+            [
+              -73.91627,
+              40.843872
+            ],
+            [
+              -73.913558,
+              40.847433
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.891329,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 1.724138,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 4.761905,
+        "hds_score": 19.682887,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 5.0,
+        "trauma_health_density": 1.0,
+        "trauma_air_density": 3.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.71,
+        "trauma_exact_count": 7.0,
+        "nearest_hospital_m": 801.4,
+        "nearest_school_m": 386.4,
+        "facilities_500m": 8.0,
+        "dist_to_cbe_m": 22.9,
+        "sky_ratio": 0.444,
+        "vegetation_ratio": 0.0337,
+        "concrete_ratio": 0.4494,
+        "canyon_ar": 1.012162,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.392224,
+        "predicted_vulnerability": 0.391036,
+        "rf_prediction": 0.387156,
+        "xgb_prediction": 0.392884,
+        "gb_prediction": 0.392364,
+        "intervention_priority": 8.0,
+        "fid": 14.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.905422,
+              40.843872
+            ],
+            [
+              -73.908134,
+              40.847433
+            ],
+            [
+              -73.913558,
+              40.847433
+            ],
+            [
+              -73.91627,
+              40.843872
+            ],
+            [
+              -73.913558,
+              40.840312
+            ],
+            [
+              -73.908134,
+              40.840312
+            ],
+            [
+              -73.905422,
+              40.843872
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 1.545403,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.761905,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 7.142857,
+        "hds_score": 19.682887,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 4.0,
+        "trauma_health_density": 2.0,
+        "trauma_air_density": 4.0,
+        "trauma_displacement_density": 2.0,
+        "trauma_max_intensity": 0.7,
+        "trauma_exact_count": 3.0,
+        "nearest_hospital_m": 46.7,
+        "nearest_school_m": 210.3,
+        "facilities_500m": 9.0,
+        "dist_to_cbe_m": 507.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0095,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.408528,
+        "predicted_vulnerability": 0.40412,
+        "rf_prediction": 0.39489,
+        "xgb_prediction": 0.407218,
+        "gb_prediction": 0.408155,
+        "intervention_priority": 6.0,
+        "fid": 15.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.921694,
+              40.829629
+            ],
+            [
+              -73.924406,
+              40.83319
+            ],
+            [
+              -73.929829,
+              40.83319
+            ],
+            [
+              -73.932541,
+              40.829629
+            ],
+            [
+              -73.929829,
+              40.826068
+            ],
+            [
+              -73.924406,
+              40.826068
+            ],
+            [
+              -73.921694,
+              40.829629
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -0.194611,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.761905,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 4.761905,
+        "hds_score": 19.682887,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 1.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.69,
+        "trauma_exact_count": 1.0,
+        "nearest_hospital_m": 1413.0,
+        "nearest_school_m": 336.2,
+        "facilities_500m": 2.0,
+        "dist_to_cbe_m": 1686.4,
+        "sky_ratio": 0.0678,
+        "vegetation_ratio": 0.1471,
+        "concrete_ratio": 0.7834,
+        "canyon_ar": 11.554572,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.357834,
+        "predicted_vulnerability": 0.352912,
+        "rf_prediction": 0.34166,
+        "xgb_prediction": 0.357677,
+        "gb_prediction": 0.357167,
+        "intervention_priority": 13.0,
+        "fid": 16.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.913558,
+              40.826068
+            ],
+            [
+              -73.91627,
+              40.829629
+            ],
+            [
+              -73.921694,
+              40.829629
+            ],
+            [
+              -73.924406,
+              40.826068
+            ],
+            [
+              -73.921694,
+              40.822507
+            ],
+            [
+              -73.91627,
+              40.822507
+            ],
+            [
+              -73.913558,
+              40.826068
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 287.9,
+        "CVI_mean": 1.298672,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.545455,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 7.142857,
+        "hds_score": 19.682887,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1103.3,
+        "nearest_school_m": 154.7,
+        "facilities_500m": 19.0,
+        "dist_to_cbe_m": 2236.1,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.666205,
+        "predicted_vulnerability": 0.655272,
+        "rf_prediction": 0.628904,
+        "xgb_prediction": 0.665869,
+        "gb_prediction": 0.665624,
+        "intervention_priority": 3.0,
+        "fid": 17.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.913558,
+              40.83319
+            ],
+            [
+              -73.91627,
+              40.836751
+            ],
+            [
+              -73.921694,
+              40.836751
+            ],
+            [
+              -73.924406,
+              40.83319
+            ],
+            [
+              -73.921694,
+              40.829629
+            ],
+            [
+              -73.91627,
+              40.829629
+            ],
+            [
+              -73.913558,
+              40.83319
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 1.653631,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 1.724138,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 7.142857,
+        "hds_score": 19.682887,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 1.0,
+        "trauma_displacement_density": 1.0,
+        "trauma_max_intensity": 0.56,
+        "trauma_exact_count": 1.0,
+        "nearest_hospital_m": 1324.5,
+        "nearest_school_m": 191.0,
+        "facilities_500m": 10.0,
+        "dist_to_cbe_m": 1483.1,
+        "sky_ratio": 0.4774,
+        "vegetation_ratio": 0.0,
+        "concrete_ratio": 0.4467,
+        "canyon_ar": 0.935693,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.383557,
+        "predicted_vulnerability": 0.378596,
+        "rf_prediction": 0.36455,
+        "xgb_prediction": 0.383925,
+        "gb_prediction": 0.384322,
+        "intervention_priority": 10.0,
+        "fid": 18.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.913558,
+              40.818947
+            ],
+            [
+              -73.91627,
+              40.822507
+            ],
+            [
+              -73.921694,
+              40.822507
+            ],
+            [
+              -73.924406,
+              40.818947
+            ],
+            [
+              -73.921694,
+              40.815386
+            ],
+            [
+              -73.91627,
+              40.815386
+            ],
+            [
+              -73.913558,
+              40.818947
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.844744,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 6.418919,
+        "hds_score": 19.682887,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 510.6,
+        "nearest_school_m": 69.6,
+        "facilities_500m": 17.0,
+        "dist_to_cbe_m": 2989.1,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.24892,
+        "predicted_vulnerability": 0.248612,
+        "rf_prediction": 0.250078,
+        "xgb_prediction": 0.248527,
+        "gb_prediction": 0.247698,
+        "intervention_priority": 27.0,
+        "fid": 19.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.897286,
+              40.818947
+            ],
+            [
+              -73.899998,
+              40.822507
+            ],
+            [
+              -73.905422,
+              40.822507
+            ],
+            [
+              -73.908134,
+              40.818947
+            ],
+            [
+              -73.905422,
+              40.815386
+            ],
+            [
+              -73.899998,
+              40.815386
+            ],
+            [
+              -73.897286,
+              40.818947
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.395357,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 8.571429,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1384.3,
+        "nearest_school_m": 158.2,
+        "facilities_500m": 19.0,
+        "dist_to_cbe_m": 2859.8,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.236344,
+        "predicted_vulnerability": 0.237025,
+        "rf_prediction": 0.237637,
+        "xgb_prediction": 0.236305,
+        "gb_prediction": 0.237103,
+        "intervention_priority": 49.0,
+        "fid": 20.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.897286,
+              40.83319
+            ],
+            [
+              -73.899998,
+              40.836751
+            ],
+            [
+              -73.905422,
+              40.836751
+            ],
+            [
+              -73.908134,
+              40.83319
+            ],
+            [
+              -73.905422,
+              40.829629
+            ],
+            [
+              -73.899998,
+              40.829629
+            ],
+            [
+              -73.897286,
+              40.83319
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -0.637699,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.545455,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 4.545455,
+        "hds_score": 17.583981,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 1.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 4.0,
+        "trauma_max_intensity": 0.64,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 202.7,
+        "nearest_school_m": 36.3,
+        "facilities_500m": 22.0,
+        "dist_to_cbe_m": 1460.1,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.335434,
+        "predicted_vulnerability": 0.330296,
+        "rf_prediction": 0.317804,
+        "xgb_prediction": 0.335283,
+        "gb_prediction": 0.335223,
+        "intervention_priority": 15.0,
+        "fid": 21.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.905422,
+              40.822507
+            ],
+            [
+              -73.908134,
+              40.826068
+            ],
+            [
+              -73.913558,
+              40.826068
+            ],
+            [
+              -73.91627,
+              40.822507
+            ],
+            [
+              -73.913558,
+              40.818947
+            ],
+            [
+              -73.908134,
+              40.818947
+            ],
+            [
+              -73.905422,
+              40.822507
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.368366,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 7.142857,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 7.142857,
+        "hds_score": 19.682887,
+        "zone_dist_int": 8.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1179.2,
+        "nearest_school_m": 98.4,
+        "facilities_500m": 15.0,
+        "dist_to_cbe_m": 2822.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.235589,
+        "predicted_vulnerability": 0.235572,
+        "rf_prediction": 0.23656,
+        "xgb_prediction": 0.235505,
+        "gb_prediction": 0.234963,
+        "intervention_priority": 50.0,
+        "fid": 22.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.905422,
+              40.836751
+            ],
+            [
+              -73.908134,
+              40.840312
+            ],
+            [
+              -73.913558,
+              40.840312
+            ],
+            [
+              -73.91627,
+              40.836751
+            ],
+            [
+              -73.913558,
+              40.83319
+            ],
+            [
+              -73.908134,
+              40.83319
+            ],
+            [
+              -73.905422,
+              40.836751
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.666196,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 1.724138,
+        "trivariate_hds": 19.682887,
+        "canopy_pct": 4.545455,
+        "hds_score": 17.583981,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 2.0,
+        "trauma_health_density": 1.0,
+        "trauma_air_density": 2.0,
+        "trauma_displacement_density": 3.0,
+        "trauma_max_intensity": 0.62,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 747.1,
+        "nearest_school_m": 227.7,
+        "facilities_500m": 13.0,
+        "dist_to_cbe_m": 1279.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0095,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.402117,
+        "mean_enclosure": 0.597883,
+        "min_sky_ratio": 0.0,
+        "frame_count": 99.0,
+        "vulnerability_score": 0.367923,
+        "predicted_vulnerability": 0.364236,
+        "rf_prediction": 0.356535,
+        "xgb_prediction": 0.368279,
+        "gb_prediction": 0.366622,
+        "intervention_priority": 12.0,
+        "fid": 23.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.897286,
+              40.826068
+            ],
+            [
+              -73.899998,
+              40.829629
+            ],
+            [
+              -73.905422,
+              40.829629
+            ],
+            [
+              -73.908134,
+              40.826068
+            ],
+            [
+              -73.905422,
+              40.822507
+            ],
+            [
+              -73.899998,
+              40.822507
+            ],
+            [
+              -73.897286,
+              40.826068
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -0.602473,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 8.571429,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 1.0,
+        "trauma_max_intensity": 0.56,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 594.3,
+        "nearest_school_m": 184.8,
+        "facilities_500m": 18.0,
+        "dist_to_cbe_m": 2180.5,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.32042,
+        "predicted_vulnerability": 0.31622,
+        "rf_prediction": 0.306242,
+        "xgb_prediction": 0.320437,
+        "gb_prediction": 0.319998,
+        "intervention_priority": 16.0,
+        "fid": 24.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.88915,
+              40.836751
+            ],
+            [
+              -73.891862,
+              40.840312
+            ],
+            [
+              -73.897286,
+              40.840312
+            ],
+            [
+              -73.899998,
+              40.836751
+            ],
+            [
+              -73.897286,
+              40.83319
+            ],
+            [
+              -73.891862,
+              40.83319
+            ],
+            [
+              -73.88915,
+              40.836751
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -3.317888,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.166667,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 4.166667,
+        "hds_score": 17.583981,
+        "zone_dist_int": 1.0,
+        "trauma_noise_density": 2.0,
+        "trauma_health_density": 2.0,
+        "trauma_air_density": 1.0,
+        "trauma_displacement_density": 1.0,
+        "trauma_max_intensity": 0.6,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 940.2,
+        "nearest_school_m": 164.8,
+        "facilities_500m": 7.0,
+        "dist_to_cbe_m": 794.0,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.252429,
+        "predicted_vulnerability": 0.259081,
+        "rf_prediction": 0.275468,
+        "xgb_prediction": 0.25242,
+        "gb_prediction": 0.252699,
+        "intervention_priority": 26.0,
+        "fid": 25.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.905422,
+              40.815386
+            ],
+            [
+              -73.908134,
+              40.818947
+            ],
+            [
+              -73.913558,
+              40.818947
+            ],
+            [
+              -73.91627,
+              40.815386
+            ],
+            [
+              -73.913558,
+              40.811825
+            ],
+            [
+              -73.908134,
+              40.811825
+            ],
+            [
+              -73.905422,
+              40.815386
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.112585,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1167.1,
+        "nearest_school_m": 116.5,
+        "facilities_500m": 25.0,
+        "dist_to_cbe_m": 3546.8,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.228431,
+        "predicted_vulnerability": 0.229498,
+        "rf_prediction": 0.23011,
+        "xgb_prediction": 0.228696,
+        "gb_prediction": 0.229631,
+        "intervention_priority": 51.0,
+        "fid": 26.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.913558,
+              40.811825
+            ],
+            [
+              -73.91627,
+              40.815386
+            ],
+            [
+              -73.921694,
+              40.815386
+            ],
+            [
+              -73.924406,
+              40.811825
+            ],
+            [
+              -73.921694,
+              40.808264
+            ],
+            [
+              -73.91627,
+              40.808264
+            ],
+            [
+              -73.913558,
+              40.811825
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.403214,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 6.976744,
+        "hds_score": 20.036176,
+        "zone_dist_int": 6.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 745.0,
+        "nearest_school_m": 112.3,
+        "facilities_500m": 22.0,
+        "dist_to_cbe_m": 3742.1,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.236564,
+        "predicted_vulnerability": 0.238062,
+        "rf_prediction": 0.239511,
+        "xgb_prediction": 0.237593,
+        "gb_prediction": 0.237418,
+        "intervention_priority": 48.0,
+        "fid": 27.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.921694,
+              40.801142
+            ],
+            [
+              -73.924406,
+              40.804703
+            ],
+            [
+              -73.929829,
+              40.804703
+            ],
+            [
+              -73.932541,
+              40.801142
+            ],
+            [
+              -73.929829,
+              40.797582
+            ],
+            [
+              -73.924406,
+              40.797582
+            ],
+            [
+              -73.921694,
+              40.801142
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1781.5,
+        "nearest_school_m": 553.1,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4848.8,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 28.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.872879,
+              40.815386
+            ],
+            [
+              -73.875591,
+              40.818947
+            ],
+            [
+              -73.881015,
+              40.818947
+            ],
+            [
+              -73.883727,
+              40.815386
+            ],
+            [
+              -73.881015,
+              40.811825
+            ],
+            [
+              -73.875591,
+              40.811825
+            ],
+            [
+              -73.872879,
+              40.815386
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 199.5,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2753.7,
+        "nearest_school_m": 591.0,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 2703.2,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.525027,
+        "predicted_vulnerability": 0.551332,
+        "rf_prediction": 0.619093,
+        "xgb_prediction": 0.52451,
+        "gb_prediction": 0.524455,
+        "intervention_priority": 5.0,
+        "fid": 29.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.864743,
+              40.797582
+            ],
+            [
+              -73.867455,
+              40.801142
+            ],
+            [
+              -73.872879,
+              40.801142
+            ],
+            [
+              -73.875591,
+              40.797582
+            ],
+            [
+              -73.872879,
+              40.794021
+            ],
+            [
+              -73.867455,
+              40.794021
+            ],
+            [
+              -73.864743,
+              40.797582
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 4678.2,
+        "nearest_school_m": 1514.7,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4480.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 30.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.864743,
+              40.804703
+            ],
+            [
+              -73.867455,
+              40.808264
+            ],
+            [
+              -73.872879,
+              40.808264
+            ],
+            [
+              -73.875591,
+              40.804703
+            ],
+            [
+              -73.872879,
+              40.801142
+            ],
+            [
+              -73.867455,
+              40.801142
+            ],
+            [
+              -73.864743,
+              40.804703
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 4070.5,
+        "nearest_school_m": 1563.9,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 3703.7,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 31.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.864743,
+              40.811825
+            ],
+            [
+              -73.867455,
+              40.815386
+            ],
+            [
+              -73.872879,
+              40.815386
+            ],
+            [
+              -73.875591,
+              40.811825
+            ],
+            [
+              -73.872879,
+              40.808264
+            ],
+            [
+              -73.867455,
+              40.808264
+            ],
+            [
+              -73.864743,
+              40.811825
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.03922,
+        "hds_score": 12.59278,
+        "zone_dist_int": 3.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 3536.0,
+        "nearest_school_m": 830.2,
+        "facilities_500m": 1.0,
+        "dist_to_cbe_m": 2930.5,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244777,
+        "rf_prediction": 0.244724,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.24486,
+        "intervention_priority": 28.0,
+        "fid": 32.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.856607,
+              40.801142
+            ],
+            [
+              -73.859319,
+              40.804703
+            ],
+            [
+              -73.864743,
+              40.804703
+            ],
+            [
+              -73.867455,
+              40.801142
+            ],
+            [
+              -73.864743,
+              40.797582
+            ],
+            [
+              -73.859319,
+              40.797582
+            ],
+            [
+              -73.856607,
+              40.801142
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.03922,
+        "hds_score": 12.59278,
+        "zone_dist_int": 3.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 4538.5,
+        "nearest_school_m": 1623.5,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4050.3,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 33.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.897286,
+              40.804703
+            ],
+            [
+              -73.899998,
+              40.808264
+            ],
+            [
+              -73.905422,
+              40.808264
+            ],
+            [
+              -73.908134,
+              40.804703
+            ],
+            [
+              -73.905422,
+              40.801142
+            ],
+            [
+              -73.899998,
+              40.801142
+            ],
+            [
+              -73.897286,
+              40.804703
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -8.046231,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2294.4,
+        "nearest_school_m": 712.2,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4333.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.000105,
+        "predicted_vulnerability": 0.008989,
+        "rf_prediction": 0.030265,
+        "xgb_prediction": 0.00041,
+        "gb_prediction": 0.000656,
+        "intervention_priority": 55.0,
+        "fid": 34.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.88915,
+              40.801142
+            ],
+            [
+              -73.891862,
+              40.804703
+            ],
+            [
+              -73.897286,
+              40.804703
+            ],
+            [
+              -73.899998,
+              40.801142
+            ],
+            [
+              -73.897286,
+              40.797582
+            ],
+            [
+              -73.891862,
+              40.797582
+            ],
+            [
+              -73.88915,
+              40.801142
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -8.046231,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 3082.5,
+        "nearest_school_m": 1475.8,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4570.8,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.000105,
+        "predicted_vulnerability": 0.008431,
+        "rf_prediction": 0.028297,
+        "xgb_prediction": 0.00041,
+        "gb_prediction": 0.000656,
+        "intervention_priority": 55.0,
+        "fid": 35.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.88915,
+              40.808264
+            ],
+            [
+              -73.891862,
+              40.811825
+            ],
+            [
+              -73.897286,
+              40.811825
+            ],
+            [
+              -73.899998,
+              40.808264
+            ],
+            [
+              -73.897286,
+              40.804703
+            ],
+            [
+              -73.891862,
+              40.804703
+            ],
+            [
+              -73.88915,
+              40.808264
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2671.4,
+        "nearest_school_m": 769.1,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 3792.3,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 36.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.881015,
+              40.797582
+            ],
+            [
+              -73.883727,
+              40.801142
+            ],
+            [
+              -73.88915,
+              40.801142
+            ],
+            [
+              -73.891862,
+              40.797582
+            ],
+            [
+              -73.88915,
+              40.794021
+            ],
+            [
+              -73.883727,
+              40.794021
+            ],
+            [
+              -73.881015,
+              40.797582
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 3872.3,
+        "nearest_school_m": 998.4,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4776.7,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 37.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.881015,
+              40.804703
+            ],
+            [
+              -73.883727,
+              40.808264
+            ],
+            [
+              -73.88915,
+              40.808264
+            ],
+            [
+              -73.891862,
+              40.804703
+            ],
+            [
+              -73.88915,
+              40.801142
+            ],
+            [
+              -73.883727,
+              40.801142
+            ],
+            [
+              -73.881015,
+              40.804703
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 2.67289,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 3286.0,
+        "nearest_school_m": 1036.7,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4003.4,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.3,
+        "predicted_vulnerability": 0.297187,
+        "rf_prediction": 0.292639,
+        "xgb_prediction": 0.298862,
+        "gb_prediction": 0.299074,
+        "intervention_priority": 17.0,
+        "fid": 38.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.872879,
+              40.794021
+            ],
+            [
+              -73.875591,
+              40.797582
+            ],
+            [
+              -73.881015,
+              40.797582
+            ],
+            [
+              -73.883727,
+              40.794021
+            ],
+            [
+              -73.881015,
+              40.79046
+            ],
+            [
+              -73.875591,
+              40.79046
+            ],
+            [
+              -73.872879,
+              40.794021
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 4653.5,
+        "nearest_school_m": 747.9,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 5022.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 39.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.872879,
+              40.801142
+            ],
+            [
+              -73.875591,
+              40.804703
+            ],
+            [
+              -73.881015,
+              40.804703
+            ],
+            [
+              -73.883727,
+              40.801142
+            ],
+            [
+              -73.881015,
+              40.797582
+            ],
+            [
+              -73.875591,
+              40.797582
+            ],
+            [
+              -73.872879,
+              40.801142
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 3964.1,
+        "nearest_school_m": 1449.7,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4249.5,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 40.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.913558,
+              40.797582
+            ],
+            [
+              -73.91627,
+              40.801142
+            ],
+            [
+              -73.921694,
+              40.801142
+            ],
+            [
+              -73.924406,
+              40.797582
+            ],
+            [
+              -73.921694,
+              40.794021
+            ],
+            [
+              -73.91627,
+              40.794021
+            ],
+            [
+              -73.913558,
+              40.797582
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 355.8,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2212.8,
+        "nearest_school_m": 612.7,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 5298.5,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.744673,
+        "predicted_vulnerability": 0.718455,
+        "rf_prediction": 0.655831,
+        "xgb_prediction": 0.742493,
+        "gb_prediction": 0.743799,
+        "intervention_priority": 1.0,
+        "fid": 41.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.913558,
+              40.804703
+            ],
+            [
+              -73.91627,
+              40.808264
+            ],
+            [
+              -73.921694,
+              40.808264
+            ],
+            [
+              -73.924406,
+              40.804703
+            ],
+            [
+              -73.921694,
+              40.801142
+            ],
+            [
+              -73.91627,
+              40.801142
+            ],
+            [
+              -73.913558,
+              40.804703
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.429737,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 6.976744,
+        "hds_score": 20.036176,
+        "zone_dist_int": 6.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1449.2,
+        "nearest_school_m": 199.9,
+        "facilities_500m": 11.0,
+        "dist_to_cbe_m": 4517.3,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.237306,
+        "predicted_vulnerability": 0.237679,
+        "rf_prediction": 0.23797,
+        "xgb_prediction": 0.237472,
+        "gb_prediction": 0.237626,
+        "intervention_priority": 47.0,
+        "fid": 42.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.905422,
+              40.794021
+            ],
+            [
+              -73.908134,
+              40.797582
+            ],
+            [
+              -73.913558,
+              40.797582
+            ],
+            [
+              -73.91627,
+              40.794021
+            ],
+            [
+              -73.913558,
+              40.79046
+            ],
+            [
+              -73.908134,
+              40.79046
+            ],
+            [
+              -73.905422,
+              40.794021
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2806.1,
+        "nearest_school_m": 1172.2,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 5677.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 43.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.905422,
+              40.801142
+            ],
+            [
+              -73.908134,
+              40.804703
+            ],
+            [
+              -73.913558,
+              40.804703
+            ],
+            [
+              -73.91627,
+              40.801142
+            ],
+            [
+              -73.913558,
+              40.797582
+            ],
+            [
+              -73.908134,
+              40.797582
+            ],
+            [
+              -73.905422,
+              40.801142
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -5.488467,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 6.976744,
+        "hds_score": 20.036176,
+        "zone_dist_int": 6.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2110.1,
+        "nearest_school_m": 642.8,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 4942.9,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.071685,
+        "predicted_vulnerability": 0.074102,
+        "rf_prediction": 0.084617,
+        "xgb_prediction": 0.070096,
+        "gb_prediction": 0.069826,
+        "intervention_priority": 54.0,
+        "fid": 44.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.897286,
+              40.79046
+            ],
+            [
+              -73.899998,
+              40.794021
+            ],
+            [
+              -73.905422,
+              40.794021
+            ],
+            [
+              -73.908134,
+              40.79046
+            ],
+            [
+              -73.905422,
+              40.786899
+            ],
+            [
+              -73.899998,
+              40.786899
+            ],
+            [
+              -73.897286,
+              40.79046
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 3479.6,
+        "nearest_school_m": 1561.9,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 5863.8,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 45.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.897286,
+              40.797582
+            ],
+            [
+              -73.899998,
+              40.801142
+            ],
+            [
+              -73.905422,
+              40.801142
+            ],
+            [
+              -73.908134,
+              40.797582
+            ],
+            [
+              -73.905422,
+              40.794021
+            ],
+            [
+              -73.899998,
+              40.794021
+            ],
+            [
+              -73.897286,
+              40.797582
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2839.1,
+        "nearest_school_m": 1371.5,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 5094.7,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.244722,
+        "rf_prediction": 0.244657,
+        "xgb_prediction": 0.244707,
+        "gb_prediction": 0.244777,
+        "intervention_priority": 28.0,
+        "fid": 46.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.88915,
+              40.794021
+            ],
+            [
+              -73.891862,
+              40.797582
+            ],
+            [
+              -73.897286,
+              40.797582
+            ],
+            [
+              -73.899998,
+              40.794021
+            ],
+            [
+              -73.897286,
+              40.79046
+            ],
+            [
+              -73.891862,
+              40.79046
+            ],
+            [
+              -73.88915,
+              40.794021
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -8.046231,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 3595.0,
+        "nearest_school_m": 1071.3,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 5329.8,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.000105,
+        "predicted_vulnerability": 0.009975,
+        "rf_prediction": 0.032114,
+        "xgb_prediction": 0.001358,
+        "gb_prediction": 0.001095,
+        "intervention_priority": 55.0,
+        "fid": 47.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.881015,
+              40.818947
+            ],
+            [
+              -73.883727,
+              40.822507
+            ],
+            [
+              -73.88915,
+              40.822507
+            ],
+            [
+              -73.891862,
+              40.818947
+            ],
+            [
+              -73.88915,
+              40.815386
+            ],
+            [
+              -73.883727,
+              40.815386
+            ],
+            [
+              -73.881015,
+              40.818947
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 2.018202,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 8.571429,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1979.4,
+        "nearest_school_m": 195.7,
+        "facilities_500m": 8.0,
+        "dist_to_cbe_m": 2477.7,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.281759,
+        "predicted_vulnerability": 0.281211,
+        "rf_prediction": 0.282943,
+        "xgb_prediction": 0.281697,
+        "gb_prediction": 0.279736,
+        "intervention_priority": 20.0,
+        "fid": 48.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.881015,
+              40.811825
+            ],
+            [
+              -73.883727,
+              40.815386
+            ],
+            [
+              -73.88915,
+              40.815386
+            ],
+            [
+              -73.891862,
+              40.811825
+            ],
+            [
+              -73.88915,
+              40.808264
+            ],
+            [
+              -73.883727,
+              40.808264
+            ],
+            [
+              -73.881015,
+              40.811825
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 2.1108,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 2594.7,
+        "nearest_school_m": 247.6,
+        "facilities_500m": 4.0,
+        "dist_to_cbe_m": 3238.4,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.284351,
+        "predicted_vulnerability": 0.28615,
+        "rf_prediction": 0.287943,
+        "xgb_prediction": 0.284625,
+        "gb_prediction": 0.285987,
+        "intervention_priority": 19.0,
+        "fid": 49.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.88915,
+              40.822507
+            ],
+            [
+              -73.891862,
+              40.826068
+            ],
+            [
+              -73.897286,
+              40.826068
+            ],
+            [
+              -73.899998,
+              40.822507
+            ],
+            [
+              -73.897286,
+              40.818947
+            ],
+            [
+              -73.891862,
+              40.818947
+            ],
+            [
+              -73.88915,
+              40.822507
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.985299,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 8.695652,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1228.1,
+        "nearest_school_m": 53.1,
+        "facilities_500m": 14.0,
+        "dist_to_cbe_m": 2243.2,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.252854,
+        "predicted_vulnerability": 0.253493,
+        "rf_prediction": 0.253864,
+        "xgb_prediction": 0.252248,
+        "gb_prediction": 0.254083,
+        "intervention_priority": 25.0,
+        "fid": 50.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.905422,
+              40.808264
+            ],
+            [
+              -73.908134,
+              40.811825
+            ],
+            [
+              -73.913558,
+              40.811825
+            ],
+            [
+              -73.91627,
+              40.808264
+            ],
+            [
+              -73.913558,
+              40.804703
+            ],
+            [
+              -73.908134,
+              40.804703
+            ],
+            [
+              -73.905422,
+              40.808264
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": -0.35589,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 6.976744,
+        "hds_score": 20.036176,
+        "zone_dist_int": 6.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1510.6,
+        "nearest_school_m": 149.5,
+        "facilities_500m": 10.0,
+        "dist_to_cbe_m": 4228.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.21532,
+        "predicted_vulnerability": 0.217367,
+        "rf_prediction": 0.217487,
+        "xgb_prediction": 0.217223,
+        "gb_prediction": 0.217384,
+        "intervention_priority": 53.0,
+        "fid": 51.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.897286,
+              40.811825
+            ],
+            [
+              -73.899998,
+              40.815386
+            ],
+            [
+              -73.905422,
+              40.815386
+            ],
+            [
+              -73.908134,
+              40.811825
+            ],
+            [
+              -73.905422,
+              40.808264
+            ],
+            [
+              -73.899998,
+              40.808264
+            ],
+            [
+              -73.897286,
+              40.811825
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 266.2,
+        "CVI_mean": 2.249328,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 8.571429,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1928.4,
+        "nearest_school_m": 242.9,
+        "facilities_500m": 12.0,
+        "dist_to_cbe_m": 3585.2,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.662314,
+        "predicted_vulnerability": 0.653222,
+        "rf_prediction": 0.630195,
+        "xgb_prediction": 0.662302,
+        "gb_prediction": 0.662379,
+        "intervention_priority": 4.0,
+        "fid": 52.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.88915,
+              40.815386
+            ],
+            [
+              -73.891862,
+              40.818947
+            ],
+            [
+              -73.897286,
+              40.818947
+            ],
+            [
+              -73.899998,
+              40.815386
+            ],
+            [
+              -73.897286,
+              40.811825
+            ],
+            [
+              -73.891862,
+              40.811825
+            ],
+            [
+              -73.88915,
+              40.815386
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 1.468449,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 8.571429,
+        "trivariate_hds": 20.036176,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1922.7,
+        "nearest_school_m": 371.9,
+        "facilities_500m": 4.0,
+        "dist_to_cbe_m": 3013.5,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.266375,
+        "predicted_vulnerability": 0.266181,
+        "rf_prediction": 0.26791,
+        "xgb_prediction": 0.265703,
+        "gb_prediction": 0.265356,
+        "intervention_priority": 22.0,
+        "fid": 53.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.872879,
+              40.808264
+            ],
+            [
+              -73.875591,
+              40.811825
+            ],
+            [
+              -73.881015,
+              40.811825
+            ],
+            [
+              -73.883727,
+              40.808264
+            ],
+            [
+              -73.881015,
+              40.804703
+            ],
+            [
+              -73.875591,
+              40.804703
+            ],
+            [
+              -73.872879,
+              40.808264
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 2.646808,
+        "in_trivariate_zone": 0.0,
+        "trivariate_canopy": 6.976744,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 0.0,
+        "hds_score": 0.0,
+        "zone_dist_int": 0.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 3320.1,
+        "nearest_school_m": 963.7,
+        "facilities_500m": 0.0,
+        "dist_to_cbe_m": 3476.4,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.299351,
+        "predicted_vulnerability": 0.296979,
+        "rf_prediction": 0.292639,
+        "xgb_prediction": 0.298862,
+        "gb_prediction": 0.29859,
+        "intervention_priority": 18.0,
+        "fid": 54.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.881015,
+              40.826068
+            ],
+            [
+              -73.883727,
+              40.829629
+            ],
+            [
+              -73.88915,
+              40.829629
+            ],
+            [
+              -73.891862,
+              40.826068
+            ],
+            [
+              -73.88915,
+              40.822507
+            ],
+            [
+              -73.883727,
+              40.822507
+            ],
+            [
+              -73.881015,
+              40.826068
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 1.112981,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 2.040816,
+        "trivariate_hds": 12.59278,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1534.6,
+        "nearest_school_m": 397.5,
+        "facilities_500m": 5.0,
+        "dist_to_cbe_m": 1705.1,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.256427,
+        "predicted_vulnerability": 0.257341,
+        "rf_prediction": 0.259991,
+        "xgb_prediction": 0.256424,
+        "gb_prediction": 0.256201,
+        "intervention_priority": 24.0,
+        "fid": 55.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.881015,
+              40.83319
+            ],
+            [
+              -73.883727,
+              40.836751
+            ],
+            [
+              -73.88915,
+              40.836751
+            ],
+            [
+              -73.891862,
+              40.83319
+            ],
+            [
+              -73.88915,
+              40.829629
+            ],
+            [
+              -73.883727,
+              40.829629
+            ],
+            [
+              -73.881015,
+              40.83319
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.692992,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.166667,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 0.0,
+        "trauma_air_density": 0.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.0,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 1429.2,
+        "nearest_school_m": 120.4,
+        "facilities_500m": 12.0,
+        "dist_to_cbe_m": 932.6,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.244673,
+        "predicted_vulnerability": 0.245133,
+        "rf_prediction": 0.246029,
+        "xgb_prediction": 0.244904,
+        "gb_prediction": 0.244694,
+        "intervention_priority": 28.0,
+        "fid": 56.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -73.88915,
+              40.829629
+            ],
+            [
+              -73.891862,
+              40.83319
+            ],
+            [
+              -73.897286,
+              40.83319
+            ],
+            [
+              -73.899998,
+              40.829629
+            ],
+            [
+              -73.897286,
+              40.826068
+            ],
+            [
+              -73.891862,
+              40.826068
+            ],
+            [
+              -73.88915,
+              40.829629
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "Asthma_I_R_mean": 0.0,
+        "CVI_mean": 0.386416,
+        "in_trivariate_zone": 1.0,
+        "trivariate_canopy": 4.166667,
+        "trivariate_hds": 17.583981,
+        "canopy_pct": 8.571429,
+        "hds_score": 20.036176,
+        "zone_dist_int": 7.0,
+        "trauma_noise_density": 0.0,
+        "trauma_health_density": 1.0,
+        "trauma_air_density": 1.0,
+        "trauma_displacement_density": 0.0,
+        "trauma_max_intensity": 0.52,
+        "trauma_exact_count": 0.0,
+        "nearest_hospital_m": 755.4,
+        "nearest_school_m": 199.9,
+        "facilities_500m": 10.0,
+        "dist_to_cbe_m": 1494.4,
+        "sky_ratio": 0.4034,
+        "vegetation_ratio": 0.0216,
+        "concrete_ratio": 0.5301,
+        "canyon_ar": 1.31408,
+        "mean_sky_ratio": 0.4097,
+        "mean_enclosure": 0.5903,
+        "min_sky_ratio": 0.4097,
+        "frame_count": 0.0,
+        "vulnerability_score": 0.340094,
+        "predicted_vulnerability": 0.335015,
+        "rf_prediction": 0.326075,
+        "xgb_prediction": 0.338554,
+        "gb_prediction": 0.33856,
+        "intervention_priority": 14.0,
+        "fid": 57.0,
+        "data_source": "ensemble_model_v1_real_gis",
+        "cv_used": true
+      }
+    }
+  ]
+}

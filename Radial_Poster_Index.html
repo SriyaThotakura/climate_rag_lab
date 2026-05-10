@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CBX Radial Poster Index — South Bronx Analysis</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#050505;overflow:hidden;font-family:'Syne',sans-serif}
+#canvas{width:100%;height:100%}
+svg{display:block}
+
+/* ── Export button ── */
+#export-btn{
+  position:fixed;top:18px;right:22px;z-index:100;
+  background:rgba(10,10,15,0.92);border:1px solid #1a1a2a;
+  color:#9B9B9B;font-family:'Syne',sans-serif;font-size:11px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:8px 18px;cursor:pointer;border-radius:3px;
+  transition:all .2s
+}
+#export-btn:hover{color:#00D8FF;border-color:#00D8FF;background:rgba(0,216,255,0.06)}
+#export-png-btn{
+  position:fixed;top:18px;right:140px;z-index:100;
+  background:rgba(10,10,15,0.92);border:1px solid #1a1a2a;
+  color:#9B9B9B;font-family:'Syne',sans-serif;font-size:11px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:8px 18px;cursor:pointer;border-radius:3px;
+  transition:all .2s
+}
+#export-png-btn:hover{color:#00F08A;border-color:#00F08A;background:rgba(0,240,138,0.06)}
+#export-pdf-btn{
+  position:fixed;top:18px;right:260px;z-index:100;
+  background:rgba(10,10,15,0.92);border:1px solid #1a1a2a;
+  color:#9B9B9B;font-family:'Syne',sans-serif;font-size:11px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:8px 18px;cursor:pointer;border-radius:3px;
+  transition:all .2s
+}
+#export-pdf-btn:hover{color:#FF2DAA;border-color:#FF2DAA;background:rgba(255,45,170,0.06)}
+#export-svg-btn{
+  position:fixed;top:18px;right:380px;z-index:100;
+  background:rgba(10,10,15,0.92);border:1px solid #1a1a2a;
+  color:#9B9B9B;font-family:'Syne',sans-serif;font-size:11px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:8px 18px;cursor:pointer;border-radius:3px;
+  transition:all .2s
+}
+#export-svg-btn:hover{color:#9B5CFF;border-color:#9B5CFF;background:rgba(155,92,255,0.06)}
+#export-btn:disabled{
+  opacity:0.6;
+  cursor:not-allowed;
+}
+
+/* ── Title overlay ── */
+#title-block{
+  position:fixed;bottom:28px;left:32px;z-index:100;
+  font-family:'Syne',sans-serif
+}
+#title-block h1{
+  font-size:13px;letter-spacing:4px;text-transform:uppercase;
+  color:#E8E8E8;font-weight:600;margin-bottom:4px
+}
+#title-block p{font-size:9px;color:#9B9B9B;letter-spacing:1.5px}
+
+/* ── Legend ── */
+#legend{
+  position:fixed;bottom:28px;right:22px;z-index:100;
+  font-family:'Syne',sans-serif;font-size:9px;color:#9B9B9B;
+  letter-spacing:1px
+}
+.leg-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.leg-swatch{width:22px;height:3px;border-radius:1px}
+
+/* Tooltip */
+#tooltip{
+  position:fixed;pointer-events:none;z-index:200;
+  background:rgba(5,5,8,0.96);border:1px solid #1c1c2e;
+  border-radius:4px;padding:10px 14px;display:none;
+  font-family:'Syne',sans-serif;max-width:260px;
+  box-shadow:0 6px 30px rgba(0,0,0,0.8)
+}
+#tooltip .tt-label{font-size:10px;color:#D8D8D8;font-weight:600;letter-spacing:1px;margin-bottom:4px}
+#tooltip .tt-path{font-size:8px;color:#8C8C8C;letter-spacing:0.5px}
+#tooltip .tt-folder{font-size:8px;color:#8C8C8C;margin-top:4px;text-transform:uppercase;letter-spacing:1.5px}
+</style>
+</head>
+<body>
+
+<div id="canvas"></div>
+<button id="export-btn" onclick="exportHighResPNG()">📸 Save as PNG</button>
+<button id="export-png-btn" onclick="exportPNG()">📱 Quick PNG</button>
+<button id="export-pdf-btn" onclick="exportPDF()">📄 Export PDF</button>
+<button id="export-svg-btn" onclick="exportVectorSVG()">🎨 Vector SVG</button>
+
+<div id="title-block">
+  <h1>South Bronx CBX — Radial Analysis Index</h1>
+  <p>11 Map Components · Folders 1–4 · Segmentation · Maps · Design · RAG</p>
+</div>
+
+<div id="legend">
+  <div class="leg-row"><div class="leg-swatch" style="background:linear-gradient(to right,#00D8FF,#006E7F)"></div> 1. SEGMENTATION CHARTS</div>
+  <div class="leg-row"><div class="leg-swatch" style="background:linear-gradient(to right,#9B5CFF,#4D2B80)"></div> 2. MAIN LAYERS</div>
+  <div class="leg-row"><div class="leg-swatch" style="background:linear-gradient(to right,#FF2DAA,#80104F)"></div> 3. CONTEXT LAYERS</div>
+  <div class="leg-row"><div class="leg-swatch" style="background:linear-gradient(to right,#00F08A,#007A45)"></div> 4. CBX CORPUS &amp; RAG</div>
+</div>
+
+<div id="tooltip">
+  <div class="tt-label"></div>
+  <div class="tt-path"></div>
+  <div class="tt-folder"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// HIERARCHY DATA — deep audit with subComponents (May 2026)
+// ═══════════════════════════════════════════════════════════════
+const treeData = {
+  name: "CBX Analysis",
+  branch: "root",
+  children: [
+    {
+      name: "1. Segmentation Charts",
+      branch: "segmentation",
+      children: [
+        { name: "Exhibit — Evidence Corpus",  img: "exhibit_index",        path: "1.SegmentationCharts/exhibit/index.html",                             branch: "segmentation",
+          features: ["16 analytical slots · Three.js globe", "149 source docs · 8 formats (2018–2026)", "D3 chord diagrams · EJScreen + FloodNet"],
+          subComponents: [
+            "01 GIS Analysis",
+            "02 Park Accessibility + Canopy",
+            "03 Feral Atlas",
+            "04 LSTM + Markov Truck Speed",
+            "05 PM2.5 Cloud Spread",
+            "06 Forensic Dashboards",
+            "07 Trained Model Prediction",
+            "08 Climate SSP · ML Micro-Climate",
+            "09 Flood Susceptibility ML",
+            "10 Historic Inequality",
+            "11 Existing + Future Proposals",
+            "12 RAG LLM Integration",
+            "13 Ensemble Model Synthesis",
+            "14 CFD + Street View Segmentation",
+            "15 Design Score Matrix",
+            "16 Generative Design Plugin"
+          ] },
+        { name: "Evidence Corpus Grid",       img: "evidence_corpus_grid", path: "1.SegmentationCharts/exhibition_prints/01_evidence_corpus_grid.html", branch: "segmentation",
+          features: ["71 overlay thumbnails · 300 DPI print", "Feature importance: Asthma 61.6 %", "RF+XGB+GB ensemble · R² 0.9761"],
+          subComponents: [
+            "Asthma Rate 61.6 %",
+            "Climate Vuln Index 24.6 %",
+            "Trauma Intensity 10.2 %",
+            "CV Morphology 1.7 %"
+          ] }
+      ]
+    },
+    {
+      name: "2. Maps",
+      branch: "maps",
+      children: [
+        {
+          name: "Main Layers",
+          branch: "maps-main",
+          children: [
+            { name: "Combined CBX 3D",       img: "trench_combined",    path: "2.Maps/TRENCH/index.html",         branch: "maps-main",
+              features: ["7 toggle layers · 71 CV pts · 28 zones", "Oke 1988 CFD: H/W 0.50 | 0.67 regimes", "76.2 % bldg coverage · 23.8 % avg SVF", "R² 0.9761 · Asthma 61.6 % · CVI 24.6 %"],
+              subComponents: [
+                "CFD Pollution Dispersion",
+                "CV Enclosure Heatmap",
+                "CV Points (click → overlay)",
+                "3D Buildings (Mapbox)",
+                "Vulnerability (Gaussian)",
+                "Trauma / 311 Points",
+                "CV vs Model Δ Error",
+                "⌐ Community Atlas iframe",
+                "⌐ Idling Atlas iframe"
+              ] },
+            { name: "Scroll — Forensic",     img: "scroll_main",        path: "2.Maps/Scroll/index.html",         branch: "maps-main",
+              features: ["6 Scrollama steps · HVI + asthma legends", "Asthma 4 k–46 k per 100 k pop.", "LSTM + Monte Carlo + HMM pipeline"],
+              subComponents: [
+                "1 The Corridor",
+                "2 Urban Severance",
+                "3 Community Vulnerability",
+                "4 Priority Zone — HVI",
+                "5 The Incision: Traffic & Asthma"
+              ] },
+            { name: "Community Atlas",        img: "community_atlas",    path: "2.Maps/CommunityAtlas/index.html", branch: "maps-main",
+              features: ["STURLA 13 classes · 2 392 grid cells", "RF R² 0.85 · MAE 0.49 µg/m³", "ρ = −0.89 PM2.5 vs dist_highway", "15 k 311 complaints · 11 FloodNet sensors"],
+              subComponents: [
+                "Ch 1 Reading the Landscape",
+                "Ch 2 Nine metres below street",
+                "Ch 3 Three Data Streams",
+                "— STURLA glow fill/blur/ambient",
+                "— Highway trench + elevated",
+                "— 311 Complaints clusters",
+                "— FloodNet Sensors",
+                "— Community NLP Testimony"
+              ] },
+            { name: "Idling Atlas — GIS",     img: "idling_atlas",       path: "2.Maps/Final_GIS/WEB/index.html",  branch: "maps-main",
+              features: ["18 scroll chapters · 16 legend panels", "4 city types: Grey | Green | Feral | Human", "Bivariate Asthma×Canopy + Trivariate CVI", "Impervious density 5-tier · LC 2010 vs 2021"],
+              subComponents: [
+                "00 NYC Idling Atlas",
+                "01 Human City",
+                "02 South Bronx Density",
+                "03 Health Burden",
+                "04 Freight Focus",
+                "05 Green Spaces Policy",
+                "06 Data-Driven Regulation",
+                "07 Grey City E-Designation",
+                "08 Impervious Surface",
+                "09 Green City — Canopy",
+                "10 Park Access & Vulnerability",
+                "11 CVI 3D Visualization",
+                "12 Intervention 2D",
+                "13 Resilience 3D",
+                "14 Canopy Gain Areas",
+                "15 Bivariate Analysis",
+                "16 Trivariate Residential",
+                "17 Feral City"
+              ] }
+          ]
+        },
+        {
+          name: "Context Layers",
+          branch: "maps-context",
+          children: [
+            { name: "CBX Trench 3D Terrain",  img: "cbx_trench_visual", path: "2.Maps/TRENCH/CBX_Trench_Visual.html", branch: "maps-context",
+              features: ["FWCBX.TIF DEM · 2.8× exaggeration", "Satellite-streets-v12 · pitch 60°", "Fill-extrusion 3D buildings · trench cut"],
+              subComponents: [
+                "u_terrain DEM sampler",
+                "u_terrain_exaggeration",
+                "Bilinear elevation interp",
+                "3D offset fill-extrusion"
+              ] },
+            { name: "Trauma / 311 Map",       img: "trauma_map",         path: "2.Maps/TRENCH/trauma_map.html",        branch: "maps-context",
+              features: ["67 trauma pts: noise·air·health·displ.", "4 categories · 6 GeoJSON · 9 layers", "ZIP 10451–10474 · dark-v11 · pitch 40°"],
+              subComponents: [
+                "NOISE — #E8A23A",
+                "AIR QUALITY — #3DD6D0",
+                "HEALTH — #E84A3A",
+                "DISPLACEMENT — #4A9EE8",
+                "— Cross Bronx Expy (I-95)",
+                "— Bruckner Blvd",
+                "— Bruckner Expy"
+              ] },
+            { name: "CV vs Model Delta",       img: "cv_model_delta",    path: "2.Maps/TRENCH/index.html#comp",        branch: "maps-context",
+              features: ["Observed SVF − Predicted SVF error", "28 ensemble zones · signed residual", "CV Morphology weight 1.7 % in ensemble"],
+              subComponents: [
+                "comp-pts layer",
+                "Signed residual per zone",
+                "Ensemble weight breakdown"
+              ] }
+          ]
+        }
+      ]
+    },
+    {
+      name: "4. CBX Corpus & RAG",
+      branch: "rag",
+      children: [
+        { name: "CV Segmentation Map",   img: "cv_map",            path: "4.CBX_Corpus_and_RAG/cbx_corpus/CV_map.html",              branch: "rag",
+          features: ["Leaflet.js · 40+ circle markers", "SVF color #fee294 → #a50026 · r 4–15 px", "71 CV data points · thermal enclosure"],
+          subComponents: [
+            "High Sky (Open) — #4A9EE8",
+            "Low Sky (Trench) — #E84A3A",
+            "CartoDB Dark basemap",
+            "Popup per canyon segment"
+          ] },
+        { name: "Accurate Terrain DEM",   img: "accurate_terrain",  path: "4.CBX_Corpus_and_RAG/cbx_corpus/accurate_terrain_v2.html", branch: "rag",
+          features: ["WebGL bilinear DEM interpolation", "u_terrain_exaggeration shader uniform", "4.8 km corridor · −9 m trench depth"],
+          subComponents: [
+            "GLSL vertex shader",
+            "RGB → elevation unpack",
+            "Bilinear mix(tl,tr,bl,br)",
+            "Camera-relative scaling"
+          ] }
+      ]
+    }
+  ]
+};
+
+// ═══════════════════════════════════════════════════════════════
+// BRANCH COLORS
+// ═══════════════════════════════════════════════════════════════
+const branchColors = {
+  'root':         { from: '#444',    to: '#333'    },
+  'segmentation': { from: '#00D8FF', to: '#006E7F' },   // Segmentation
+  'maps':         { from: '#9B5CFF', to: '#4D2B80' },   // Maps / Plan
+  'maps-main':    { from: '#9B5CFF', to: '#4D2B80' },   // Maps / Plan
+  'maps-context': { from: '#FF2DAA', to: '#80104F' },   // Maps / Context
+  'rag':          { from: '#00F08A', to: '#007A45' }    // CBX Corpus
+};
+
+function getBranchColor(d) {
+  const b = d.data.branch || d.parent?.data.branch || 'root';
+  return branchColors[b] || branchColors.root;
+}
+
+function getFolderLabel(d) {
+  const b = d.data.branch || '';
+  if (b === 'segmentation') return 'FOLDER 1 — SEGMENTATION';
+  if (b.startsWith('maps'))  return 'FOLDER 2 — MAPS';
+  if (b === 'rag')           return 'FOLDER 4 — CBX CORPUS & RAG';
+  return '';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SVG SETUP — 25 % expanded viewBox for text overflow room
+// ═══════════════════════════════════════════════════════════════
+const W = window.innerWidth;
+const H = window.innerHeight;
+// +400 px expansion on each axis for text breathing room
+const vbW = W + 400;
+const vbH = H + 400;
+const vbX = -200;
+const vbY = -200;
+
+// Tree radius — generous room for outer annotations
+const radius = Math.min(W, H) / 2 - 120;
+
+const svgRoot = d3.select('#canvas')
+  .append('svg')
+    .attr('id', 'radial-svg')
+    .attr('width', W)
+    .attr('height', H)
+    .attr('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`);
+
+const svg = svgRoot.append('g')
+    .attr('transform', `translate(${W/2},${H/2})`);
+
+// ── Gradient definitions ──
+const defs = svg.append('defs');
+
+Object.entries(branchColors).forEach(([key, c]) => {
+  const grad = defs.append('linearGradient')
+    .attr('id', `grad-${key}`)
+    .attr('gradientUnits', 'userSpaceOnUse');
+  grad.append('stop').attr('offset', '0%').attr('stop-color', c.from);
+  grad.append('stop').attr('offset', '100%').attr('stop-color', c.to);
+});
+
+// Glow filter for text
+const glow = defs.append('filter').attr('id', 'text-glow');
+glow.append('feGaussianBlur').attr('stdDeviation', '2').attr('result', 'blur');
+glow.append('feFlood').attr('flood-color', '#000').attr('flood-opacity', '0.9').attr('result', 'color');
+glow.append('feComposite').attr('in', 'color').attr('in2', 'blur').attr('operator', 'in').attr('result', 'shadow');
+const glowMerge = glow.append('feMerge');
+glowMerge.append('feMergeNode').attr('in', 'shadow');
+glowMerge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+// Porthole clip glow (increased)
+const portalGlow = defs.append('filter').attr('id', 'portal-glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+portalGlow.append('feGaussianBlur').attr('stdDeviation', '8').attr('result', 'blur');
+const pgMerge = portalGlow.append('feMerge');
+pgMerge.append('feMergeNode').attr('in', 'blur');
+pgMerge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+// Neural path glow for links
+const linkGlow = defs.append('filter').attr('id', 'link-glow').attr('x', '-40%').attr('y', '-40%').attr('width', '180%').attr('height', '180%');
+linkGlow.append('feGaussianBlur').attr('stdDeviation', '4').attr('result', 'blur');
+const lgMerge = linkGlow.append('feMerge');
+lgMerge.append('feMergeNode').attr('in', 'blur');
+lgMerge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+// Vignette radial gradient overlay
+const vignette = defs.append('radialGradient').attr('id', 'vignette');
+vignette.append('stop').attr('offset', '50%').attr('stop-color', 'rgba(0,0,0,0)');
+vignette.append('stop').attr('offset', '100%').attr('stop-color', 'rgba(0,0,0,0.55)');
+
+// ═══════════════════════════════════════════════════════════════
+// TREE LAYOUT
+// ═══════════════════════════════════════════════════════════════
+const root = d3.hierarchy(treeData);
+const treeLayout = d3.tree()
+  .size([2 * Math.PI, radius])
+  .separation((a, b) => (a.parent === b.parent ? 1 : 2) / a.depth);
+
+treeLayout(root);
+
+// ── Links ──
+svg.selectAll('.link')
+  .data(root.links())
+  .join('path')
+    .attr('class', 'link')
+    .attr('d', d3.linkRadial().angle(d => d.x).radius(d => d.y))
+    .attr('fill', 'none')
+    .attr('stroke', d => {
+      const b = d.target.data.branch || d.source.data.branch || 'root';
+      return `url(#grad-${b})`;
+    })
+    .attr('stroke-width', d => d.target.children ? 2.5 : 1.8)
+    .attr('stroke-opacity', 0.7)
+    .attr('filter', 'url(#link-glow)');
+
+// ── Nodes ──
+const nodes = svg.selectAll('.node')
+  .data(root.descendants())
+  .join('g')
+    .attr('class', 'node')
+    .attr('transform', d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`);
+
+// ── Leaf nodes: porthole image circles ──
+const leafR = 42;
+const leaves = nodes.filter(d => !d.children && d.data.img);
+
+// Image pattern for each leaf
+leaves.each(function(d) {
+  const patId = `pat-${d.data.img}`;
+  defs.append('pattern')
+    .attr('id', patId)
+    .attr('patternUnits', 'objectBoundingBox')
+    .attr('width', 1).attr('height', 1)
+  .append('image')
+    .attr('href', `dist/thumbnails/${d.data.img}.png`)
+    .attr('width', leafR * 2)
+    .attr('height', leafR * 2)
+    .attr('preserveAspectRatio', 'xMidYMid slice');
+});
+
+// Outer ring glow
+leaves.append('circle')
+  .attr('r', leafR + 4)
+  .attr('fill', 'none')
+  .attr('stroke', d => getBranchColor(d).from)
+  .attr('stroke-width', 1.5)
+  .attr('stroke-opacity', 0.35)
+  .attr('filter', 'url(#portal-glow)');
+
+// Image circle (porthole)
+leaves.append('circle')
+  .attr('r', leafR)
+  .attr('fill', d => `url(#pat-${d.data.img})`)
+  .attr('stroke', d => getBranchColor(d).from)
+  .attr('stroke-width', 2)
+  .attr('cursor', 'pointer')
+  .on('mouseenter', function(event, d) { showTooltip(event, d); d3.select(this).transition().duration(200).attr('r', leafR + 6).attr('stroke-width', 3); })
+  .on('mouseleave', function(event, d) { hideTooltip(); d3.select(this).transition().duration(200).attr('r', leafR).attr('stroke-width', 2); })
+  .on('click', function(event, d) {
+    if (d.data.path) window.open(d.data.path, '_blank');
+  });
+
+// Vignette overlay
+leaves.append('circle')
+  .attr('r', leafR)
+  .attr('fill', 'url(#vignette)')
+  .attr('pointer-events', 'none');
+
+// ── Inner nodes: small dot ──
+nodes.filter(d => d.children || (!d.data.img))
+  .append('circle')
+    .attr('r', d => d.depth === 0 ? 6 : 4)
+    .attr('fill', d => d.depth === 0 ? '#111' : getBranchColor(d).from)
+    .attr('stroke', d => getBranchColor(d).from)
+    .attr('stroke-width', d => d.depth === 0 ? 2 : 1.2)
+    .attr('fill-opacity', d => d.depth === 0 ? 1 : 0.25);
+
+// ═══════════════════════════════════════════════════════════════
+// LABELS + DENDROGRAM ANNOTATIONS + SUB-COMPONENT BRACKETS
+// ═══════════════════════════════════════════════════════════════
+const featureLineH = 10;
+const subCompLineH = 9;
+const featureTopOffset = 6;
+const featureFontSize = 6.8;
+const subCompFontSize = 6.0;  // 6.5 pt sub-component list
+
+// ── Leaf labels (Syne, 10 px, title) ──
+// Strict radial alignment: right side (−90° to 90°) = start, left side (90°–270°) = end
+const textPad = leafR + 14;  // wider padding for breathing room
+leaves.append('text')
+  .attr('dy', '0.31em')
+  .attr('x', d => d.x < Math.PI ? textPad : -textPad)
+  .attr('text-anchor', d => d.x < Math.PI ? 'start' : 'end')
+  .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
+  .attr('fill', '#D8D8D8')
+  .attr('font-family', 'Syne, sans-serif')
+  .attr('font-size', '10px')
+  .attr('font-weight', '600')
+  .attr('letter-spacing', '0.8px')
+  .attr('filter', 'url(#text-glow)')
+  .text(d => d.data.name);
+
+// ── Feature annotations (80 % opacity) + Sub-component list (50 % opacity) ──
+leaves.each(function(d) {
+  const g = d3.select(this);
+  const rightSide = d.x < Math.PI;
+  const sign = rightSide ? 1 : -1;
+  const labelX = sign * textPad;
+  const anchor = rightSide ? 'start' : 'end';
+  const needFlip = d.x >= Math.PI;
+  const branchCol = getBranchColor(d).from;
+  let cursorY = featureTopOffset;
+
+  // ── Primary features bracket (80 % opacity) ──
+  const feats = d.data.features || [];
+  if (feats.length) {
+    const bracketX = rightSide ? labelX + 1 : labelX - 1;
+    const bY1 = cursorY + 2;
+    const bY2 = cursorY + feats.length * featureLineH + 2;
+
+    g.append('line')
+      .attr('x1', bracketX).attr('y1', bY1)
+      .attr('x2', bracketX).attr('y2', bY2)
+      .attr('stroke', branchCol).attr('stroke-width', 0.6)
+      .attr('stroke-dasharray', '2,2').attr('stroke-opacity', 0.4)
+      .attr('transform', needFlip ? 'rotate(180)' : null);
+
+    feats.forEach((feat, i) => {
+      g.append('text')
+        .attr('x', rightSide ? labelX + 6 : labelX - 6)
+        .attr('y', cursorY + (i + 1) * featureLineH)
+        .attr('text-anchor', anchor)
+        .attr('transform', needFlip ? 'rotate(180)' : null)
+        .attr('fill', branchCol)
+        .attr('fill-opacity', 0.8)
+        .attr('font-family', "'JetBrains Mono', monospace")
+        .attr('font-size', featureFontSize + 'px')
+        .attr('font-weight', '400')
+        .attr('letter-spacing', '0.2px')
+        .attr('filter', 'url(#text-glow)')
+        .text(feat);
+    });
+
+    cursorY += feats.length * featureLineH + 6;
+  }
+
+  // ── Sub-component bracket (50 % opacity) ──
+  const subs = d.data.subComponents || [];
+  if (subs.length) {
+    const bracketX = rightSide ? labelX + 1 : labelX - 1;
+    const bY1 = cursorY + 2;
+    const bY2 = cursorY + subs.length * subCompLineH + 2;
+
+    // Solid bracket for sub-components (architectural schematic style)
+    g.append('line')
+      .attr('x1', bracketX).attr('y1', bY1)
+      .attr('x2', bracketX).attr('y2', bY2)
+      .attr('stroke', branchCol).attr('stroke-width', 0.5)
+      .attr('stroke-opacity', 0.3)
+      .attr('transform', needFlip ? 'rotate(180)' : null);
+
+    // Top tick
+    g.append('line')
+      .attr('x1', bracketX).attr('y1', bY1)
+      .attr('x2', bracketX + (rightSide ? 3 : -3)).attr('y2', bY1)
+      .attr('stroke', branchCol).attr('stroke-width', 0.5)
+      .attr('stroke-opacity', 0.3)
+      .attr('transform', needFlip ? 'rotate(180)' : null);
+
+    // Bottom tick
+    g.append('line')
+      .attr('x1', bracketX).attr('y1', bY2)
+      .attr('x2', bracketX + (rightSide ? 3 : -3)).attr('y2', bY2)
+      .attr('stroke', branchCol).attr('stroke-width', 0.5)
+      .attr('stroke-opacity', 0.3)
+      .attr('transform', needFlip ? 'rotate(180)' : null);
+
+    subs.forEach((sub, i) => {
+      g.append('text')
+        .attr('x', rightSide ? labelX + 6 : labelX - 6)
+        .attr('y', cursorY + (i + 1) * subCompLineH)
+        .attr('text-anchor', anchor)
+        .attr('transform', needFlip ? 'rotate(180)' : null)
+        .attr('fill', '#FFFFFF')
+        .attr('fill-opacity', 0.7)
+        .attr('font-family', "'JetBrains Mono', monospace")
+        .attr('font-size', subCompFontSize + 'px')
+        .attr('font-weight', '300')
+        .attr('letter-spacing', '0.15px')
+        .attr('filter', 'url(#text-glow)')
+        .text(sub);
+    });
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════
+// FORCE-COLLIDE — accounts for features + subComponents height
+// ═══════════════════════════════════════════════════════════════
+(function applyForceCollide() {
+  const labelNodes = [];
+  leaves.each(function(d) {
+    const angle = d.x - Math.PI / 2;
+    const cx = Math.cos(angle) * d.y;
+    const cy = Math.sin(angle) * d.y;
+    const featCount = (d.data.features || []).length;
+    const subCount  = (d.data.subComponents || []).length;
+    const blockH = 14 + featCount * featureLineH + subCount * subCompLineH;
+    labelNodes.push({ d, cx, cy, blockH, el: this });
+  });
+
+  const sim = d3.forceSimulation(labelNodes)
+    .force('collide', d3.forceCollide().radius(nd => nd.blockH / 2 + 12).strength(0.9))
+    .force('x', d3.forceX(nd => nd.cx).strength(0.25))
+    .force('y', d3.forceY(nd => nd.cy).strength(0.25))
+    .stop();
+
+  for (let i = 0; i < 200; i++) sim.tick();
+
+  labelNodes.forEach(nd => {
+    const dx = nd.x - nd.cx;
+    const dy = nd.y - nd.cy;
+    if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+      const newR = Math.sqrt(nd.x * nd.x + nd.y * nd.y);
+      const newAngle = Math.atan2(nd.y, nd.x) + Math.PI / 2;
+      d3.select(nd.el)
+        .attr('transform', `rotate(${newAngle * 180 / Math.PI - 90}) translate(${newR},0)`);
+    }
+  });
+})();
+
+// ── Inner node labels (removed to prevent clutter) ──
+// nodes.filter(d => (d.children || !d.data.img) && d.depth > 0)
+//   .append('text')
+//     .attr('dy', '0.31em')
+//     .attr('x', d => d.x < Math.PI ? 8 : -8)
+//     .attr('text-anchor', d => d.x < Math.PI ? 'start' : 'end')
+//     .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
+//     .attr('fill', d => getBranchColor(d).from)
+//     .attr('font-family', 'Syne, sans-serif')
+//     .attr('font-size', '9px')
+//     .attr('font-weight', '700')
+//     .attr('letter-spacing', '1.5px')
+//     .attr('text-transform', 'uppercase')
+//     .attr('filter', 'url(#text-glow)')
+//     .text(d => d.data.name.toUpperCase());
+
+// Root label - add directly to SVG to bypass transforms
+svg.append('text')
+  .attr('x', 0)
+  .attr('y', 80)
+  .attr('text-anchor', 'middle')
+  .attr('fill', '#9B9B9B')
+  .attr('font-family', 'Syne, sans-serif')
+  .attr('font-size', '11px')
+  .attr('font-weight', '800')
+  .attr('letter-spacing', '4px')
+  .attr('filter', 'url(#text-glow)')
+  .text('CBX ANALYSIS');
+
+// ═══════════════════════════════════════════════════════════════
+// TOOLTIP
+// ═══════════════════════════════════════════════════════════════
+const tooltip = document.getElementById('tooltip');
+function showTooltip(event, d) {
+  tooltip.querySelector('.tt-label').textContent = d.data.name;
+  tooltip.querySelector('.tt-path').textContent = d.data.path || '';
+  tooltip.querySelector('.tt-folder').textContent = getFolderLabel(d);
+  tooltip.style.display = 'block';
+  tooltip.style.left = (event.pageX + 16) + 'px';
+  tooltip.style.top  = (event.pageY - 12) + 'px';
+}
+function hideTooltip() { tooltip.style.display = 'none'; }
+
+// ═══════════════════════════════════════════════════════════════
+// PNG EXPORT — high quality raster export
+// ═══════════════════════════════════════════════════════════════
+function exportPNG() {
+  const svgEl = document.getElementById('radial-svg');
+  const scale = 2; // 2x scale for high quality
+  const exportW = Math.round(W * scale);
+  const exportH = Math.round(H * scale);
+  
+  const canvas = document.createElement('canvas');
+  canvas.width = exportW;
+  canvas.height = exportH;
+  const ctx = canvas.getContext('2d');
+  
+  // Fill background
+  ctx.fillStyle = '#050505';
+  ctx.fillRect(0, 0, exportW, exportH);
+  
+  // Get SVG data
+  const svgData = new XMLSerializer().serializeToString(svgEl);
+  const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+  const svgUrl = URL.createObjectURL(svgBlob);
+  
+  const img = new Image();
+  img.onload = function() {
+    // Draw scaled image
+    ctx.drawImage(img, 0, 0, exportW, exportH);
+    
+    // Convert to PNG and download
+    canvas.toBlob(function(blob) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `CBX_Radial_Poster_${exportW}x${exportH}_PNG.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      URL.revokeObjectURL(svgUrl);
+    }, 'image/png', 1.0);
+  };
+  
+  img.onerror = function() {
+    URL.revokeObjectURL(svgUrl);
+    alert('Error generating PNG export');
+  };
+  
+  img.src = svgUrl;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// CLEAR PNG EXPORT — User-friendly with progress feedback
+// ═══════════════════════════════════════════════════════════════
+function exportHighResPNG() {
+  // Show loading message
+  const btn = document.getElementById('export-btn');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Generating...';
+  btn.disabled = true;
+  
+  try {
+    const svgEl = document.getElementById('radial-svg');
+    
+    if (!svgEl) {
+      throw new Error('SVG element not found');
+    }
+    
+    // Get screen dimensions
+    const exportW = Math.round(W * 3); // 3x for high quality
+    const exportH = Math.round(H * 3);
+    
+    // Create SVG string
+    const svgString = new XMLSerializer().serializeToString(svgEl);
+    const svgData = `<?xml version="1.0" encoding="UTF-8"?>${svgString}`;
+    
+    // Create blob and image
+    const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const img = new Image();
+    
+    img.onload = function() {
+      try {
+        // Create canvas
+        const canvas = document.createElement('canvas');
+        canvas.width = exportW;
+        canvas.height = exportH;
+        const ctx = canvas.getContext('2d');
+        
+        // Set background
+        ctx.fillStyle = '#050505';
+        ctx.fillRect(0, 0, exportW, exportH);
+        
+        // Draw the image
+        ctx.drawImage(img, 0, 0, exportW, exportH);
+        
+        // Convert to PNG and download
+        canvas.toBlob(function(pngBlob) {
+          try {
+            const pngUrl = URL.createObjectURL(pngBlob);
+            const a = document.createElement('a');
+            a.href = pngUrl;
+            a.download = `CBX_Radial_Poster_${exportW}x${exportH}_HighQuality.png`;
+            
+            // Trigger download
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Clean up
+            URL.revokeObjectURL(url);
+            URL.revokeObjectURL(pngUrl);
+            
+            // Show success
+            btn.innerHTML = '✅ Saved!';
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+            }, 2000);
+            
+          } catch (downloadError) {
+            throw new Error('Failed to save file: ' + downloadError.message);
+          }
+        }, 'image/png', 0.95);
+        
+      } catch (canvasError) {
+        throw new Error('Failed to create image: ' + canvasError.message);
+      }
+    };
+    
+    img.onerror = function() {
+      URL.revokeObjectURL(url);
+      throw new Error('Failed to load the poster image');
+    };
+    
+    img.src = url;
+    
+  } catch (error) {
+    console.error('Export error:', error);
+    btn.innerHTML = '❌ Error';
+    btn.disabled = false;
+    
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+    }, 2000);
+    
+    // Show user-friendly error
+    if (error.message.includes('not found')) {
+      alert('Poster not ready. Please wait for it to load.');
+    } else {
+      alert('Export failed. Please try refreshing the page.');
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PDF EXPORT — Using canvas conversion for reliability
+// ═══════════════════════════════════════════════════════════════
+function exportPDF() {
+  const btn = document.getElementById('export-pdf-btn');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Creating PDF...';
+  btn.disabled = true;
+  
+  try {
+    // First create a very high-quality canvas
+    const scale = 6; // 6x for maximum clarity
+    const exportW = Math.round(W * scale);
+    const exportH = Math.round(H * scale);
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = exportW;
+    canvas.height = exportH;
+    const ctx = canvas.getContext('2d');
+    
+    // Fill background
+    ctx.fillStyle = '#050505';
+    ctx.fillRect(0, 0, exportW, exportH);
+    
+    // Enable best quality rendering
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    
+    // Get SVG element
+    const svgEl = document.getElementById('radial-svg');
+    const svgString = new XMLSerializer().serializeToString(svgEl);
+    const svgData = `<?xml version="1.0" encoding="UTF-8"?>${svgString}`;
+    
+    // Create image from SVG
+    const img = new Image();
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const svgUrl = URL.createObjectURL(svgBlob);
+    
+    img.onload = function() {
+      try {
+        // Draw image to canvas
+        ctx.drawImage(img, 0, 0, exportW, exportH);
+        
+        // Convert canvas to PDF using jsPDF
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+        script.onload = function() {
+          try {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF({
+              orientation: W > H ? 'landscape' : 'portrait',
+              unit: 'px',
+              format: [W, H]
+            });
+            
+            // Add canvas as image to PDF with maximum quality
+            const imgData = canvas.toDataURL('image/png', 1.0);
+            pdf.addImage(imgData, 'PNG', 0, 0, W, H);
+            
+            // Save PDF
+            pdf.save(`CBX_Radial_Poster_${W}x${H}_PDF.pdf`);
+            
+            btn.innerHTML = '✅ PDF Saved!';
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+            }, 2000);
+            
+          } catch (pdfError) {
+            throw new Error('Failed to create PDF: ' + pdfError.message);
+          }
+        };
+        
+        script.onerror = function() {
+          throw new Error('Failed to load PDF library');
+        };
+        
+        document.head.appendChild(script);
+        
+      } catch (canvasError) {
+        throw new Error('Failed to process canvas: ' + canvasError.message);
+      }
+    };
+    
+    img.onerror = function() {
+      URL.revokeObjectURL(svgUrl);
+      throw new Error('Failed to load SVG for PDF');
+    };
+    
+    img.src = svgUrl;
+    
+  } catch (error) {
+    console.error('PDF export error:', error);
+    btn.innerHTML = '❌ Error';
+    btn.disabled = false;
+    
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+    }, 2000);
+    
+    alert('PDF export failed: ' + error.message);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TRUE VECTOR SVG EXPORT — Professional quality for design software
+// ═══════════════════════════════════════════════════════════════
+function exportVectorSVG() {
+  const btn = document.getElementById('export-svg-btn');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ Preparing SVG...';
+  btn.disabled = true;
+  
+  try {
+    const svgEl = document.getElementById('radial-svg');
+    
+    if (!svgEl) {
+      throw new Error('SVG element not found');
+    }
+    
+    // Create a completely new SVG from scratch for true vector quality
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const xlinkNS = 'http://www.w3.org/1999/xlink';
+    
+    // Create new SVG element
+    const newSVG = document.createElementNS(svgNS, 'svg');
+    newSVG.setAttribute('width', W);
+    newSVG.setAttribute('height', H);
+    newSVG.setAttribute('viewBox', `${vbX} ${vbY} ${vbW} ${vbH}`);
+    newSVG.setAttribute('xmlns', svgNS);
+    newSVG.setAttribute('xmlns:xlink', xlinkNS);
+    newSVG.setAttribute('version', '1.1');
+    
+    // Add proper font definitions without external imports for better compatibility
+    const defs = document.createElementNS(svgNS, 'defs');
+    const style = document.createElementNS(svgNS, 'style');
+    style.setAttribute('type', 'text/css');
+    style.textContent = `
+      text { font-family: 'Syne', sans-serif; }
+      .mono { font-family: 'JetBrains Mono', monospace; }
+    `;
+    defs.appendChild(style);
+    
+    // Skip filters for maximum compatibility - they can cause rasterization in Photoshop
+    
+    newSVG.appendChild(defs);
+    
+    // Add background
+    const bg = document.createElementNS(svgNS, 'rect');
+    bg.setAttribute('x', vbX);
+    bg.setAttribute('y', vbY);
+    bg.setAttribute('width', vbW);
+    bg.setAttribute('height', vbH);
+    bg.setAttribute('fill', '#050505');
+    newSVG.appendChild(bg);
+    
+    // Copy all elements from original SVG, converting any raster elements to vector
+    const originalElements = svgEl.children;
+    for (let i = 0; i < originalElements.length; i++) {
+      const element = originalElements[i];
+      if (element.tagName !== 'defs') { // Skip original defs
+        const clonedElement = element.cloneNode(true);
+        
+        // Remove any image elements that might be raster
+        const images = clonedElement.querySelectorAll('image');
+        images.forEach(img => img.remove());
+        
+        // Ensure all text elements have proper font attributes and remove filters
+        const texts = clonedElement.querySelectorAll('text');
+        texts.forEach(text => {
+          text.setAttribute('font-family', text.classList.contains('mono') ? "'JetBrains Mono', monospace" : "'Syne', sans-serif");
+          text.removeAttribute('filter');
+        });
+        
+        // Remove any filter references from all elements
+        const allElements = clonedElement.querySelectorAll('*');
+        allElements.forEach(el => {
+          el.removeAttribute('filter');
+        });
+        
+        newSVG.appendChild(clonedElement);
+      }
+    }
+    
+    // Add CBX ANALYSIS text as vector
+    const cbxText = document.createElementNS(svgNS, 'text');
+    cbxText.setAttribute('x', '0');
+    cbxText.setAttribute('y', '80');
+    cbxText.setAttribute('text-anchor', 'middle');
+    cbxText.setAttribute('fill', '#9B9B9B');
+    cbxText.setAttribute('font-family', "'Syne', sans-serif");
+    cbxText.setAttribute('font-size', '11');
+    cbxText.setAttribute('font-weight', '800');
+    cbxText.setAttribute('letter-spacing', '4');
+    cbxText.textContent = 'CBX ANALYSIS';
+    newSVG.appendChild(cbxText);
+    
+    // Serialize to string
+    const serializer = new XMLSerializer();
+    let svgString = serializer.serializeToString(newSVG);
+    
+    // Add proper XML declaration and DOCTYPE
+    svgString = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+` + svgString;
+    
+    // Create and download file
+    const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `CBX_Radial_Poster_${W}x${H}_UltraVector.svg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    
+    URL.revokeObjectURL(url);
+    
+    btn.innerHTML = '✅ SVG Saved!';
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }, 2000);
+    
+  } catch (error) {
+    console.error('SVG export error:', error);
+    btn.innerHTML = '❌ Error';
+    btn.disabled = false;
+    
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+    }, 2000);
+    
+    alert('SVG export failed: ' + error.message);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RESIZE
+// ═══════════════════════════════════════════════════════════════
+window.addEventListener('resize', () => location.reload());
+</script>
+</body>
+</html>

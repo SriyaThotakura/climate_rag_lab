@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CBX Trauma Atlas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: #0A0A0C;
+    color: #D4CFC4;
+    overflow: hidden;
+  }
+
+  #map {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── scanline overlay ──────────────────────────────── */
+  #scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    mix-blend-mode: multiply;
+  }
+
+  /* ── sidebar ─────────────────────────────────────── */
+  #sidebar {
+    position: fixed;
+    left: 0; top: 0;
+    width: 300px;
+    height: 100vh;
+    background: rgba(10,10,12,0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(61,214,208,0.12);
+    padding: 28px 22px;
+    font-family: 'Syne', sans-serif;
+    overflow-y: auto;
+    z-index: 10;
+  }
+
+  #sidebar::-webkit-scrollbar { width: 2px; }
+  #sidebar::-webkit-scrollbar-track { background: transparent; }
+  #sidebar::-webkit-scrollbar-thumb { background: rgba(61,214,208,0.2); border-radius: 1px; }
+
+  .sb-eyebrow {
+    font-size: 8px;
+    color: rgba(61,214,208,0.5);
+    letter-spacing: .3em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .sb-title {
+    font-size: 13px;
+    color: #3DD6D0;
+    letter-spacing: .18em;
+    font-weight: 800;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+  }
+
+  .sb-subtitle {
+    font-size: 10px;
+    color: #5A5850;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .sb-divider {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(61,214,208,0.15) 0%, transparent 100%);
+    margin: 16px 0;
+  }
+
+  .sb-label {
+    font-size: 8px;
+    color: #5A5850;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .sb-big-number {
+    font-size: 28px;
+    color: #D4CFC4;
+    font-weight: 800;
+    margin-bottom: 4px;
+    letter-spacing: .02em;
+    line-height: 1;
+  }
+
+  .sb-big-sub {
+    font-size: 9px;
+    color: #5A5850;
+    margin-bottom: 12px;
+  }
+
+  .cat-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+    font-size: 10px;
+    color: #7A7870;
+  }
+
+  .cat-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px currentColor;
+  }
+
+  .cat-name { flex: 1; text-transform: uppercase; letter-spacing: .08em; font-size: 9px; }
+  .cat-count { color: #D4CFC4; font-weight: 700; font-size: 11px; }
+
+  /* legend */
+  .legend-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 9px;
+    color: #5A5850;
+    line-height: 1.4;
+  }
+
+  .legend-icon {
+    flex-shrink: 0;
+    width: 10px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1;
+    margin-top: 1px;
+  }
+
+  .legend-icon--exact { color: #D4CFC4; }
+  .legend-icon--anchor { color: #7A7870; }
+  .legend-icon--fallback { color: #3A3830; }
+
+  /* route legend */
+  .route-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+    font-size: 9px;
+    color: #5A5850;
+  }
+
+  .route-line {
+    width: 18px;
+    height: 0;
+    flex-shrink: 0;
+  }
+
+  /* filter buttons */
+  .filter-btn {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    font-family: 'Syne', sans-serif;
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 4px;
+    border-radius: 2px;
+    transition: all 120ms ease;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .filter-btn.active {
+    background: rgba(61,214,208,0.06);
+    border: 1px solid rgba(61,214,208,0.4);
+    color: #3DD6D0;
+  }
+
+  .filter-btn.inactive {
+    background: rgba(10,10,12,0.6);
+    border: 1px solid #1A1A1E;
+    color: #3A3830;
+  }
+
+  /* ── popup override ──────────────────────────────── */
+  .mapboxgl-popup-content {
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .mapboxgl-popup-tip {
+    border-top-color: rgba(10,10,12,0.95) !important;
+  }
+
+  .mapboxgl-popup-close-button {
+    color: #3A3830 !important;
+    font-size: 14px !important;
+    right: 4px !important;
+    top: 4px !important;
+  }
+
+  .mapboxgl-popup-close-button:hover {
+    color: #D4CFC4 !important;
+    background: transparent !important;
+  }
+
+  /* ── data note ──────────────────────────────────── */
+  .data-note {
+    font-size: 8px;
+    color: #3A3830;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+<div id="scanlines"></div>
+
+<div id="sidebar">
+  <div class="sb-eyebrow">Forensic Urbanism</div>
+  <div class="sb-title">CBX Trauma Atlas</div>
+  <div class="sb-subtitle">Cross Bronx Expressway &middot; Bruckner Corridor</div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-label">Total Signals</div>
+  <div class="sb-big-number" id="total-count">--</div>
+  <div class="sb-big-sub" id="source-break"></div>
+
+  <div id="cat-rows"></div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-label">Infrastructure</div>
+  <div class="route-row">
+    <svg class="route-line" viewBox="0 0 18 2"><line x1="0" y1="1" x2="18" y2="1" stroke="#E84A3A" stroke-width="2" stroke-dasharray="4,2"/></svg>
+    <span>Cross Bronx Expy (I-95)</span>
+  </div>
+  <div class="route-row">
+    <svg class="route-line" viewBox="0 0 18 2"><line x1="0" y1="1" x2="18" y2="1" stroke="#3DD6D0" stroke-width="1.5" stroke-dasharray="2,2"/></svg>
+    <span>Bruckner Blvd</span>
+  </div>
+  <div class="route-row">
+    <svg class="route-line" viewBox="0 0 18 2"><line x1="0" y1="1" x2="18" y2="1" stroke="#3DD6D0" stroke-width="1" stroke-opacity="0.4"/></svg>
+    <span>Bruckner Expy</span>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-label">Ensemble Model</div>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+    <span style="font-size:9px;color:#5A5850;">Vulnerability</span>
+    <div style="flex:1;height:6px;border-radius:1px;background:linear-gradient(90deg, rgba(61,214,208,0.15) 0%, #E8A23A 50%, #E84A3A 100%);"></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;font-size:7px;color:#3A3830;letter-spacing:.1em;margin-bottom:6px;">
+    <span>LOW</span><span>HIGH</span>
+  </div>
+  <div style="display:flex;gap:6px;margin-bottom:4px;">
+    <button id="toggle-zones" class="filter-btn active" style="flex:1;text-align:center;">ZONES</button>
+    <button id="toggle-3d" class="filter-btn inactive" style="flex:1;text-align:center;">3D</button>
+  </div>
+  <div style="font-size:8px;color:#3A3830;margin-bottom:2px;">
+    R&sup2; = <span id="model-r2">--</span> &middot; 57 zones &middot; 18 features
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-label">Geo Confidence</div>
+  <div class="legend-row">
+    <span class="legend-icon legend-icon--exact">&#9679;</span>
+    <span><strong style="color:#D4CFC4">Exact</strong> &mdash; geocoded address</span>
+  </div>
+  <div class="legend-row">
+    <span class="legend-icon legend-icon--anchor">&#9675;</span>
+    <span><strong style="color:#D4CFC4">Bronx anchor</strong> &mdash; documentary source</span>
+  </div>
+  <div class="legend-row">
+    <span class="legend-icon legend-icon--fallback">&#9678;</span>
+    <span><strong style="color:#D4CFC4">Centroid</strong> &mdash; regional signal</span>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-label">Filter by Category</div>
+  <div id="filter-buttons"></div>
+
+  <div class="data-note">
+    Full corridor: zips 10451&ndash;10474.<br>
+    Grid-sampled from <span id="total-complaints"></span> complaints.
+  </div>
+</div>
+
+<script>
+/* ── Forensic Architecture palette ─────────────────── */
+const CATEGORY_COLOURS = {
+  noise:        '#E8A23A',
+  air_quality:  '#3DD6D0',
+  health:       '#E84A3A',
+  displacement: '#4A9EE8'
+};
+
+const CATEGORY_LABELS = {
+  noise:        'NOISE',
+  air_quality:  'AIR QUALITY',
+  health:       'HEALTH',
+  displacement: 'DISPLACEMENT'
+};
+
+const COLOR_EXPR = [
+  'match', ['get', 'trauma_category'],
+  'noise',        '#E8A23A',
+  'air_quality',  '#3DD6D0',
+  'health',       '#E84A3A',
+  'displacement', '#4A9EE8',
+  '#5A5850'
+];
+
+/* ── route geometry from Freight_Routes.geojson ────── */
+const CBE_COORDS = [[-73.928245,40.845349],[-73.927432,40.845188],[-73.926979,40.845098],[-73.926019,40.844847],[-73.924866,40.844648],[-73.923777,40.844645],[-73.923326,40.844684],[-73.920476,40.84487],[-73.917402,40.845036],[-73.915943,40.845059],[-73.912001,40.845087],[-73.910923,40.845056],[-73.906653,40.844849],[-73.90271,40.84454],[-73.900982,40.844309],[-73.897558,40.843917],[-73.895179,40.843666],[-73.892907,40.843416],[-73.890834,40.842939],[-73.888341,40.841653],[-73.885739,40.840191],[-73.883565,40.838986],[-73.882796,40.838548],[-73.88079,40.837512],[-73.880163,40.837256],[-73.876942,40.836505],[-73.874253,40.836342],[-73.873365,40.836291],[-73.871227,40.83611],[-73.870177,40.83595],[-73.869049,40.8357],[-73.867121,40.835147],[-73.863917,40.834195],[-73.861571,40.833501],[-73.858853,40.832673],[-73.855977,40.831831],[-73.852934,40.830932],[-73.849492,40.829909],[-73.847857,40.829299],[-73.84531,40.82817],[-73.844673,40.828014],[-73.843364,40.827887],[-73.842363,40.827943],[-73.840001,40.828249],[-73.837106,40.828486],[-73.836838,40.828464],[-73.83617,40.828334],[-73.832441,40.827148],[-73.830932,40.826607],[-73.824793,40.82469],[-73.822997,40.824042],[-73.82109,40.823181],[-73.818041,40.821674],[-73.813704,40.820082],[-73.811508,40.819462]];
+
+const BRUCKNER_BLVD_COORDS = [[-73.919623,40.803523],[-73.918496,40.803286],[-73.917231,40.803272],[-73.917013,40.803272],[-73.916241,40.803308],[-73.915615,40.803385],[-73.914982,40.803521],[-73.91434,40.803654],[-73.913252,40.804128],[-73.91221,40.804605],[-73.910303,40.805492],[-73.906201,40.807324],[-73.90303,40.809631],[-73.901786,40.810542],[-73.898215,40.81308],[-73.896999,40.814014],[-73.895241,40.815733],[-73.893115,40.81775],[-73.891965,40.818705],[-73.890234,40.820167],[-73.88804,40.821647],[-73.887182,40.822223],[-73.886472,40.822373],[-73.885899,40.822442],[-73.884887,40.822573],[-73.882666,40.822826],[-73.880752,40.82311],[-73.878901,40.823358],[-73.876964,40.823573],[-73.874128,40.823947],[-73.872799,40.824179],[-73.872435,40.824216],[-73.871419,40.824329],[-73.869499,40.824565],[-73.867613,40.824818],[-73.866387,40.824933],[-73.86388,40.82517],[-73.862047,40.825305],[-73.860117,40.825533],[-73.856623,40.825987],[-73.855972,40.826064],[-73.853922,40.826344],[-73.849865,40.826897],[-73.844169,40.82764],[-73.843772,40.827665],[-73.843558,40.827772],[-73.843214,40.827992],[-73.842653,40.828263],[-73.842145,40.828322],[-73.841337,40.828385],[-73.840636,40.828316],[-73.840001,40.828249]];
+
+const BRUCKNER_EXPY_COORDS = [[-73.91739,40.801253],[-73.916678,40.802241],[-73.916566,40.802763],[-73.916483,40.803009],[-73.916295,40.803252],[-73.915959,40.803413],[-73.914982,40.803521],[-73.913832,40.803872],[-73.91221,40.804605],[-73.909055,40.806073],[-73.90303,40.809631],[-73.8973,40.813634],[-73.894724,40.816144],[-73.8921,40.818785],[-73.890677,40.820185],[-73.889307,40.821196],[-73.887603,40.822345],[-73.887133,40.822572],[-73.885027,40.822839],[-73.879889,40.823474],[-73.876541,40.823887],[-73.872789,40.82444],[-73.872109,40.824527],[-73.86785,40.825063],[-73.862005,40.825739],[-73.856015,40.826497],[-73.849961,40.827304],[-73.846942,40.827829],[-73.844844,40.828264],[-73.842915,40.828622],[-73.842249,40.828705],[-73.840501,40.828858],[-73.837575,40.828972],[-73.836984,40.829058],[-73.836122,40.829185],[-73.834724,40.829555],[-73.833668,40.82995],[-73.832434,40.830621],[-73.831387,40.83131],[-73.829181,40.83268],[-73.827003,40.833819],[-73.825739,40.834623],[-73.825352,40.835115],[-73.825228,40.8354],[-73.825127,40.835935],[-73.82517,40.836615],[-73.825464,40.837507],[-73.825688,40.839626],[-73.825804,40.844239],[-73.826088,40.846121],[-73.826758,40.847517],[-73.827293,40.848801],[-73.827352,40.85055],[-73.826542,40.852965],[-73.826378,40.853492],[-73.826426,40.855829],[-73.826524,40.856506],[-73.827088,40.858801],[-73.827327,40.859383],[-73.827373,40.859502],[-73.828261,40.860853]];
+
+/* ── active category state ─────────────────────── */
+const activeCategories = {
+  noise: true,
+  air_quality: true,
+  health: true,
+  displacement: true
+};
+
+/* ── map ───────────────────────────────────────── */
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3JpeWF0aG90YWt1cmEiLCJhIjoiY21kYzhuMG1hMTVrbjJpcHpnZ3Awdjc1dCJ9.bEGwdPmOH5kVaT9RWduC5Q';
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/dark-v11',
+  center: [-73.880, 40.835],
+  zoom: 12.2,
+  pitch: 40,
+  bearing: -8
+});
+
+map.addControl(new mapboxgl.NavigationControl({ showCompass: true }), 'bottom-right');
+
+map.on('load', () => {
+
+  /* ── sources ─────────────────────────────────── */
+  map.addSource('trauma', {
+    type: 'geojson',
+    data: './trauma_points.geojson'
+  });
+
+  map.addSource('trauma-311', {
+    type: 'geojson',
+    data: './trauma_points_311.geojson'
+  });
+
+  map.addSource('cbe-line', {
+    type: 'geojson',
+    data: {
+      type: 'Feature',
+      geometry: { type: 'LineString', coordinates: CBE_COORDS }
+    }
+  });
+
+  map.addSource('bruckner-blvd', {
+    type: 'geojson',
+    data: {
+      type: 'Feature',
+      geometry: { type: 'LineString', coordinates: BRUCKNER_BLVD_COORDS }
+    }
+  });
+
+  map.addSource('bruckner-expy', {
+    type: 'geojson',
+    data: {
+      type: 'Feature',
+      geometry: { type: 'LineString', coordinates: BRUCKNER_EXPY_COORDS }
+    }
+  });
+
+  map.addSource('ensemble', {
+    type: 'geojson',
+    data: './ensemble_predictions.geojson'
+  });
+
+  /* ── intervention zones: flat fill ─────────── */
+  map.addLayer({
+    id: 'zone-fill',
+    type: 'fill',
+    source: 'ensemble',
+    paint: {
+      'fill-color': [
+        'interpolate', ['linear'], ['get', 'vulnerability_score'],
+        0.0,  'rgba(61,214,208,0.04)',
+        0.25, 'rgba(232,162,58,0.18)',
+        0.50, 'rgba(232,74,58,0.30)',
+        0.75, 'rgba(232,74,58,0.45)'
+      ],
+      'fill-opacity': 0.9
+    }
+  });
+
+  /* ── intervention zones: 3D extrusion (hidden) ─ */
+  map.addLayer({
+    id: 'zone-extrusion',
+    type: 'fill-extrusion',
+    source: 'ensemble',
+    layout: { 'visibility': 'none' },
+    paint: {
+      'fill-extrusion-color': [
+        'interpolate', ['linear'], ['get', 'vulnerability_score'],
+        0.0,  '#1A2A2A',
+        0.25, '#E8A23A',
+        0.50, '#E84A3A',
+        0.75, '#FF2020'
+      ],
+      'fill-extrusion-height': [
+        'interpolate', ['linear'], ['get', 'vulnerability_score'],
+        0.0,  10,
+        0.75, 600
+      ],
+      'fill-extrusion-base': 0,
+      'fill-extrusion-opacity': 0.55
+    }
+  });
+
+  /* ── intervention zones: outline ───────────── */
+  map.addLayer({
+    id: 'zone-outline',
+    type: 'line',
+    source: 'ensemble',
+    paint: {
+      'line-color': [
+        'interpolate', ['linear'], ['get', 'vulnerability_score'],
+        0.0,  'rgba(61,214,208,0.15)',
+        0.50, 'rgba(232,162,58,0.5)',
+        0.75, 'rgba(232,74,58,0.7)'
+      ],
+      'line-width': 1,
+      'line-opacity': 0.6
+    }
+  });
+
+  /* ── CBE centreline glow ─────────────────────── */
+  map.addLayer({
+    id: 'cbe-glow',
+    type: 'line',
+    source: 'cbe-line',
+    paint: {
+      'line-color': '#E84A3A',
+      'line-width': 8,
+      'line-opacity': 0.08,
+      'line-blur': 6
+    }
+  });
+
+  /* ── CBE centreline ──────────────────────────── */
+  map.addLayer({
+    id: 'cbe-centreline',
+    type: 'line',
+    source: 'cbe-line',
+    paint: {
+      'line-color': '#E84A3A',
+      'line-width': 2,
+      'line-dasharray': [6, 3],
+      'line-opacity': 0.75
+    }
+  });
+
+  /* ── Bruckner Expy (subtle) ──────────────────── */
+  map.addLayer({
+    id: 'bruckner-expy-line',
+    type: 'line',
+    source: 'bruckner-expy',
+    paint: {
+      'line-color': '#3DD6D0',
+      'line-width': 1,
+      'line-opacity': 0.25
+    }
+  });
+
+  /* ── Bruckner Blvd ───────────────────────────── */
+  map.addLayer({
+    id: 'bruckner-blvd-line',
+    type: 'line',
+    source: 'bruckner-blvd',
+    paint: {
+      'line-color': '#3DD6D0',
+      'line-width': 1.5,
+      'line-dasharray': [3, 3],
+      'line-opacity': 0.5
+    }
+  });
+
+  /* ── 311 direct: halo ────────────────────────── */
+  map.addLayer({
+    id: 'direct-311-halo',
+    type: 'circle',
+    source: 'trauma-311',
+    paint: {
+      'circle-radius': 8,
+      'circle-color': COLOR_EXPR,
+      'circle-opacity': 0.05,
+      'circle-blur': 1.0
+    }
+  });
+
+  /* ── 311 direct: dots ────────────────────────── */
+  map.addLayer({
+    id: 'direct-311-dots',
+    type: 'circle',
+    source: 'trauma-311',
+    paint: {
+      'circle-radius': 3,
+      'circle-color': COLOR_EXPR,
+      'circle-opacity': 0.5,
+      'circle-stroke-width': 0.5,
+      'circle-stroke-color': 'rgba(0,0,0,0.4)'
+    }
+  });
+
+  /* ── RAG trauma: halo (non-exact) ────────────── */
+  map.addLayer({
+    id: 'trauma-halo',
+    type: 'circle',
+    source: 'trauma',
+    filter: ['!=', ['get', 'geo_confidence'], 'exact'],
+    paint: {
+      'circle-radius': [
+        'interpolate', ['linear'], ['get', 'trauma_intensity'],
+        0, 14,
+        1, 32
+      ],
+      'circle-color': COLOR_EXPR,
+      'circle-opacity': 0.08,
+      'circle-blur': 1.2
+    }
+  });
+
+  /* ── RAG trauma: fallback dots (non-exact) ───── */
+  map.addLayer({
+    id: 'trauma-fallback',
+    type: 'circle',
+    source: 'trauma',
+    filter: ['!=', ['get', 'geo_confidence'], 'exact'],
+    paint: {
+      'circle-radius': [
+        'interpolate', ['linear'], ['get', 'trauma_intensity'],
+        0, 4,
+        1, 10
+      ],
+      'circle-color': COLOR_EXPR,
+      'circle-opacity': 0.3,
+      'circle-stroke-width': 0.5,
+      'circle-stroke-color': 'rgba(0,0,0,0.3)',
+      'circle-blur': 0
+    }
+  });
+
+  /* ── RAG trauma: exact dots ──────────────────── */
+  map.addLayer({
+    id: 'trauma-exact',
+    type: 'circle',
+    source: 'trauma',
+    filter: ['==', ['get', 'geo_confidence'], 'exact'],
+    paint: {
+      'circle-radius': 7,
+      'circle-color': COLOR_EXPR,
+      'circle-opacity': 0.9,
+      'circle-stroke-width': 1.5,
+      'circle-stroke-color': '#0A0A0C'
+    }
+  });
+
+  /* ── popup helper ────────────────────────────── */
+  function showPopup(e) {
+    const f = e.features[0];
+    const p = f.properties;
+    const catColor = CATEGORY_COLOURS[p.trauma_category] || '#5A5850';
+    const excerpt = (p.text_excerpt || '').substring(0, 140);
+    const zip = p.zip_code && p.zip_code !== 'null' && p.zip_code !== '' ? p.zip_code : '--';
+
+    const html = `
+      <div style="
+        background:rgba(10,10,12,0.95);
+        color:#D4CFC4;
+        font-family:'Syne',sans-serif;
+        font-size:11px;
+        padding:14px 16px;
+        border:1px solid rgba(61,214,208,0.12);
+        max-width:280px;
+        line-height:1.6;
+      ">
+        <div style="
+          color:${catColor};
+          font-size:8px;
+          letter-spacing:.2em;
+          text-transform:uppercase;
+          margin-bottom:6px;
+          font-weight:700;
+        ">${(p.trauma_category || '').replace('_', ' ')}</div>
+        <div style="
+          font-size:11px;
+          color:#D4CFC4;
+          margin-bottom:8px;
+        ">${excerpt}${excerpt.length >= 140 ? '...' : ''}</div>
+        <div style="color:#3A3830;font-size:8px;letter-spacing:.05em;">
+          intensity: ${p.trauma_intensity} &middot; ${p.source_type} &middot; ${zip}
+        </div>
+      </div>
+    `;
+
+    new mapboxgl.Popup({ closeButton: true, closeOnClick: true, offset: 12 })
+      .setLngLat(e.lngLat)
+      .setHTML(html)
+      .addTo(map);
+  }
+
+  /* ── popups on clickable layers ─────────────── */
+  map.on('click', 'trauma-exact', showPopup);
+  map.on('click', 'direct-311-dots', showPopup);
+
+  ['trauma-exact', 'direct-311-dots'].forEach(id => {
+    map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
+  });
+
+  /* ── populate sidebar from both geojsons ─────── */
+  Promise.all([
+    fetch('./trauma_points.geojson').then(r => r.json()),
+    fetch('./trauma_points_311.geojson').then(r => r.json())
+  ]).then(([ragData, directData]) => {
+    const ragCats = (ragData.metadata || {}).trauma_categories || {};
+    const dirCats = (directData.metadata || {}).trauma_categories || {};
+    const ragTotal = ragData.metadata?.total_features || ragData.features.length;
+    const dirTotal = directData.metadata?.total_features || directData.features.length;
+
+    const dirComplaints = directData.metadata?.total_complaints || dirTotal;
+    document.getElementById('total-count').textContent = ragTotal + dirTotal;
+    document.getElementById('source-break').innerHTML =
+      `RAG extractions: ${ragTotal} &middot; 311 sampled: ${dirTotal}`;
+    const tcEl = document.getElementById('total-complaints');
+    if (tcEl) tcEl.textContent = dirComplaints.toLocaleString();
+
+    const rowsEl = document.getElementById('cat-rows');
+    ['noise', 'air_quality', 'health', 'displacement'].forEach(cat => {
+      const count = (ragCats[cat] || 0) + (dirCats[cat] || 0);
+      const row = document.createElement('div');
+      row.className = 'cat-row';
+      row.innerHTML = `
+        <span class="cat-dot" style="background:${CATEGORY_COLOURS[cat]};color:${CATEGORY_COLOURS[cat]}"></span>
+        <span class="cat-name">${CATEGORY_LABELS[cat]}</span>
+        <span class="cat-count">${count}</span>
+      `;
+      rowsEl.appendChild(row);
+    });
+
+    /* ── filter buttons ──────────────────────── */
+    const btnContainer = document.getElementById('filter-buttons');
+    ['noise', 'air_quality', 'health', 'displacement'].forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn active';
+      btn.textContent = CATEGORY_LABELS[cat];
+      btn.dataset.category = cat;
+
+      btn.addEventListener('click', () => {
+        activeCategories[cat] = !activeCategories[cat];
+        btn.className = activeCategories[cat] ? 'filter-btn active' : 'filter-btn inactive';
+        applyFilters();
+      });
+
+      btnContainer.appendChild(btn);
+    });
+  });
+});
+
+function applyFilters() {
+  const activeCats = Object.entries(activeCategories)
+    .filter(([_, v]) => v)
+    .map(([k]) => k);
+
+  if (activeCats.length === 0) {
+    map.setFilter('trauma-halo', ['literal', false]);
+    map.setFilter('trauma-fallback', ['literal', false]);
+    map.setFilter('trauma-exact', ['literal', false]);
+    map.setFilter('direct-311-halo', ['literal', false]);
+    map.setFilter('direct-311-dots', ['literal', false]);
+    return;
+  }
+
+  const catExpr = ['in', ['get', 'trauma_category'], ['literal', activeCats]];
+
+  /* RAG layers */
+  const fallbackFilter = activeCats.length === 4
+    ? ['!=', ['get', 'geo_confidence'], 'exact']
+    : ['all', ['!=', ['get', 'geo_confidence'], 'exact'], catExpr];
+  const exactFilter = activeCats.length === 4
+    ? ['==', ['get', 'geo_confidence'], 'exact']
+    : ['all', ['==', ['get', 'geo_confidence'], 'exact'], catExpr];
+
+  map.setFilter('trauma-halo', fallbackFilter);
+  map.setFilter('trauma-fallback', fallbackFilter);
+  map.setFilter('trauma-exact', exactFilter);
+
+  /* 311 direct layers */
+  const directFilter = activeCats.length === 4 ? null : catExpr;
+  map.setFilter('direct-311-halo', directFilter);
+  map.setFilter('direct-311-dots', directFilter);
+}
+</script>
+</body>
+</html>

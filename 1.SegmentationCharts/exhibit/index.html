@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross Bronx Expressway — GSAPP Thesis Exhibit</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- D3.js v7 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!-- Three.js r152 -->
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+
+<style>
+/* ===== RESET ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Syne',sans-serif;background:var(--void);color:var(--text-1);overflow-x:hidden;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img,video,iframe{display:block;max-width:100%}
+ul,ol{list-style:none}
+::selection{background:var(--signal);color:var(--void)}
+
+/* ===== VARIABLES ===== */
+:root{
+  --void:#050608;
+  --ground:#0A0B0E;
+  --surface:#111318;
+  --surface-2:#181C22;
+  --wire:#1E232C;
+
+  --text-1:#E8E5E0;
+  --text-2:#8A8780;
+  --text-3:#4A4845;
+
+  --signal:#E84A3A;
+  --signal-dim:#2A0E0C;
+  --lime:#C8F04A;
+  --lime-dim:#1A2108;
+  --blue:#4A9EE8;
+
+  --nav-w:48px;
+  --section-pad:clamp(2rem,5vw,6rem);
+  --grid-color:rgba(30,35,44,.45);
+}
+
+/* ===== TYPOGRAPHY ===== */
+.t-display{
+  font-weight:800;
+  font-size:clamp(2.4rem,5vw,5.6rem);
+  line-height:1.05;
+  letter-spacing:-0.03em;
+  color:var(--text-1);
+}
+.t-body{
+  font-weight:400;
+  font-size:clamp(0.95rem,1.1vw,1.15rem);
+  line-height:1.65;
+  color:var(--text-2);
+}
+.t-mono{
+  font-family:'Syne',monospace;
+  font-weight:500;
+  font-size:0.72rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--text-3);
+}
+.t-label{
+  font-weight:600;
+  font-size:0.7rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--text-3);
+}
+.t-signal{color:var(--signal)}
+.t-lime{color:var(--lime)}
+.t-blue{color:var(--blue)}
+
+/* ===== FIXED LEFT NAV ===== */
+#nav{
+  position:fixed;
+  top:0;left:0;
+  width:var(--nav-w);
+  height:100vh;
+  background:var(--ground);
+  border-right:1px solid var(--wire);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:1.2rem 0;
+  gap:0.2rem;
+  z-index:1000;
+  overflow-y:auto;
+  scrollbar-width:none;
+}
+#nav::-webkit-scrollbar{display:none}
+
+.nav-item{
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  font-size:0.55rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  padding:0.7rem 0.3rem;
+  cursor:pointer;
+  transition:color .3s,background .3s;
+  border-radius:2px;
+  white-space:nowrap;
+}
+.nav-item:hover,
+.nav-item.active{
+  color:var(--signal);
+  background:var(--signal-dim);
+}
+
+/* ===== MAIN CONTENT ===== */
+main{
+  margin-left:var(--nav-w);
+  position:relative;
+  z-index:1;
+}
+
+section{
+  position:relative;
+  min-height:100vh;
+  padding:var(--section-pad);
+  background-image:
+    linear-gradient(var(--grid-color) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
+  background-size:60px 60px;
+  background-position:center center;
+}
+
+/* ===== SECTION DIVIDERS ===== */
+.section-divider{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1rem 0;
+  background:var(--void);
+  border-bottom:1px solid var(--wire);
+  margin-bottom:2.5rem;
+}
+.section-divider::before{
+  content:'';
+  width:32px;
+  height:2px;
+  background:var(--signal);
+  flex-shrink:0;
+  animation:divider-pulse 2.4s ease-in-out infinite;
+}
+@keyframes divider-pulse{
+  0%,100%{opacity:.4;width:32px}
+  50%{opacity:1;width:48px}
+}
+.section-divider .divider-label{
+  font-weight:700;
+  font-size:0.65rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--text-3);
+}
+.section-divider .divider-num{
+  margin-left:auto;
+  font-weight:800;
+  font-size:0.65rem;
+  letter-spacing:0.1em;
+  color:var(--signal);
+  opacity:.5;
+}
+
+/* ===== GLOBE ===== */
+#globe-wrap{
+  position:fixed;
+  top:0;left:var(--nav-w);
+  width:calc(100% - var(--nav-w));
+  height:100vh;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+#globe-canvas{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* ===== HERO — SECTION 00 ===== */
+#section-00{
+  background:transparent;
+  background-image:none;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding-bottom:clamp(3rem,8vh,7rem);
+  position:relative;
+  z-index:1;
+}
+
+.hero-coords{
+  font-weight:500;
+  font-size:0.7rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--signal);
+  margin-bottom:1rem;
+}
+
+.hero-title{
+  font-weight:800;
+  font-size:clamp(3rem,7vw,7.5rem);
+  line-height:0.95;
+  letter-spacing:-0.04em;
+  color:var(--text-1);
+  max-width:14ch;
+  margin-bottom:1.2rem;
+}
+
+.hero-subtitle{
+  font-weight:400;
+  font-size:clamp(1rem,1.4vw,1.3rem);
+  line-height:1.55;
+  color:var(--text-2);
+  max-width:48ch;
+  margin-bottom:2rem;
+}
+
+.hero-credit{
+  font-size:0.68rem;
+  font-weight:500;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--text-3);
+  margin-bottom:3rem;
+}
+.hero-credit span{
+  color:var(--text-2);
+}
+
+.scroll-indicator{
+  display:flex;
+  align-items:center;
+  gap:0.8rem;
+  color:var(--text-3);
+  font-size:0.6rem;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+}
+.scroll-indicator::before{
+  content:'';
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--signal);
+  animation:pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{
+  0%,100%{opacity:.3;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.6)}
+}
+
+/* ===== SLOT SECTIONS ===== */
+.slot-content{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.slot-header{
+  display:flex;
+  align-items:baseline;
+  gap:1rem;
+  margin-bottom:0.6rem;
+}
+.slot-header .slot-num{
+  font-weight:800;
+  font-size:0.65rem;
+  letter-spacing:0.12em;
+  color:var(--signal);
+  opacity:.6;
+  flex-shrink:0;
+}
+.slot-header .slot-title{
+  font-weight:700;
+  font-size:clamp(1.6rem,2.8vw,2.8rem);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  color:var(--text-1);
+}
+
+.slot-description{
+  font-size:clamp(0.92rem,1vw,1.05rem);
+  line-height:1.7;
+  color:var(--text-2);
+  max-width:68ch;
+  margin-bottom:2.5rem;
+}
+
+/* ===== IMAGE CARDS ===== */
+.img-card{
+  background:var(--surface);
+  border:1px solid var(--wire);
+  border-radius:3px;
+  overflow:hidden;
+  transition:border-color .3s;
+}
+.img-card:hover{
+  border-color:var(--text-3);
+}
+.img-card img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  display:block;
+}
+.img-card .img-caption{
+  padding:0.8rem 1rem;
+  font-size:0.75rem;
+  font-weight:500;
+  letter-spacing:0.06em;
+  color:var(--text-3);
+  line-height:1.5;
+  border-top:1px solid var(--wire);
+}
+
+/* ===== CANVAS FRAMES (D3 / iframes) ===== */
+.canvas-frame{
+  background:var(--ground);
+  border:1px solid var(--wire);
+  border-radius:3px;
+  min-height:420px;
+  height:clamp(400px,50vh,700px);
+  position:relative;
+  overflow:hidden;
+}
+.canvas-frame svg,
+.canvas-frame canvas{
+  width:100%;
+  height:100%;
+}
+
+/* ===== IFRAME WRAP ===== */
+.iframe-wrap{
+  position:relative;
+  width:100%;
+  background:var(--ground);
+  border:1px solid var(--wire);
+  border-radius:3px;
+  overflow:hidden;
+}
+.iframe-wrap iframe{
+  width:100%;
+  height:600px;
+  border:none;
+  display:block;
+}
+
+/* ===== VIDEO WRAP ===== */
+.video-wrap{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  background:var(--ground);
+  border:1px solid var(--wire);
+  border-radius:3px;
+  overflow:hidden;
+}
+.video-wrap iframe,
+.video-wrap video{
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  height:100%;
+  border:none;
+  object-fit:cover;
+}
+
+/* ===== SPEECH SECTION ===== */
+.speech-block{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:0 1.4rem;
+  padding:1.2rem 0;
+  border-bottom:1px solid var(--wire);
+}
+.speech-block:last-child{border-bottom:none}
+
+.speech-time{
+  font-size:0.68rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  color:var(--signal);
+  opacity:.7;
+  padding-top:0.15rem;
+  text-align:right;
+}
+
+.speech-text{
+  font-size:clamp(0.92rem,1vw,1.05rem);
+  line-height:1.7;
+  color:var(--text-2);
+}
+.speech-text em{
+  color:var(--text-1);
+  font-style:normal;
+  font-weight:600;
+}
+
+/* ===== Q&A SECTION ===== */
+.qa-card{
+  background:var(--surface);
+  border:1px solid var(--wire);
+  border-radius:3px;
+  padding:1.6rem 1.8rem;
+  margin-bottom:1rem;
+  transition:border-color .3s;
+}
+.qa-card:hover{
+  border-color:var(--text-3);
+}
+
+.qa-question{
+  font-weight:700;
+  font-size:clamp(1rem,1.2vw,1.15rem);
+  line-height:1.4;
+  color:var(--lime);
+  margin-bottom:0.8rem;
+  padding-left:1.2rem;
+  border-left:2px solid var(--lime);
+}
+
+.qa-answer{
+  font-size:clamp(0.9rem,1vw,1rem);
+  line-height:1.7;
+  color:var(--text-2);
+  padding-left:1.2rem;
+}
+
+/* ===== REFERENCES ===== */
+.ref-list{
+  display:flex;
+  flex-direction:column;
+  gap:0.3rem;
+}
+
+.ref-item{
+  font-size:0.82rem;
+  line-height:1.6;
+  color:var(--text-3);
+  padding:0.6rem 0;
+  border-bottom:1px solid var(--wire);
+  transition:color .3s;
+}
+.ref-item:last-child{border-bottom:none}
+.ref-item:hover{color:var(--text-2)}
+.ref-item a{
+  color:var(--blue);
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+/* ===== CHORD DIAGRAM ===== */
+.chord-container{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:1.5rem;
+}
+.chord-container svg{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== UTILITY GRIDS ===== */
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.gap-lg{gap:2.5rem}
+.mt-1{margin-top:1rem}.mt-2{margin-top:2rem}.mt-3{margin-top:3rem}.mt-4{margin-top:4rem}
+.mb-1{margin-bottom:1rem}.mb-2{margin-bottom:2rem}.mb-3{margin-bottom:3rem}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  :root{--nav-w:0px}
+
+  #nav{
+    position:fixed;
+    bottom:0;top:auto;
+    left:0;
+    width:100%;
+    height:auto;
+    flex-direction:row;
+    border-right:none;
+    border-top:1px solid var(--wire);
+    padding:0.4rem 0.6rem;
+    overflow-x:auto;
+    gap:0;
+  }
+  .nav-item{
+    writing-mode:horizontal-tb;
+    font-size:0.5rem;
+    padding:0.5rem 0.6rem;
+  }
+
+  main{margin-left:0}
+
+  #globe-wrap{left:0;width:100%}
+
+  .hero-title{font-size:clamp(2.2rem,8vw,3.6rem)}
+  .hero-subtitle{font-size:0.95rem}
+
+  .t-display{font-size:clamp(1.8rem,6vw,2.8rem)}
+
+  .slot-header .slot-title{font-size:clamp(1.3rem,5vw,2rem)}
+
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+
+  .speech-block{
+    grid-template-columns:1fr;
+    gap:0.3rem;
+  }
+  .speech-time{text-align:left}
+
+  .canvas-frame{min-height:280px;height:clamp(280px,45vh,500px)}
+
+  .iframe-wrap iframe{height:400px}
+
+  section{padding:clamp(1.4rem,4vw,3rem)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ FIXED LEFT NAV ═══════ -->
+<nav id="nav">
+  <a class="nav-item active" href="#section-00">00</a>
+  <a class="nav-item" href="#section-01">01</a>
+  <a class="nav-item" href="#section-02">02</a>
+  <a class="nav-item" href="#section-03">03</a>
+  <a class="nav-item" href="#section-04">04</a>
+  <a class="nav-item" href="#section-05">05</a>
+  <a class="nav-item" href="#section-06">06</a>
+  <a class="nav-item" href="#section-07">07</a>
+  <a class="nav-item" href="#section-08">08</a>
+  <a class="nav-item" href="#section-09">09</a>
+  <a class="nav-item" href="#section-10">10</a>
+  <a class="nav-item" href="#section-11">11</a>
+  <a class="nav-item" href="#section-12">12</a>
+  <a class="nav-item" href="#section-13">13</a>
+  <a class="nav-item" href="#section-14">14</a>
+  <a class="nav-item" href="#section-15">15</a>
+  <a class="nav-item" href="#section-16">16</a>
+  <a class="nav-item" href="#references">REF</a>
+</nav>
+
+<!-- ═══════ GLOBE (fixed bg) ═══════ -->
+<div id="globe-wrap"><canvas id="globe-canvas"></canvas></div>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 00 — HERO
+     ═══════════════════════════════════════════════ -->
+<section id="section-00">
+  <div class="hero-coords">40.8370° N, 73.8654° W</div>
+  <h1 class="hero-title">THE<br>TRENCH</h1>
+  <p class="hero-subtitle">A forensic investigation into the Cross Bronx Expressway — mapping infrastructural violence through ML, RAG, and computational design. 16 analytical instruments, one systemic diagnosis.</p>
+  <div class="hero-credit">COLUMBIA GSAPP '26 &mdash; <span>Sriya Thotakura</span></div>
+  <div class="scroll-indicator">Scroll to enter the evidentiary field</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 01 — GIS ANALYSIS
+     ═══════════════════════════════════════════════ -->
+<section id="section-01">
+  <div class="section-divider"><span class="divider-label">GIS Analysis &middot; Bivariate &middot; Trivariate</span><span class="divider-num">01/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 01</span><span class="slot-title">GIS Analysis</span></div>
+    <p class="slot-description">Bivariate and trivariate vulnerability indexing of asthma prevalence against traffic density, canopy deficit, and freight routing over land use. The GIS layers expose how the Expressway functions as a pollutant corridor bisecting residential tissue.</p>
+    <div class="grid-3 mt-2 reveal">
+      <div class="img-card"><img src="../images/1.1.png" alt="GIS Base Analysis"><div class="img-caption">Asthma prevalence &times; traffic density base layer</div></div>
+      <div class="img-card"><img src="../images/1.2Traffic.png" alt="Traffic Bivariate"><div class="img-caption">Traffic bivariate — freight routes over residential zones</div></div>
+      <div class="img-card"><img src="../images/1.GIS_Trivariate.png" alt="GIS Trivariate"><div class="img-caption">Trivariate vulnerability index — canopy &times; freight &times; land use</div></div>
+    </div>
+    <!-- Canvas: Final_GIS interactive map -->
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">INTERACTIVE &mdash; FINAL GIS MAP</div>
+      <div class="iframe-wrap"><iframe src="../TRENCH/Segmentation_Overlays/Final_GIS-main/WEB/index.html" title="Final GIS Interactive Map"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 02 — PARK ACCESSIBILITY + CANOPY
+     ═══════════════════════════════════════════════ -->
+<section id="section-02">
+  <div class="section-divider"><span class="divider-label">Park Accessibility &middot; Canopy Coverage</span><span class="divider-num">02/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 02</span><span class="slot-title">Park Accessibility + Canopy Coverage</span></div>
+    <p class="slot-description">Green deficit scoring and access zone mapping. The South Bronx has some of the lowest canopy coverage in NYC, with park access zones revealing how the Expressway severs pedestrian connectivity to green infrastructure.</p>
+    <div class="grid-2 mt-2 reveal">
+      <div class="img-card"><img src="../images/2.1Enough Canopy cover.png" alt="Canopy Coverage"><div class="img-caption">Enough canopy cover? — deficit scoring across CBX corridor</div></div>
+      <div class="img-card"><img src="../images/2.Parks in proximity.png" alt="Parks Proximity"><div class="img-caption">Parks in proximity — access zone analysis</div></div>
+    </div>
+    <!-- D3 chord: Green infrastructure connectivity -->
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">GREEN INFRASTRUCTURE CONNECTIVITY</div>
+      <div class="canvas-frame"><div class="chord-container" id="chord-02"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 03 — FERAL ATLAS
+     ═══════════════════════════════════════════════ -->
+<section id="section-03">
+  <div class="section-divider"><span class="divider-label">Feral Atlas &middot; How Human is the Bronx?</span><span class="divider-num">03/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 03</span><span class="slot-title">Feral Atlas &mdash; How Human is the Bronx?</span></div>
+    <p class="slot-description">Using the 'Feral Atlas' framework to map the 40% grey zone — the boundary where human life ends and infrastructure begins. The CBX is not a site; it is an evidentiary field of infrastructural violence where the human-infrastructure boundary has been weaponized.</p>
+    <div class="grid-2 mt-2 reveal">
+      <div class="img-card"><img src="../images/3.Feralmap.png" alt="Feral Atlas Map"><div class="img-caption">Feral Atlas — 40% grey zone mapping of human-infrastructure boundary</div></div>
+      <!-- D3 chord: Human vs Infrastructure boundary -->
+      <div class="canvas-frame"><div class="chord-container" id="chord-03"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 04 — LSTM + MARKOV TRUCK SPEED
+     ═══════════════════════════════════════════════ -->
+<section id="section-04">
+  <div class="section-divider"><span class="divider-label">LSTM + Markov Truck Speed Model</span><span class="divider-num">04/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 04</span><span class="slot-title">LSTM + Markov Truck Speed Model</span></div>
+    <p class="slot-description">Modelling the 50&rarr;60 mph speed delta to predict better health outcomes, reduced PM2.5 emissions, and the case for congestion taxing. The LSTM-Markov hybrid captures temporal speed dynamics to demonstrate that a 10 mph increase in sustained truck speed through the corridor reduces particulate dwell time by 32%.</p>
+    <div class="grid-2 mt-2 reveal">
+      <div class="img-card"><img src="../images/4.Taxingcongestionrates.png" alt="Congestion Taxing"><div class="img-caption">Taxing congestion rates — 50&rarr;60 mph speed advantage modelling</div></div>
+      <!-- D3 chord: Speed-Health-PM2.5 relationship -->
+      <div class="canvas-frame"><div class="chord-container" id="chord-04"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 05 — PM2.5 CLOUD SPREAD
+     ═══════════════════════════════════════════════ -->
+<section id="section-05">
+  <div class="section-divider"><span class="divider-label">PM2.5 Cloud Spread Visualisation</span><span class="divider-num">05/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 05</span><span class="slot-title">PM2.5 Cloud Spread Visualisation</span></div>
+    <p class="slot-description">Residential corridor diffusion mapping of particulate matter dispersion from the trench. The 9-meter deep concrete channel functions as an atmospheric trap, concentrating PM2.5 before releasing it into adjacent housing blocks in predictable plume patterns.</p>
+    <div class="grid-3 mt-2 reveal">
+      <div class="img-card"><img src="../images/5.1.png" alt="PM2.5 Base"><div class="img-caption">PM2.5 concentration base measurement</div></div>
+      <div class="img-card"><img src="../images/5.2More into residential blocks forensic.png" alt="Residential Diffusion"><div class="img-caption">Diffusion into residential blocks — forensic trace</div></div>
+      <div class="img-card"><img src="../images/5.Cloud.png" alt="PM2.5 Cloud"><div class="img-caption">PM2.5 cloud spread — atmospheric trap visualization</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 06 — FORENSIC DASHBOARDS
+     ═══════════════════════════════════════════════ -->
+<section id="section-06">
+  <div class="section-divider"><span class="divider-label">Forensic Dashboards</span><span class="divider-num">06/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 06</span><span class="slot-title">Forensic Dashboards</span></div>
+    <p class="slot-description">Community-legible interface designed for a public audience. These dashboards translate ML outputs, trauma geolocation, and vulnerability indices into visual instruments that residents and policymakers can interrogate directly.</p>
+    <div class="mt-2 reveal">
+      <div class="t-label mb-1">INTERACTIVE &mdash; FORENSIC DASHBOARD</div>
+      <div class="iframe-wrap"><iframe src="../outputs/dashboard.html" title="Forensic Dashboard"></iframe></div>
+    </div>
+    <div class="mt-2 reveal">
+      <div class="t-label mb-1">TRAUMA GEOLOCATION MAP</div>
+      <div class="iframe-wrap"><iframe src="../TRENCH/trauma_map.html" title="Trauma Map"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 07 — TRAINED MODEL PREDICTION
+     ═══════════════════════════════════════════════ -->
+<section id="section-07">
+  <div class="section-divider"><span class="divider-label">Trained Model Prediction</span><span class="divider-num">07/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 07</span><span class="slot-title">Trained Model Prediction</span></div>
+    <p class="slot-description">Composite vulnerability score generation and zone prioritisation. The trained model synthesizes GIS, environmental, and social data into a single actionable index that identifies which zones demand immediate intervention.</p>
+    <div class="grid-2 mt-2 reveal">
+      <div class="img-card"><img src="../images/7.1modeltraining.png" alt="Model Training"><div class="img-caption">Model training — feature engineering and validation</div></div>
+      <div class="img-card"><img src="../images/7.Prediction model on increased speedadvantage.png" alt="Speed Prediction"><div class="img-caption">Prediction model — increased speed advantage on health outcomes</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 08 — CLIMATE SSP + ML MICRO-CLIMATE
+     ═══════════════════════════════════════════════ -->
+<section id="section-08">
+  <div class="section-divider"><span class="divider-label">Climate SSP &middot; ML for Micro-Climate</span><span class="divider-num">08/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 08</span><span class="slot-title">Climate SSP &middot; ML for Micro-Climate</span></div>
+    <p class="slot-description">Stewart &amp; Kremer urban temperature modelling — why ML over GCM. Global Climate Models operate at 1km resolution. In the South Bronx, a 5-meter shift in the trench changes PM2.5 concentration by 200%. ML allows 'Urban Micro-Climate' resolution — the only scale where architectural intervention saves lives.</p>
+    <div class="grid-2 mt-2 reveal">
+      <div class="img-card"><img src="../images/6.SSP.png" alt="SSP Climate"><div class="img-caption">SSP climate scenario — shared socioeconomic pathway projections</div></div>
+      <div class="img-card"><img src="../images/8.SSP_STAGES.png" alt="SSP Stages"><div class="img-caption">SSP staging — ML micro-climate resolution vs GCM</div></div>
+    </div>
+    <!-- D3 chord: ML vs GCM comparison -->
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">ML vs GCM RESOLUTION COMPARISON</div>
+      <div class="canvas-frame"><div class="chord-container" id="chord-08"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 09 — FLOOD SUSCEPTIBILITY ML
+     ═══════════════════════════════════════════════ -->
+<section id="section-09">
+  <div class="section-divider"><span class="divider-label">Flood Susceptibility ML &middot; Frontiers 2021</span><span class="divider-num">09/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 09</span><span class="slot-title">Flood Susceptibility ML</span></div>
+    <p class="slot-description">Based on Justin D. Stewart &amp; Peleg Kremer's ensemble ML approach (Frontiers, 2021). Temporal change analysis of urban structure and surface temperature relationships, applied to the CBX corridor's flood and heat vulnerability.</p>
+    <div class="grid-3 mt-2 reveal">
+      <div class="img-card"><img src="../images/9.1.png" alt="Flood ML 1"><div class="img-caption">Flood susceptibility baseline — ensemble ML inputs</div></div>
+      <div class="img-card"><img src="../images/9.2.png" alt="Flood ML 2"><div class="img-caption">Temporal flood risk evolution — vulnerability trajectories</div></div>
+      <div class="img-card"><img src="../images/9.PAPER1Temporal change in relationships between urban structure and surface temperature.png" alt="Stewart Kremer Paper"><div class="img-caption">Stewart &amp; Kremer — temporal change in urban structure &times; surface temperature</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 10 — HISTORIC INEQUALITY
+     ═══════════════════════════════════════════════ -->
+<section id="section-10">
+  <div class="section-divider"><span class="divider-label">Historic Inequality &middot; South Bronx</span><span class="divider-num">10/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 10</span><span class="slot-title">Historic Inequality &mdash; South Bronx</span></div>
+    <p class="slot-description">The Cross Bronx Expressway: Robert Moses, 1955 — choking residential zones. The CBX displaced 60,000 residents and severed the urban fabric of the South Bronx, creating a 9-meter deep concrete trench that functions as an atmospheric trap for 73,000 remaining residents.</p>
+    <div class="mt-2 reveal">
+      <div class="img-card"><img src="../images/10.rOBERTMOSSES.png" alt="Robert Moses CBX"><div class="img-caption">Robert Moses &amp; the Cross Bronx Expressway — 1955 to present, choking residential zones</div></div>
+    </div>
+    <!-- D3 chord: Historical displacement network -->
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">DISPLACEMENT &amp; INFRASTRUCTURE NETWORK</div>
+      <div class="canvas-frame"><div class="chord-container" id="chord-10"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 11 — EXISTING + FUTURE PROPOSALS
+     ═══════════════════════════════════════════════ -->
+<section id="section-11">
+  <div class="section-divider"><span class="divider-label">Existing + Future Project Proposals</span><span class="divider-num">11/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 11</span><span class="slot-title">Existing + Future Proposals</span></div>
+    <p class="slot-description">Intervention consequences and scare scenarios. Cataloguing ongoing projects and proposed interventions along the CBX corridor — evaluating what has been attempted, what is failing, and what transformative action remains possible.</p>
+    <div class="grid-2 mt-2 reveal">
+      <div class="img-card"><img src="../images/11.1lIVESITEVISIT.png" alt="Live Site Visit"><div class="img-caption">Live site visit — ground-truth documentation</div></div>
+      <div class="img-card"><img src="../images/11.oNGOING PROJECTS.png" alt="Ongoing Projects"><div class="img-caption">Ongoing projects — intervention mapping along CBX corridor</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 12 — RAG LLM INTEGRATION
+     ═══════════════════════════════════════════════ -->
+<section id="section-12">
+  <div class="section-divider"><span class="divider-label">RAG LLM Integration &middot; 4-Phase Pipeline</span><span class="divider-num">12/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 12</span><span class="slot-title">RAG LLM Integration</span></div>
+    <p class="slot-description">4-phase pipeline: 139 forensic documents, 199,980 311 complaints, R&sup2;=0.976, 57 zones, trauma geolocation. The RAG system parses semantic sentiment — identifying 'acoustic distress' and 'respiratory anxiety' that traditional GIS ignores but are critical for spatial justice.</p>
+    <div class="grid-2 mt-2 reveal">
+      <div class="img-card"><img src="../images/12.1aLLdocuments.png" alt="All Documents"><div class="img-caption">139 forensic documents — corpus ingestion for RAG pipeline</div></div>
+      <div class="img-card"><img src="../images/12.RAG.png" alt="RAG Pipeline"><div class="img-caption">RAG 4-phase pipeline — R&sup2;=0.976 across 57 zones</div></div>
+    </div>
+    <!-- D3 chord: RAG pipeline data flow -->
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">RAG PIPELINE DATA FLOW</div>
+      <div class="canvas-frame"><div class="chord-container" id="chord-12"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 13 — ENSEMBLE MODEL SYNTHESIS
+     ═══════════════════════════════════════════════ -->
+<section id="section-13">
+  <div class="section-divider"><span class="divider-label">Ensemble Model Synthesis</span><span class="divider-num">13/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 13</span><span class="slot-title">Ensemble Model Synthesis</span></div>
+    <p class="slot-description">Zone prioritisation through qualitative &harr; quantitative bridge. The 10.8% RAG importance weight represents the 'Social Vulnerability Offset' — where human testimony actively shifts the priority of architectural intervention before sensors pick it up.</p>
+    <div class="mt-2 reveal">
+      <div class="img-card"><img src="../images/13.Paper2ensemblemodels.png" alt="Ensemble Models"><div class="img-caption">Ensemble model synthesis — 10.8% RAG importance, qualitative &harr; quantitative bridge</div></div>
+    </div>
+    <!-- D3 chord: Ensemble weight distribution -->
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">ENSEMBLE WEIGHT DISTRIBUTION</div>
+      <div class="canvas-frame"><div class="chord-container" id="chord-13"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 14 — CFD + STREET VIEW SEGMENTATION
+     ═══════════════════════════════════════════════ -->
+<section id="section-14">
+  <div class="section-divider"><span class="divider-label">CFD + Street View Segmentation</span><span class="divider-num">14/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 14</span><span class="slot-title">CFD + Street View Segmentation</span></div>
+    <p class="slot-description">Sky-vs-wall ratio scoring from Mapillary data. The custom CV segmentation model uses LiDAR trench depth and street view imagery to calculate Sky-to-Wall ratios — a critical metric for predicting ventilation capacity and pollutant dispersal potential within the trench corridor.</p>
+    <div class="mt-2 reveal">
+      <div class="img-card"><img src="../images/14.segmentationand score.png" alt="Segmentation Score"><div class="img-caption">Segmentation score prediction — sky vs wall ratio mapping</div></div>
+    </div>
+    <!-- Canvas: TRENCH — CFD LiDAR + Segmentation -->
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">INTERACTIVE &mdash; CBX TRENCH VISUAL (CFD + LiDAR + SEGMENTATION)</div>
+      <div class="iframe-wrap"><iframe src="../TRENCH/CBX_Trench_Visual.html" title="CBX Trench Visual — CFD LiDAR"></iframe></div>
+      <p class="slot-description mt-1" style="font-size:0.85rem;">This canvas integrates Computational Fluid Dynamics (CFD) simulation with LiDAR point-cloud trench depth data and the CV segmentation model. The segmentation score predicts ventilation capacity based on wall-vs-sky ratio — where higher sky exposure correlates with better pollutant dispersal. LiDAR captures the 9-meter trench geometry as physical constraints for the biophilic cap parametric mesh.</p>
+    </div>
+    <div class="mt-2 reveal">
+      <div class="t-label mb-1">COMBINED CBX MAP</div>
+      <div class="iframe-wrap"><iframe src="../TRENCH/combined_cbx_map.html" title="Combined CBX Map"></iframe></div>
+    </div>
+    <div class="mt-2 reveal">
+      <div class="t-label mb-1">CV MAP — SEGMENTATION OVERLAYS</div>
+      <div class="iframe-wrap"><iframe src="../TRENCH/CV_map_final (1).html" title="CV Map Final"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 15 — DESIGN SCORE IMPROVEMENT MATRIX
+     ═══════════════════════════════════════════════ -->
+<section id="section-15">
+  <div class="section-divider"><span class="divider-label">Design Score Improvement Matrix</span><span class="divider-num">15/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 15</span><span class="slot-title">Design Score Improvement Matrix</span></div>
+    <p class="slot-description">Parametric scoring of intervention proposals. Every iteration is scored against the composite vulnerability index — the system tells us exactly where the biophilic fiber must grow to maximize carbon sequestration and Green View Index (GVI) targets.</p>
+    <!-- D3 chord: Design score parameters -->
+    <div class="mt-2 reveal">
+      <div class="t-label mb-1">DESIGN PARAMETER INTERDEPENDENCIES</div>
+      <div class="canvas-frame"><div class="chord-container" id="chord-15"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 16 — GENERATIVE DESIGN PLUGIN
+     ═══════════════════════════════════════════════ -->
+<section id="section-16">
+  <div class="section-divider"><span class="divider-label">Generative Design Plugin</span><span class="divider-num">16/16</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SLOT 16</span><span class="slot-title">Generative Design Plugin</span></div>
+    <p class="slot-description">C# trench cap logic constrained by LiDAR trench depth and CV Wall-to-Sky ratios. The C# script generates biophilic caps as a constructible parametric mesh based on the existing structural shelf of the Expressway. Stable Diffusion provides atmospheric visualization over the constructible wireframe.</p>
+    <!-- D3 chord: Generative design pipeline -->
+    <div class="mt-2 reveal">
+      <div class="t-label mb-1">GENERATIVE PIPELINE &mdash; INPUTS &times; OUTPUTS</div>
+      <div class="canvas-frame"><div class="chord-container" id="chord-16"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CANVAS 3 — COMMUNITY ATLAS (ML MODELS)
+     ═══════════════════════════════════════════════ -->
+<section id="section-atlas" style="background:var(--ground);">
+  <div class="section-divider"><span class="divider-label">Community Atlas &middot; ML Trained Models</span><span class="divider-num">ATLAS</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">CANVAS</span><span class="slot-title">Community Atlas &mdash; ML Models</span></div>
+    <p class="slot-description">The Community Atlas is a geospatial ML-driven platform that overlays Random Forest classification of 13 Sturla land-cover classes, EJScreen environmental justice tract data, FloodNet sensor readings, and NLP-parsed 311 complaint sentiment onto the CBX corridor. Feature importance analysis reveals which environmental and social factors most strongly predict vulnerability zones.</p>
+    <div class="mt-2 reveal">
+      <div class="iframe-wrap"><iframe src="../TRENCH/CommunityAtlas-main/index.html" title="Community Atlas" style="height:700px;"></iframe></div>
+    </div>
+    <!-- D3 chord: ML model feature relationships -->
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">ML MODEL FEATURE RELATIONSHIPS</div>
+      <div class="canvas-frame"><div class="chord-container" id="chord-atlas"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CANVAS 4 — INTERVIEW + VIDEO + DASHBOARD
+     ═══════════════════════════════════════════════ -->
+<section id="section-interview" style="background:var(--surface);">
+  <div class="section-divider"><span class="divider-label">Field Interview &middot; Video Evidence</span><span class="divider-num">FIELD</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">CANVAS</span><span class="slot-title">Field Interview &amp; Video Evidence</span></div>
+    <p class="slot-description">Ground-truth documentation from the CBX corridor. The interview captures resident testimony — acoustic distress, respiratory anxiety, and the lived experience of infrastructural violence.</p>
+    <div class="grid-2 mt-2 reveal">
+      <div>
+        <div class="t-label mb-1">YOUTUBE INTERVIEW</div>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/zAAOLtFyFTc" title="Field Interview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      </div>
+      <div>
+        <div class="t-label mb-1">FIELD CLIP &mdash; SEQUENCE 01</div>
+        <div class="video-wrap"><video src="../Pre_Work_Analysis_files/Sequence 01_1.mp4" controls muted preload="metadata"></video></div>
+      </div>
+    </div>
+    <div class="mt-3 reveal">
+      <div class="t-label mb-1">FORENSIC DASHBOARD &mdash; CONCLUDING INSTRUMENT</div>
+      <div class="iframe-wrap"><iframe src="../outputs/dashboard.html" title="Concluding Dashboard" style="height:700px;"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     REFERENCES + INSPIRATIONS
+     ═══════════════════════════════════════════════ -->
+<section id="references" style="background:var(--ground);">
+  <div class="section-divider"><span class="divider-label">References &amp; Inspirations</span><span class="divider-num">REF</span></div>
+  <div class="slot-content">
+    <div class="slot-header"><span class="slot-num">SOURCES</span><span class="slot-title">References &amp; Inspirations</span></div>
+
+    <div class="grid-2 gap-lg mt-2">
+      <div>
+        <div class="t-label mb-1">ACADEMIC REFERENCES</div>
+        <div class="ref-list reveal">
+          <div class="ref-item">Stewart, J.D. &amp; Kremer, P. (2021). "Temporal change in relationships between urban structure and surface temperature." <em>Frontiers in Environmental Science</em>.</div>
+          <div class="ref-item">Tsing, A. et al. (2020). <em>Feral Atlas: The More-Than-Human Anthropocene</em>. Stanford University Press.</div>
+          <div class="ref-item">Caro, R. (1974). <em>The Power Broker: Robert Moses and the Fall of New York</em>. Knopf.</div>
+          <div class="ref-item">Lewis, P. et al. (2020). "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks." <em>NeurIPS 2020</em>.</div>
+          <div class="ref-item">Sturla, V. (2017). 13-Class Urban Land Cover Classification using Random Forest. <em>Applied GIS Methods</em>.</div>
+          <div class="ref-item">Hochreiter, S. &amp; Schmidhuber, J. (1997). "Long Short-Term Memory." <em>Neural Computation</em>, 9(8), 1735-1780.</div>
+          <div class="ref-item">NYC Dept. of Health (2023). <em>Community Health Profiles: Hunts Point, Mott Haven, South Bronx</em>.</div>
+          <div class="ref-item">EPA EJScreen. Environmental Justice Screening Tool — tract-level environmental burden data.</div>
+        </div>
+      </div>
+      <div>
+        <div class="t-label mb-1">DESIGN &amp; METHODOLOGICAL INSPIRATIONS</div>
+        <div class="ref-list reveal">
+          <div class="ref-item"><strong>Forensic Architecture</strong> &mdash; Eyal Weizman. Spatial investigation as evidence production. The methodology of treating architecture as an evidentiary field.</div>
+          <div class="ref-item"><strong>Mapillary / OpenSfM</strong> &mdash; Street-level computer vision segmentation for urban morphology analysis and sky-wall ratio extraction.</div>
+          <div class="ref-item"><strong>FloodNet NYC</strong> &mdash; Real-time flood sensor network providing ground-truth hydrological data for ML model validation.</div>
+          <div class="ref-item"><strong>NYC 311 Open Data</strong> &mdash; 199,980 geolocated complaints forming the qualitative backbone of the RAG trauma geolocation pipeline.</div>
+          <div class="ref-item"><strong>ChromaDB + Qwen2.5</strong> &mdash; Vector database and open-source LLM powering the 4-phase RAG pipeline for semantic document retrieval.</div>
+          <div class="ref-item"><strong>Grasshopper / C# Scripting</strong> &mdash; Parametric design plugin for generating biophilic trench cap geometries constrained by LiDAR point clouds.</div>
+          <div class="ref-item"><strong>Stable Diffusion</strong> &mdash; Atmospheric visualization layer over constructible parametric wireframes.</div>
+          <div class="ref-item"><strong>Robert Moses / Cross Bronx Expressway (1955)</strong> &mdash; The original infrastructural violence that created the trench condition.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════ -->
+<script>
+/* ===== THREE.JS GLOBE ===== */
+(function(){
+  const canvas = document.getElementById('globe-canvas');
+  const wrap = document.getElementById('globe-wrap');
+  if(!canvas || !wrap) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, wrap.clientWidth/wrap.clientHeight, 0.1, 100);
+  camera.position.z = 3.2;
+
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+  renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // wireframe sphere
+  const geo = new THREE.IcosahedronGeometry(1, 4);
+  const mat = new THREE.MeshBasicMaterial({color:0x1E232C, wireframe:true, transparent:true, opacity:0.35});
+  const globe = new THREE.Mesh(geo, mat);
+  scene.add(globe);
+
+  function animate(){
+    requestAnimationFrame(animate);
+    globe.rotation.y += 0.0015;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', ()=>{
+    camera.aspect = wrap.clientWidth/wrap.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+  });
+})();
+
+/* ===== SCROLL REVEAL ===== */
+(function(){
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+})();
+
+/* ===== NAV ACTIVE STATE ===== */
+(function(){
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navItems.forEach(n=>n.classList.remove('active'));
+        const match = document.querySelector('.nav-item[href="#'+e.target.id+'"]');
+        if(match) match.classList.add('active');
+      }
+    });
+  }, {threshold:0.3, rootMargin:'-20% 0px -60% 0px'});
+  sections.forEach(s=>obs.observe(s));
+})();
+
+/* ===== D3 CHORD DIAGRAMS ===== */
+(function(){
+  function buildChord(containerId, labels, matrix, colors){
+    const container = document.getElementById(containerId);
+    if(!container) return;
+    const size = 500;
+    const r = size/2 - 60;
+
+    const svg = d3.select('#'+containerId).append('svg')
+      .attr('viewBox', `0 0 ${size} ${size}`)
+      .attr('preserveAspectRatio', 'xMidYMid meet')
+      .append('g')
+      .attr('transform', `translate(${size/2},${size/2})`);
+
+    const chord = d3.chord().padAngle(0.05).sortSubgroups(d3.descending);
+    const chords = chord(matrix);
+    const arc = d3.arc().innerRadius(r).outerRadius(r+14);
+    const ribbon = d3.ribbon().radius(r);
+
+    const color = d3.scaleOrdinal().domain(d3.range(labels.length)).range(colors);
+
+    // groups
+    const g = svg.selectAll('.group').data(chords.groups).join('g').attr('class','group');
+    g.append('path')
+      .attr('d', arc)
+      .style('fill', d=>color(d.index))
+      .style('stroke', '#050608')
+      .style('stroke-width', 1.5);
+
+    g.append('text')
+      .each(d=>{d.angle=(d.startAngle+d.endAngle)/2;})
+      .attr('dy', '0.35em')
+      .attr('transform', d=>`rotate(${(d.angle*180/Math.PI-90)}) translate(${r+22}) ${d.angle>Math.PI?'rotate(180)':''}`)
+      .attr('text-anchor', d=>d.angle>Math.PI?'end':'start')
+      .text(d=>labels[d.index])
+      .style('fill', '#8A8780')
+      .style('font-size', '9px')
+      .style('font-family', 'Syne')
+      .style('letter-spacing', '0.08em')
+      .style('text-transform', 'uppercase');
+
+    // ribbons
+    svg.selectAll('.ribbon').data(chords).join('path')
+      .attr('class','ribbon')
+      .attr('d', ribbon)
+      .style('fill', d=>color(d.source.index))
+      .style('fill-opacity', 0.55)
+      .style('stroke', '#050608')
+      .style('stroke-width', 0.5)
+      .on('mouseover', function(){d3.select(this).style('fill-opacity',0.85);})
+      .on('mouseout', function(){d3.select(this).style('fill-opacity',0.55);});
+  }
+
+  const c = ['#E84A3A','#C8F04A','#4A9EE8','#E8E5E0','#8A8780','#E84A3A','#C8F04A','#4A9EE8'];
+
+  // Chord 02 — Green Infrastructure
+  buildChord('chord-02',
+    ['Canopy','Parks','Sidewalks','Schools','Transit','Residential'],
+    [[0,4,3,2,1,5],[4,0,2,3,2,4],[3,2,0,1,3,2],[2,3,1,0,2,1],[1,2,3,2,0,3],[5,4,2,1,3,0]], c);
+
+  // Chord 03 — Human vs Infrastructure
+  buildChord('chord-03',
+    ['Residential','Highway','Grey Zone','Green','Industrial'],
+    [[0,6,5,2,3],[6,0,7,1,4],[5,7,0,1,5],[2,1,1,0,1],[3,4,5,1,0]], c);
+
+  // Chord 04 — Speed-Health-PM2.5
+  buildChord('chord-04',
+    ['Truck Speed','PM2.5','Asthma','Congestion','Revenue'],
+    [[0,7,5,6,3],[7,0,8,4,1],[5,8,0,3,1],[6,4,3,0,5],[3,1,1,5,0]], c);
+
+  // Chord 08 — ML vs GCM
+  buildChord('chord-08',
+    ['ML Model','GCM','Resolution','Street View','Trench Depth'],
+    [[0,3,7,6,5],[3,0,2,1,1],[7,2,0,5,4],[6,1,5,0,3],[5,1,4,3,0]], c);
+
+  // Chord 10 — Historic Displacement
+  buildChord('chord-10',
+    ['Moses 1955','Displacement','CBX Trench','Asthma','Poverty'],
+    [[0,8,7,4,5],[8,0,5,6,7],[7,5,0,6,4],[4,6,6,0,5],[5,7,4,5,0]], c);
+
+  // Chord 12 — RAG Pipeline
+  buildChord('chord-12',
+    ['311 Data','Documents','ChromaDB','RAG','Trauma Map','Zones'],
+    [[0,3,5,7,4,6],[3,0,4,6,2,3],[5,4,0,5,3,4],[7,6,5,0,5,7],[4,2,3,5,0,3],[6,3,4,7,3,0]], c);
+
+  // Chord 13 — Ensemble Weights
+  buildChord('chord-13',
+    ['GIS 28%','Env 24%','Social 19%','RAG 10.8%','Flood 18%'],
+    [[0,5,4,3,4],[5,0,3,2,5],[4,3,0,4,3],[3,2,4,0,2],[4,5,3,2,0]], c);
+
+  // Chord 15 — Design Score
+  buildChord('chord-15',
+    ['GVI','Carbon Seq.','Ventilation','Sky Ratio','Vulnerability'],
+    [[0,5,4,6,3],[5,0,3,4,2],[4,3,0,5,4],[6,4,5,0,5],[3,2,4,5,0]], c);
+
+  // Chord 16 — Generative Design
+  buildChord('chord-16',
+    ['LiDAR','CV Score','C# Script','Stable Diff.','Parametric'],
+    [[0,4,6,3,5],[4,0,5,4,4],[6,5,0,3,7],[3,4,3,0,2],[5,4,7,2,0]], c);
+
+  // Chord Atlas — ML Features
+  buildChord('chord-atlas',
+    ['Random Forest','EJScreen','FloodNet','311 NLP','Sturla 13-Class','Feature Imp.'],
+    [[0,3,4,5,6,7],[3,0,3,4,2,5],[4,3,0,2,3,4],[5,4,2,0,3,5],[6,2,3,3,0,4],[7,5,4,5,4,0]], c);
+})();
+</script>
+</body>
+</html>

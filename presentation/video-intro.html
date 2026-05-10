@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRENCH — Computational Design Practice for Environmental Justice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #050508;
+  --deep: #0a0b10;
+  --surface: #111318;
+  --border: #1a1c24;
+  --text-dim: #3a3d48;
+  --text-mid: #6b6e7a;
+  --text-light: #c8c5be;
+  --text-bright: #eae7e0;
+  --thermal-blue: #0088ff;
+  --thermal-red: #ff2200;
+  --thermal-orange: #ff6b00;
+  --signal: #ff3d2e;
+  --lime: #00e87a;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--black);
+}
+
+body {
+  background: #000;
+  color: var(--text-light);
+  font-family: 'Syne', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  max-width: 540px;
+  margin: 0 auto;
+  background-color: var(--black);
+  position: relative;
+  box-shadow: 0 0 80px rgba(0,0,0,0.9);
+}
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── PROGRESS BAR ── */
+.progress-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 1000;
+  background: transparent;
+}
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--thermal-blue), var(--signal));
+  transition: width 0.1s linear;
+}
+
+/* ── NAV DOTS ── */
+.nav-dots {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.nav-dot.active {
+  background: var(--signal);
+  box-shadow: 0 0 12px rgba(255, 61, 46, 0.4);
+  transform: scale(1.5);
+}
+.nav-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.nav-dot:hover::after { opacity: 1; }
+
+/* ── SECTION BASE ── */
+.section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── PARALLAX IMAGE ── */
+.parallax-bg {
+  position: absolute;
+  inset: -20%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ══════════════════════════════════════════
+   SECTION 1 — HERO
+   ══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero .parallax-bg {
+  background-image: url('8Design/sat_34.png');
+  opacity: 0.12;
+  filter: grayscale(0.6) contrast(1.2);
+}
+.hero-title {
+  font-size: clamp(80px, 18vw, 260px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.85;
+  text-align: center;
+  color: var(--text-bright);
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: difference;
+}
+.hero-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100px) rotateX(40deg);
+  animation: titleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-title span:nth-child(1) { animation-delay: 0.1s; }
+.hero-title span:nth-child(2) { animation-delay: 0.18s; }
+.hero-title span:nth-child(3) { animation-delay: 0.26s; }
+.hero-title span:nth-child(4) { animation-delay: 0.34s; }
+.hero-title span:nth-child(5) { animation-delay: 0.42s; }
+.hero-title span:nth-child(6) { animation-delay: 0.50s; }
+
+@keyframes titleReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14px, 2vw, 22px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-mid);
+  letter-spacing: 0.08em;
+  margin-top: 40px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeUpCenter 1.2s 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  position: relative;
+  z-index: 2;
+}
+@keyframes fadeUpCenter {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-author {
+  font-size: clamp(10px, 2.5vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-bright);
+  margin-top: 32px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.hero-meta {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 48px;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 1s 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-meta span {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.hero-meta span strong {
+  color: var(--text-mid);
+  font-weight: 600;
+}
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp 1s 2.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-scroll-cue .line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--signal), transparent);
+  margin: 0 auto;
+  animation: scrollPulse 2s infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(30px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── DIVIDER LINE ── */
+.divider {
+  width: 100%;
+  padding: 0 10vw;
+}
+.divider-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ══════════════════════════════════════════
+   SECTION 2 — THE CUT (stats)
+   ══════════════════════════════════════════ */
+.cut-section {
+  min-height: 100vh;
+  padding: 10vh 8vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6vw;
+  align-items: center;
+  position: relative;
+}
+.cut-section .parallax-bg {
+  background-image: url('8Design/overlay_34.jpg');
+  opacity: 0.08;
+  filter: saturate(0.4);
+}
+.cut-text {
+  position: relative;
+  z-index: 2;
+}
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.cut-text h2 {
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--text-bright);
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+.cut-text h2 em {
+  font-style: normal;
+  color: var(--signal);
+}
+.cut-text p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 1.6vw, 22px);
+  line-height: 1.7;
+  color: var(--text-mid);
+  max-width: 520px;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  position: relative;
+  z-index: 2;
+}
+.stat-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--thermal-blue), var(--signal));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stat-card.visible::before {
+  transform: scaleX(1);
+}
+.stat-number {
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 800;
+  color: var(--text-bright);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-number .unit {
+  font-size: 0.4em;
+  color: var(--text-dim);
+  font-weight: 500;
+  vertical-align: super;
+}
+.stat-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 3 — FULL BLEED IMAGE
+   ══════════════════════════════════════════ */
+.full-bleed {
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+.full-bleed .parallax-bg {
+  inset: -30%;
+}
+.full-bleed-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 6vh 8vw;
+  background: linear-gradient(to top, rgba(5,5,8,0.95) 0%, rgba(5,5,8,0.3) 40%, transparent 70%);
+}
+.full-bleed-caption {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  max-width: 600px;
+}
+.full-bleed-caption strong {
+  color: var(--text-mid);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 4 — CV SEGMENTATION
+   ══════════════════════════════════════════ */
+.cv-section {
+  min-height: 100vh;
+  padding: 12vh 8vw;
+  position: relative;
+}
+.cv-header {
+  margin-bottom: 8vh;
+  position: relative;
+  z-index: 2;
+}
+.cv-header h2 {
+  font-size: clamp(28px, 4.5vw, 56px);
+  font-weight: 800;
+  color: var(--text-bright);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.cv-header h2 .accent {
+  color: var(--lime);
+}
+.cv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  position: relative;
+  z-index: 2;
+}
+.cv-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/10;
+  cursor: crosshair;
+}
+.cv-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s;
+}
+.cv-frame:hover img {
+  transform: scale(1.06);
+}
+.cv-frame .frame-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 16px 12px;
+  background: linear-gradient(to top, rgba(5,5,8,0.9), transparent);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cv-frame:hover .frame-label {
+  transform: translateY(0);
+}
+.cv-frame .site-id {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--signal);
+  letter-spacing: 0.1em;
+  background: rgba(5,5,8,0.7);
+  padding: 4px 8px;
+  backdrop-filter: blur(8px);
+}
+
+/* ══════════════════════════════════════════
+   SECTION 5 — DEPTH + TRENCH ANALYSIS
+   ══════════════════════════════════════════ */
+.depth-section {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+.depth-col {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+.depth-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+.depth-col .depth-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 6vh 5vw;
+  max-width: 480px;
+}
+.depth-col .depth-overlay h3 {
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 16px;
+}
+.depth-col .depth-overlay p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.7;
+  color: var(--text-mid);
+}
+.depth-number {
+  font-size: clamp(60px, 8vw, 120px);
+  font-weight: 800;
+  color: rgba(255,255,255,0.06);
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  line-height: 1;
+  z-index: 3;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 6 — SEGMENTATION PDF / DATA
+   ══════════════════════════════════════════ */
+.data-section {
+  min-height: 100vh;
+  padding: 12vh 8vw;
+  position: relative;
+  background: var(--deep);
+}
+.data-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(0,136,255,0.04), transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(255,61,46,0.03), transparent 50%);
+  pointer-events: none;
+}
+.data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 8vh;
+  position: relative;
+  z-index: 2;
+}
+.data-header h2 {
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 800;
+  color: var(--text-bright);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.data-header h2 .accent { color: var(--thermal-blue); }
+.data-header .pipe-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding-bottom: 6px;
+}
+.data-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  position: relative;
+  z-index: 2;
+}
+.data-card {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.data-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.data-card:hover img {
+  transform: scale(1.03);
+}
+.data-card-label {
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+}
+.data-card-label h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+.data-card-label p {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 7 — ENSEMBLE RESULTS
+   ══════════════════════════════════════════ */
+.ensemble-section {
+  min-height: 100vh;
+  padding: 12vh 8vw;
+  position: relative;
+}
+.ensemble-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6vw;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.ensemble-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bar-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  width: 140px;
+  text-align: right;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+.bar-track {
+  flex: 1;
+  height: 28px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--thermal-blue), var(--thermal-orange));
+  width: 0%;
+  transition: width 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.bar-fill::after {
+  content: attr(data-value);
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: 0.05em;
+}
+.bar-fill.narrow::after {
+  right: -40px;
+  color: var(--text-dim);
+}
+.ensemble-text {
+  position: relative;
+  z-index: 2;
+}
+.ensemble-text h2 {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 800;
+  color: var(--text-bright);
+  line-height: 1.1;
+  margin-bottom: 28px;
+  letter-spacing: -0.02em;
+}
+.ensemble-text h2 .r2 {
+  color: var(--lime);
+}
+.ensemble-text p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin-bottom: 16px;
+}
+.zone-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.zone-badge {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  color: var(--text-mid);
+  background: rgba(255,255,255,0.02);
+}
+.zone-badge .score {
+  color: var(--signal);
+  margin-left: 6px;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 8 — INTERVENTION / GENERATIVE
+   ══════════════════════════════════════════ */
+.intervention-section {
+  position: relative;
+  overflow: hidden;
+}
+.intervention-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+}
+.compare-pane {
+  position: relative;
+  overflow: hidden;
+}
+.compare-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.compare-pane .compare-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 32px 24px;
+  background: linear-gradient(to top, rgba(5,5,8,0.92), transparent);
+  z-index: 2;
+}
+.compare-pane .year-tag {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.compare-pane:first-child .year-tag { color: var(--signal); }
+.compare-pane:last-child .year-tag { color: var(--lime); }
+.compare-pane .compare-title {
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 700;
+  color: var(--text-bright);
+}
+.intervention-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: var(--signal);
+  z-index: 3;
+  transform: translateX(-50%);
+}
+.intervention-divider::before {
+  content: 'VS';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--black);
+  background: var(--signal);
+  padding: 8px 10px;
+  z-index: 4;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 9 — TRENCH HEATMAPS
+   ══════════════════════════════════════════ */
+.heatmap-section {
+  min-height: 100vh;
+  padding: 12vh 8vw;
+  position: relative;
+}
+.heatmap-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  margin-top: 6vh;
+  position: relative;
+  z-index: 2;
+}
+.heatmap-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.heatmap-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.heatmap-card:hover img {
+  transform: scale(1.05);
+}
+.heatmap-card .hm-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 14px 10px;
+  background: linear-gradient(to top, rgba(5,5,8,0.9), transparent);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════
+   SECTION 10 — CLOSING
+   ══════════════════════════════════════════ */
+.closing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8vh 10vw;
+  position: relative;
+}
+.closing .parallax-bg {
+  background-image: url('8Design/Gemini_Generated_45.png');
+  opacity: 0.06;
+  filter: saturate(0.3);
+}
+.closing-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3.5vw, 48px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-light);
+  line-height: 1.5;
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 48px;
+}
+.closing-quote em {
+  font-style: normal;
+  color: var(--signal);
+}
+.closing-attr {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  position: relative;
+  z-index: 2;
+  margin-bottom: 64px;
+}
+.closing-title {
+  font-size: clamp(48px, 12vw, 180px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: rgba(234,231,224,0.06);
+  line-height: 0.85;
+  position: relative;
+  z-index: 2;
+}
+.closing-credits {
+  position: relative;
+  z-index: 2;
+  margin-top: 48px;
+  display: flex;
+  gap: 48px;
+}
+.closing-credits span {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.closing-credits span strong {
+  display: block;
+  color: var(--text-mid);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ══════════════════════════════════════════
+   PORTRAIT OVERRIDES — all grids stacked
+   ══════════════════════════════════════════ */
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
+
+/* All two-column grids → single column */
+.cut-section {
+  grid-template-columns: 1fr !important;
+  gap: 32px !important;
+  padding: 60px 24px !important;
+}
+.depth-section {
+  grid-template-columns: 1fr !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.depth-col { min-height: 50vh; }
+.data-duo {
+  grid-template-columns: 1fr !important;
+  gap: 2px !important;
+}
+.data-header {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+.ensemble-grid {
+  grid-template-columns: 1fr !important;
+  gap: 32px !important;
+}
+.cv-grid {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2px !important;
+}
+.heatmap-section {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  padding-top: 60px !important;
+}
+.heatmap-section > .section-label,
+.heatmap-section > h2 {
+  width: 100% !important;
+}
+.heatmap-section > h2 {
+  font-size: clamp(22px, 6vw, 32px) !important;
+  margin-bottom: 20px !important;
+}
+.heatmap-strip {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2px !important;
+  width: 100% !important;
+}
+.heatmap-card { aspect-ratio: auto !important; }
+.heatmap-card img { object-fit: contain !important; height: auto !important; }
+.intervention-section {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+  padding: 0 !important;
+}
+.intervention-compare {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  min-height: auto !important;
+}
+.intervention-divider {
+  position: relative !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 3px !important;
+  transform: none !important;
+  flex-shrink: 0 !important;
+}
+.intervention-divider::before {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+.compare-pane {
+  flex: none !important;
+  min-height: auto !important;
+  position: relative !important;
+}
+.compare-pane img {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Nav dots: reposition for narrow body */
+.nav-dots {
+  right: 8px !important;
+}
+
+/* Sections: tighter padding for portrait */
+.section {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+.hero { padding-left: 0 !important; padding-right: 0 !important; align-items: center !important; justify-content: center !important; text-align: center !important; }
+.cv-section {
+  padding: 60px 24px !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+}
+.data-section {
+  padding: 60px 24px !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+}
+.ensemble-section { padding: 60px 24px !important; }
+.closing { padding: 60px 24px !important; }
+.full-bleed { min-height: 80vh !important; height: auto !important; display: block !important; }
+.full-bleed .parallax-bg { inset: 0 !important; }
+
+/* Tighter font sizes for portrait */
+.hero-title { font-size: clamp(40px, 13vw, 72px) !important; white-space: nowrap !important; }
+.hero-sub { font-size: 12px !important; max-width: 100% !important; padding: 0 40px !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; box-sizing: border-box !important; width: 100% !important; }
+.hero-meta {
+  flex-direction: column !important;
+  gap: 6px !important;
+  align-items: center !important;
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin-top: 32px;
+  animation: fadeSimple 1s 2s ease forwards !important;
+}
+@keyframes fadeSimple {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero-scroll-cue {
+  animation: fadeSimple 1s 2.6s ease forwards !important;
+}
+
+.cut-text h2 { font-size: clamp(26px, 7vw, 38px) !important; }
+.cut-text p { font-size: clamp(14px, 3.5vw, 17px) !important; }
+.stat-number { font-size: clamp(28px, 9vw, 42px) !important; }
+.stat-card { padding: 20px 16px !important; }
+.stat-label { font-size: 8px !important; }
+.cv-header h2 { font-size: clamp(22px, 6vw, 32px) !important; }
+.cv-frame { aspect-ratio: 16/9 !important; }
+.cv-frame img { object-fit: contain !important; background: var(--black) !important; }
+.depth-section { overflow: visible !important; min-height: auto !important; }
+.depth-col { min-height: auto !important; overflow: visible !important; }
+.depth-col img { position: relative !important; inset: auto !important; width: 100% !important; height: auto !important; object-fit: contain !important; }
+.depth-col .depth-overlay { padding: 24px 24px !important; position: relative !important; z-index: 2 !important; }
+.depth-col .depth-overlay h3 { font-size: clamp(16px, 4.5vw, 22px) !important; }
+.depth-col .depth-overlay p { font-size: clamp(12px, 3vw, 15px) !important; }
+.depth-number { font-size: clamp(40px, 10vw, 60px) !important; position: relative !important; bottom: auto !important; right: auto !important; text-align: right !important; padding-right: 24px !important; }
+.data-header h2 { font-size: clamp(22px, 6vw, 32px) !important; }
+.data-card img { width: 100% !important; height: auto !important; object-fit: contain !important; }
+.data-card-label { padding: 14px 16px !important; }
+.data-card-label h4 { font-size: 12px !important; }
+.data-card-label p { font-size: 9px !important; }
+.ensemble-text h2 { font-size: clamp(28px, 8vw, 40px) !important; }
+.ensemble-text p { font-size: clamp(13px, 3.2vw, 16px) !important; }
+.bar-label { font-size: 8px !important; width: 80px !important; }
+.bar-track { height: 22px !important; }
+.bar-fill::after { font-size: 8px !important; }
+.zone-badge { font-size: 8px !important; padding: 5px 10px !important; }
+.compare-pane .compare-title { font-size: clamp(16px, 4.5vw, 22px) !important; }
+.closing-quote { font-size: clamp(18px, 5vw, 30px) !important; }
+.closing-title { font-size: clamp(48px, 20vw, 110px) !important; }
+.closing-credits {
+  flex-direction: column !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+/* ══════════════════════════════════════════
+   SECTION — INTERVIEW VIDEOS
+   ══════════════════════════════════════════ */
+.video-section {
+  min-height: 100vh;
+  padding: 48px 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.video-section .section-header {
+  width: 100%;
+}
+.video-section .section-header h2 {
+  font-size: clamp(22px, 6vw, 32px);
+  font-weight: 800;
+  color: var(--text-bright);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.video-embed {
+  width: 100%;
+}
+.video-embed .embed-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.video-embed .embed-label .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.video-embed .embed-label .dot.yt { background: var(--signal); }
+.video-embed .embed-label .dot.vm { background: var(--thermal-blue); }
+.video-embed .embed-wrapper {
+  width: 100%;
+  aspect-ratio: 9/16;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.video-embed .embed-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS -->
+<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="navDots">
+  <div class="nav-dot active" data-target="hero" data-label="Hero"></div>
+  <div class="nav-dot" data-target="cut" data-label="The Cut"></div>
+  <div class="nav-dot" data-target="segmentation" data-label="Segmentation"></div>
+  <div class="nav-dot" data-target="cv" data-label="Computer Vision"></div>
+  <div class="nav-dot" data-target="depth" data-label="Depth"></div>
+  <div class="nav-dot" data-target="data" data-label="ML Pipeline"></div>
+  <div class="nav-dot" data-target="ensemble" data-label="Ensemble"></div>
+  <div class="nav-dot" data-target="intervention" data-label="Intervention"></div>
+  <div class="nav-dot" data-target="heatmap" data-label="Trench Analysis"></div>
+  <div class="nav-dot" data-target="videos" data-label="Interview"></div>
+  <div class="nav-dot" data-target="closing" data-label="Close"></div>
+</nav>
+
+<!-- ═══════ SECTION 1: HERO ═══════ -->
+<section class="section hero" id="hero">
+  <div class="parallax-bg" data-speed="0.3"></div>
+  <h1 class="hero-title">
+    <span>T</span><span>R</span><span>E</span><span>N</span><span>C</span><span>H</span>
+  </h1>
+  <p class="hero-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Computational Design Practice for Environmental Justice in the South Bronx</p>
+  <div class="hero-author reveal" style="transition-delay: 0.2s">Sriya Thotakura</div>
+  <div class="hero-meta">
+    <span>Columbia GSAPP <strong>M.S. CDP</strong></span>
+    <span>Advisor: <strong>Kazuki Sakamoto</strong></span>
+    <span><strong>2026</strong></span>
+  </div>
+  <div class="hero-scroll-cue"><div class="line"></div></div>
+</section>
+
+<!-- ═══════ SECTION 2: THE CUT ═══════ -->
+<section class="section cut-section" id="cut">
+  <div class="parallax-bg" data-speed="0.15"></div>
+  <div class="cut-text">
+    <div class="section-label reveal">01 / The Cut</div>
+    <h2 class="reveal" style="transition-delay: 0.1s">Robert Moses cut a <em>6.3-mile trench</em> through the South Bronx</h2>
+    <p class="reveal" style="transition-delay: 0.2s">Between 1948 and 1972, the Cross Bronx Expressway displaced over 60,000 residents. Seventy years later, the trench remains an active instrument of environmental harm -- trapping diesel particulate matter, amplifying noise, and concentrating respiratory illness in communities already defined by disinvestment.</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat-card reveal" style="transition-delay: 0.1s">
+      <div class="stat-number">60K<span class="unit">+</span></div>
+      <div class="stat-label">Residents Displaced</div>
+    </div>
+    <div class="stat-card reveal" style="transition-delay: 0.2s">
+      <div class="stat-number">98<span class="unit">th</span></div>
+      <div class="stat-label">Percentile Diesel PM</div>
+    </div>
+    <div class="stat-card reveal" style="transition-delay: 0.3s">
+      <div class="stat-number">139</div>
+      <div class="stat-label">Documents Indexed</div>
+    </div>
+    <div class="stat-card reveal" style="transition-delay: 0.4s">
+      <div class="stat-number">57</div>
+      <div class="stat-label">Analysis Zones</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FULL BLEED: SEGMENTATION OVERLAY ═══════ -->
+<section class="section full-bleed" id="segmentation">
+  <div class="parallax-bg" data-speed="0.2" style="background-image: url('8Design/overlay_45.jpg'); opacity: 0.85; filter: none;"></div>
+  <div class="full-bleed-overlay">
+    <div class="full-bleed-caption reveal">
+      <strong>Site 45 / Rosedale Avenue Overpass</strong> &mdash; SegFormer (ADE20K) semantic segmentation overlay.
+      Pink = wall/barrier, Green = vegetation, Cyan = sky. Sky ratio: 0.14. Canyon confirmed.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 4: CV GRID ═══════ -->
+<section class="section cv-section" id="cv">
+  <div class="cv-header">
+    <div class="section-label reveal">03 / Computer Vision</div>
+    <h2 class="reveal" style="transition-delay: 0.1s">Seeing the trench from <span class="accent">inside</span></h2>
+  </div>
+  <div class="cv-grid">
+    <div class="cv-frame reveal-scale" style="transition-delay: 0.05s">
+      <img src="8Design/overlay_34.jpg" alt="Site 34 segmentation" loading="lazy">
+      <span class="site-id">SITE 34</span>
+      <div class="frame-label">Highway interchange / Western CBX terminus</div>
+    </div>
+    <div class="cv-frame reveal-scale" style="transition-delay: 0.15s">
+      <img src="8Design/overlay_40.jpg" alt="Site 40 segmentation" loading="lazy">
+      <span class="site-id">SITE 40</span>
+      <div class="frame-label">University Avenue overpass section</div>
+    </div>
+    <div class="cv-frame reveal-scale" style="transition-delay: 0.25s">
+      <img src="8Design/overlay_45.jpg" alt="Site 45 segmentation" loading="lazy">
+      <span class="site-id">SITE 45</span>
+      <div class="frame-label">Rosedale Avenue / Bronx River Pkwy</div>
+    </div>
+    <div class="cv-frame reveal-scale" style="transition-delay: 0.35s">
+      <img src="8Design/overlay_60.jpg" alt="Site 60 segmentation" loading="lazy">
+      <span class="site-id">SITE 60</span>
+      <div class="frame-label">Surface intersection / Urban canyon</div>
+    </div>
+    <div class="cv-frame reveal-scale" style="transition-delay: 0.45s">
+      <img src="8Design/overlay_68.jpg" alt="Site 68 segmentation" loading="lazy">
+      <span class="site-id">SITE 68</span>
+      <div class="frame-label">Eastern corridor / Residential edge</div>
+    </div>
+    <div class="cv-frame reveal-scale" style="transition-delay: 0.55s; background: var(--surface); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;">
+      <div style="font-size: 48px; font-weight: 800; color: var(--text-bright);">71</div>
+      <div style="font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim); text-align: center; padding: 0 20px;">Frames segmented<br>across 6.3 miles</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 5: DEPTH ═══════ -->
+<section class="section depth-section" id="depth">
+  <div class="depth-col reveal-left">
+    <img src="8Design/dpt_45.png" alt="Depth estimation Site 45" loading="lazy">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(5,5,8,0.7),rgba(5,5,8,0.3));z-index:1;"></div>
+    <div class="depth-overlay">
+      <div class="section-label">04 / Depth Estimation</div>
+      <h3>Measuring enclosure at street level</h3>
+      <p>Monocular depth estimation maps reveal the canyon geometry invisible from above. The trench walls close in -- buildings, barriers, and overpasses compress the vertical field of view to as little as 16% sky.</p>
+    </div>
+    <div class="depth-number">45</div>
+  </div>
+  <div class="depth-col reveal-right">
+    <img src="8Design/dpt_60.png" alt="Depth estimation Site 60" loading="lazy">
+    <div style="position:absolute;inset:0;background:linear-gradient(225deg,rgba(5,5,8,0.7),rgba(5,5,8,0.3));z-index:1;"></div>
+    <div class="depth-overlay">
+      <h3>Canyon aspect ratio: 0.64</h3>
+      <p>At the Jerome-Webster section, a person standing inside the trench sees 84% less sky than someone one block north. The geometry of the expressway measurably restricts the sky available to the people living beside it.</p>
+    </div>
+    <div class="depth-number">60</div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 6: ML DATA ═══════ -->
+<section class="section data-section" id="data">
+  <div class="data-header">
+    <div>
+      <div class="section-label reveal">05 / ML Pipeline</div>
+      <h2 class="reveal" style="transition-delay: 0.1s">Decision trees &amp; <span class="accent">feature space</span></h2>
+    </div>
+    <div class="pipe-label reveal" style="transition-delay: 0.2s">Segmentation &rarr; Ensemble &rarr; Prioritization</div>
+  </div>
+  <div class="data-duo">
+    <div class="data-card reveal-scale" style="transition-delay: 0.1s">
+      <img src="rf_decision_tree.png" alt="Random Forest Decision Tree" loading="lazy">
+      <div class="data-card-label">
+        <h4>RF Decision Tree</h4>
+        <p>Asthma inpatient rate as root node / trauma_max_intensity as secondary split</p>
+      </div>
+    </div>
+    <div class="data-card reveal-scale" style="transition-delay: 0.2s">
+      <img src="feature_correlation_heatmap.png" alt="Feature Correlation Heatmap" loading="lazy">
+      <div class="data-card-label">
+        <h4>Feature Correlation Matrix</h4>
+        <p>26 environmental, health, and trauma variables across 57 analysis zones</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 7: ENSEMBLE ═══════ -->
+<section class="section ensemble-section" id="ensemble">
+  <div class="ensemble-grid">
+    <div>
+      <div class="section-label reveal">06 / Ensemble Model</div>
+      <div class="ensemble-bars" id="ensembleBars">
+        <div class="bar-row reveal" style="transition-delay: 0.1s">
+          <span class="bar-label">Asthma Rate</span>
+          <div class="bar-track"><div class="bar-fill" data-width="61.6" data-value="61.6%"></div></div>
+        </div>
+        <div class="bar-row reveal" style="transition-delay: 0.2s">
+          <span class="bar-label">Climate Vuln.</span>
+          <div class="bar-track"><div class="bar-fill" data-width="24.6" data-value="24.6%"></div></div>
+        </div>
+        <div class="bar-row reveal" style="transition-delay: 0.3s">
+          <span class="bar-label">RAG Trauma</span>
+          <div class="bar-track"><div class="bar-fill" data-width="10.2" data-value="10.2%"></div></div>
+        </div>
+        <div class="bar-row reveal" style="transition-delay: 0.4s">
+          <span class="bar-label">Canopy Cover</span>
+          <div class="bar-track"><div class="bar-fill narrow" data-width="2.1" data-value="2.1%"></div></div>
+        </div>
+        <div class="bar-row reveal" style="transition-delay: 0.5s">
+          <span class="bar-label">Facility Prox.</span>
+          <div class="bar-track"><div class="bar-fill narrow" data-width="1.5" data-value="1.5%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ensemble-text">
+      <h2 class="reveal">R<sup>2</sup> = <span class="r2">0.976</span></h2>
+      <p class="reveal" style="transition-delay: 0.1s">Community testimony, computationally indexed and weighted, contributes more predictive power than decades of remote-sensed vegetation data. RAG-extracted trauma intensity ranks third at 10.2% -- ahead of canopy cover and every CV-derived feature.</p>
+      <p class="reveal" style="transition-delay: 0.2s">The same neighborhoods that residents identify as the worst places to breathe are the same neighborhoods the ensemble ranks highest. The computation corroborates the community.</p>
+      <div class="zone-badges reveal" style="transition-delay: 0.3s">
+        <div class="zone-badge">Mott Haven fid-41<span class="score">0.745</span></div>
+        <div class="zone-badge">fid-06<span class="score">0.723</span></div>
+        <div class="zone-badge">fid-17<span class="score">0.666</span></div>
+        <div class="zone-badge">fid-52<span class="score">0.662</span></div>
+        <div class="zone-badge">fid-29<span class="score">0.525</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 8: INTERVENTION ═══════ -->
+<section class="section intervention-section" id="intervention">
+  <div class="intervention-compare">
+    <div class="compare-pane reveal-left">
+      <img src="8Design/overlay_45.jpg" alt="Current trench condition" loading="lazy">
+      <div class="compare-label">
+        <div class="year-tag">1955 &mdash; Present</div>
+        <div class="compare-title">Atmospheric Trench</div>
+      </div>
+    </div>
+    <div class="intervention-divider"></div>
+    <div class="compare-pane reveal-right">
+      <img src="8Design/Gemini_Generated_45.png" alt="Regenerative intervention" loading="lazy">
+      <div class="compare-label">
+        <div class="year-tag">2026 &mdash; Proposal</div>
+        <div class="compare-title">Regenerative Health Corridor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 9: TRENCH HEATMAPS ═══════ -->
+<section class="section heatmap-section" id="heatmap">
+  <div class="section-label reveal">08 / Trench Analysis</div>
+  <h2 class="reveal" style="font-size: clamp(28px, 4vw, 52px); font-weight: 800; color: var(--text-bright); letter-spacing: -0.02em; transition-delay: 0.1s">Trauma density across the corridor</h2>
+  <div class="heatmap-strip">
+    <div class="heatmap-card reveal-scale" style="transition-delay: 0.05s">
+      <img src="8Design/Trench_34.png" alt="Trench analysis Site 34" loading="lazy">
+      <div class="hm-label">Site 34</div>
+    </div>
+    <div class="heatmap-card reveal-scale" style="transition-delay: 0.15s">
+      <img src="8Design/Trench_40.png" alt="Trench analysis Site 40" loading="lazy">
+      <div class="hm-label">Site 40</div>
+    </div>
+    <div class="heatmap-card reveal-scale" style="transition-delay: 0.25s">
+      <img src="8Design/Trench_45.png" alt="Trench analysis Site 45" loading="lazy">
+      <div class="hm-label">Site 45</div>
+    </div>
+    <div class="heatmap-card reveal-scale" style="transition-delay: 0.35s">
+      <img src="8Design/Trench_60.png" alt="Trench analysis Site 60" loading="lazy">
+      <div class="hm-label">Site 60</div>
+    </div>
+    <div class="heatmap-card reveal-scale" style="transition-delay: 0.45s">
+      <img src="8Design/Trench_68.png" alt="Trench analysis Site 68" loading="lazy">
+      <div class="hm-label">Site 68</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECTION 10: INTERVIEW VIDEOS ═══════ -->
+<section class="section video-section" id="videos">
+  <div class="section-header">
+    <div class="section-label reveal">09 / Community Voice</div>
+    <h2 class="reveal" style="transition-delay: 0.1s">Interview</h2>
+  </div>
+
+  <div class="video-embed reveal" style="transition-delay: 0.15s">
+    <div class="embed-label"><span class="dot yt"></span> YouTube &mdash; Reece / PMYJ</div>
+    <div class="embed-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/zAAOLtFyFTc?rel=0&modestbranding=1"
+        title="Interview — Reece, PMYJ of the Bronx"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <div class="video-embed reveal" style="transition-delay: 0.25s">
+    <div class="embed-label"><span class="dot vm"></span> Vimeo &mdash; TRENCH</div>
+    <div class="embed-wrapper">
+      <iframe
+        src="https://player.vimeo.com/video/1190937450"
+        title="TRENCH — Computational Design Practice for Environmental Justice"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════ SECTION 11: CLOSING ═══════ -->
+<section class="section closing" id="closing">
+  <div class="parallax-bg" data-speed="0.2"></div>
+  <div class="closing-quote reveal">
+    "This neighborhood was broken on purpose and <em>nobody came back to fix it.</em>"
+  </div>
+  <div class="closing-attr reveal" style="transition-delay: 0.15s">
+    &mdash; Reece, PMYJ of the Bronx
+  </div>
+  <div class="closing-title reveal" style="transition-delay: 0.3s">TRENCH</div>
+  <div class="closing-credits reveal" style="transition-delay: 0.5s">
+    <span><strong>Sriya Thotakura</strong>M.S. Computational Design Practices</span>
+    <span><strong>Kazuki Sakamoto</strong>Advisor</span>
+    <span><strong>Columbia GSAPP</strong>2026</span>
+  </div>
+</section>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── PARALLAX ──
+  var parallaxEls = document.querySelectorAll('.parallax-bg[data-speed]');
+  var ticking = false;
+
+  function updateParallax() {
+    var scrollY = window.pageYOffset;
+    parallaxEls.forEach(function(el) {
+      var speed = parseFloat(el.getAttribute('data-speed'));
+      var rect = el.parentElement.getBoundingClientRect();
+      var offset = (rect.top + scrollY) - scrollY;
+      el.style.transform = 'translate3d(0, ' + (offset * speed * -0.5) + 'px, 0)';
+    });
+    ticking = false;
+  }
+
+  // ── SCROLL REVEALS ──
+  var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stat-card');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  revealEls.forEach(function(el) { observer.observe(el); });
+
+  // ── ENSEMBLE BAR ANIMATION ──
+  var barObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var fills = entry.target.querySelectorAll('.bar-fill');
+        fills.forEach(function(fill, i) {
+          setTimeout(function() {
+            fill.style.width = fill.getAttribute('data-width') + '%';
+          }, i * 200);
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  var ensembleBars = document.getElementById('ensembleBars');
+  if (ensembleBars) barObserver.observe(ensembleBars);
+
+  // ── PROGRESS BAR ──
+  var progressBar = document.getElementById('progressBar');
+
+  // ── NAV DOTS ──
+  var dots = document.querySelectorAll('.nav-dot');
+  var sections = [];
+  dots.forEach(function(dot) {
+    var target = document.getElementById(dot.getAttribute('data-target'));
+    if (target) sections.push({ dot: dot, el: target });
+    dot.addEventListener('click', function() {
+      var t = document.getElementById(this.getAttribute('data-target'));
+      if (t) t.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        updateParallax();
+
+        // Progress
+        var scrollTop = window.pageYOffset;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (progressBar && docHeight > 0) {
+          progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+        }
+
+        // Active dot
+        var current = null;
+        sections.forEach(function(s) {
+          var rect = s.el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.5) current = s;
+        });
+        dots.forEach(function(d) { d.classList.remove('active'); });
+        if (current) current.dot.classList.add('active');
+
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

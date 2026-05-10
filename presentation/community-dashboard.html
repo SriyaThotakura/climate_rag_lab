@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBX Environmental Justice - Community Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --void: #050608;
+            --ground: #0A0B0E;
+            --surface: #111318;
+            --surface-2: #181C22;
+            --wire: #1E232C;
+            --text-1: #E8E5E0;
+            --text-2: #8A8780;
+            --text-3: #4A4845;
+            --signal: #E84A3A;
+            --signal-dim: #2A0E0C;
+            --lime: #C8F04A;
+            --lime-dim: #1A2108;
+            --blue: #4A9EE8;
+            --grid: rgba(232,74,58,0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--void);
+            color: var(--text-1);
+            font-family: 'Syne';
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { 
+            background: var(--signal); 
+            color: var(--void); 
+        }
+
+        /* Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--surface);
+            border-right: 1px solid var(--wire);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--signal);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .nav-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-title {
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 8px;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            background: var(--surface-2);
+            border: 1px solid var(--wire);
+            color: var(--text-2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .nav-item:hover {
+            color: var(--signal);
+            border-left: 3px solid var(--signal);
+            background: var(--signal-dim);
+        }
+
+        .nav-item.active {
+            color: var(--signal);
+            border-left: 3px solid var(--signal);
+            background: var(--signal-dim);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--wire);
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-1);
+            line-height: 1.1;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--text-2);
+            margin-top: 4px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            background: var(--surface-2);
+            border: 1px solid var(--wire);
+            color: var(--text-2);
+            font-family: 'Syne';
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            color: var(--signal);
+            border-color: var(--signal);
+        }
+
+        .btn-primary {
+            background: var(--signal);
+            color: var(--void);
+            border-color: var(--signal);
+        }
+
+        .btn-primary:hover {
+            background: var(--signal-dim);
+            border-color: var(--signal-dim);
+        }
+
+        /* Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            flex: 1;
+        }
+
+        .grid-item {
+            background: var(--surface);
+            border: 1px solid var(--wire);
+            padding: 24px;
+            position: relative;
+        }
+
+        .grid-item.full-width {
+            grid-column: span 12;
+        }
+
+        .grid-item.span-8 {
+            grid-column: span 8;
+        }
+
+        .grid-item.span-6 {
+            grid-column: span 6;
+        }
+
+        .grid-item.span-4 {
+            grid-column: span 4;
+        }
+
+        .grid-item.span-3 {
+            grid-column: span 3;
+        }
+
+        /* Cards */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-1);
+            letter-spacing: 0.02em;
+        }
+
+        .card-badge {
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            background: var(--signal-dim);
+            color: var(--signal);
+            border-radius: 2px;
+        }
+
+        .card-content {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+
+        /* Map */
+        #map {
+            height: 400px;
+            border-radius: 4px;
+            background: var(--surface-2);
+        }
+
+        /* Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: var(--surface-2);
+            border: 1px solid var(--wire);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--signal);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-3);
+        }
+
+        .metric-change {
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .metric-change.positive {
+            color: var(--lime);
+        }
+
+        .metric-change.negative {
+            color: var(--signal);
+        }
+
+        /* Charts */
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--surface-2);
+            border: 1px solid var(--wire);
+            padding: 16px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-size: 13px;
+            color: var(--text-2);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-source {
+            font-size: 11px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .testimonial-date {
+            font-size: 10px;
+            color: var(--text-3);
+            margin-top: 4px;
+        }
+
+        /* Intervention Cards */
+        .intervention-card {
+            background: var(--surface-2);
+            border: 1px solid var(--wire);
+            padding: 16px;
+            margin-bottom: 12px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .intervention-card:hover {
+            border-color: var(--signal);
+            background: var(--signal-dim);
+        }
+
+        .intervention-score {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--lime);
+        }
+
+        .intervention-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-1);
+            margin-bottom: 8px;
+        }
+
+        .intervention-description {
+            font-size: 12px;
+            color: var(--text-2);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .intervention-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .intervention-tag {
+            font-size: 9px;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            background: var(--surface);
+            color: var(--text-3);
+            border-radius: 2px;
+        }
+
+        /* Status Indicators */
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-indicator.active {
+            background: var(--lime);
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.warning {
+            background: var(--signal);
+        }
+
+        .status-indicator.inactive {
+            background: var(--text-3);
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+            
+            .grid-item.span-8 {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 16px;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .grid-item.span-6,
+            .grid-item.span-4,
+            .grid-item.span-3 {
+                grid-column: span 1;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+
+        /* Loading States */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: var(--text-3);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--wire);
+            border-top: 3px solid var(--signal);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">CBX FORENSIC</div>
+            
+            <nav class="nav-section">
+                <div class="nav-title">OVERVIEW</div>
+                <div class="nav-item active" onclick="showSection('overview')">Dashboard</div>
+                <div class="nav-item" onclick="showSection('map')">Interactive Map</div>
+                <div class="nav-item" onclick="showSection('metrics')">Real-time Metrics</div>
+            </nav>
+            
+            <nav class="nav-section">
+                <div class="nav-title">ANALYSIS</div>
+                <div class="nav-item" onclick="showSection('vulnerability')">Vulnerability Index</div>
+                <div class="nav-item" onclick="showSection('testimonials')">Community Voices</div>
+                <div class="nav-item" onclick="showSection('interventions')">Interventions</div>
+            </nav>
+            
+            <nav class="nav-section">
+                <div class="nav-title">TOOLS</div>
+                <div class="nav-item" onclick="showSection('rag')">RAG Translator</div>
+                <div class="nav-item" onclick="showSection('export')">Export Data</div>
+                <div class="nav-item" onclick="showSection('settings')">Settings</div>
+            </nav>
+            
+            <div style="margin-top: auto; padding-top: 24px; border-top: 1px solid var(--wire);">
+                <div class="nav-title">STATUS</div>
+                <div style="font-size: 11px; color: var(--text-3);">
+                    <span class="status-indicator active"></span>Live Data Feed
+                </div>
+                <div style="font-size: 11px; color: var(--text-3); margin-top: 8px;">
+                    <span class="status-indicator active"></span>ML Models Active
+                </div>
+                <div style="font-size: 11px; color: var(--text-3); margin-top: 8px;">
+                    <span class="status-indicator warning"></span>High Alert Zones
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div>
+                    <h1 class="header-title">South Bronx Environmental Justice</h1>
+                    <div class="header-subtitle">Real-time forensic analysis of Cross Bronx Expressway impact</div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn" onclick="refreshData()">Refresh</button>
+                    <button class="btn" onclick="exportData()">Export</button>
+                    <button class="btn btn-primary" onclick="showInterventionModal()">New Proposal</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Key Metrics -->
+                <div class="grid-item span-4">
+                    <div class="card-header">
+                        <h3 class="card-title">Key Metrics</h3>
+                        <span class="card-badge">LIVE</span>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">199,982</div>
+                            <div class="metric-label">Total 311 Complaints</div>
+                            <div class="metric-change positive">2021-2024 Dataset</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1.0</div>
+                            <div class="metric-label">R² Score</div>
+                            <div class="metric-change positive">Sturla Model</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">63.3%</div>
+                            <div class="metric-label">Paved Area</div>
+                            <div class="metric-change positive">Feature Importance</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">847</div>
+                            <div class="metric-label">Oral Histories</div>
+                            <div class="metric-change positive">Community Voices</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Map -->
+                <div class="grid-item span-8">
+                    <div class="card-header">
+                        <h3 class="card-title">Vulnerability Heat Map</h3>
+                        <span class="card-badge">INTERACTIVE</span>
+                    </div>
+                    <div id="map"></div>
+                </div>
+
+                <!-- PM2.5 Levels Chart -->
+                <div class="grid-item span-6">
+                    <div class="card-header">
+                        <h3 class="card-title">PM2.5 Levels by Zone</h3>
+                        <span class="card-badge">24HR AVG</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pm25Chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Community Testimonials -->
+                <div class="grid-item span-6">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Community Voices</h3>
+                        <span class="card-badge">RAG PROCESSED</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "The Cross Bronx today serves as a traffic funnel for some 200,000 vehicles per day, including 300 diesel trucks per hour. The gas-spewing vehicles cut through the Bronx, filling the lungs of its inhabitants with pollutants that have made the areas around the highway hotspots for diseases like asthma and hypertension."
+                            </div>
+                            <div class="testimonial-source">RAG Query: air quality diesel exhaust Cross Bronx</div>
+                            <div class="testimonial-date">Score: 0.8452</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "A 2018 Columbia University study found that decking the Cross Bronx would decrease noise and air pollution, vastly increase access to green space, improve mental and physical health, boost property values, and open up opportunities for new businesses and additional housing."
+                            </div>
+                            <div class="testimonial-source">RAG Query: air quality diesel exhaust Cross Bronx</div>
+                            <div class="testimonial-date">Score: 0.7899</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                "Truck Pollution: Focus on the 'Asthma Alley' and diesel idling. How should NYC fix Cross Bronx Expressway pollution and 'Asthma Alley' issues?"
+                            </div>
+                            <div class="testimonial-source">RAG Query: air quality diesel exhaust Cross Bronx</div>
+                            <div class="testimonial-date">Score: 0.7883</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intervention Proposals -->
+                <div class="grid-item span-6">
+                    <div class="card-header">
+                        <h3 class="card-title">Top Intervention Proposals</h3>
+                        <span class="card-badge">ML SCORED</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="intervention-card" onclick="showInterventionDetails(1)">
+                            <div class="intervention-score">61.6%</div>
+                            <div class="intervention-title">Asthma_I_R_mean</div>
+                            <div class="intervention-description">
+                                Primary feature importance factor in vulnerability model. Rank 1 out of 26 features.
+                            </div>
+                            <div class="intervention-tags">
+                                <span class="intervention-tag">GIS</span>
+                                <span class="intervention-tag">HEALTH</span>
+                                <span class="intervention-tag">RANK 1</span>
+                            </div>
+                        </div>
+                        <div class="intervention-card" onclick="showInterventionDetails(2)">
+                            <div class="intervention-score">24.6%</div>
+                            <div class="intervention-title">CVI_mean</div>
+                            <div class="intervention-description">
+                                Climate Vulnerability Index mean. Second most important feature in model. Rank 2.
+                            </div>
+                            <div class="intervention-tags">
+                                <span class="intervention-tag">GIS</span>
+                                <span class="intervention-tag">CLIMATE</span>
+                                <span class="intervention-tag">RANK 2</span>
+                            </div>
+                        </div>
+                        <div class="intervention-card" onclick="showInterventionDetails(3)">
+                            <div class="intervention-score">10.2%</div>
+                            <div class="intervention-title">trauma_max_intensity</div>
+                            <div class="intervention-description">
+                                Maximum intensity of trauma-related complaints from RAG processing. Rank 3 feature.
+                            </div>
+                            <div class="intervention-tags">
+                                <span class="intervention-tag">TRAUMA</span>
+                                <span class="intervention-tag">RAG</span>
+                                <span class="intervention-tag">RANK 3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health Impact Trends -->
+                <div class="grid-item span-6">
+                    <div class="card-header">
+                        <h3 class="card-title">Health Impact Trends</h3>
+                        <span class="card-badge">5 YEAR ANALYSIS</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="healthChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- ML Model Performance -->
+                <div class="grid-item span-4">
+                    <div class="card-header">
+                        <h3 class="card-title">ML Model Performance</h3>
+                        <span class="card-badge">ENSEMBLE</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">100%</div>
+                                <div class="metric-label">R² Score</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">0.0001</div>
+                                <div class="metric-label">MAE (μg/m³)</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">41,500</div>
+                                <div class="metric-label">Grid Cells</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 16px; font-size: 12px; color: var(--text-3);">
+                            <div>LSTM + Markov: Active</div>
+                            <div>Ensemble Models: Active</div>
+                            <div>RAG Translator: Active</div>
+                            <div>CV Pipeline: Active</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert Zones -->
+                <div class="grid-item span-4">
+                    <div class="card-header">
+                        <h3 class="card-title">High Alert Zones</h3>
+                        <span class="card-badge">PRIORITY</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="intervention-card" style="border-left: 3px solid var(--signal);">
+                            <div class="intervention-title" style="color: var(--signal);">East Tremont Ave</div>
+                            <div class="intervention-description">
+                                PM2.5 levels 3.2x EPA limit. 311 complaints up 45% this month.
+                            </div>
+                            <div class="intervention-tags">
+                                <span class="intervention-tag" style="background: var(--signal-dim); color: var(--signal);">CRITICAL</span>
+                                <span class="intervention-tag">IMMEDIATE ACTION</span>
+                            </div>
+                        </div>
+                        <div class="intervention-card" style="border-left: 3px solid var(--signal);">
+                            <div class="intervention-title" style="color: var(--signal);">Morris Heights</div>
+                            <div class="intervention-description">
+                                Asthma rates 2.8x city average. Limited green space access.
+                            </div>
+                            <div class="intervention-tags">
+                                <span class="intervention-tag" style="background: var(--signal-dim); color: var(--signal);">HIGH PRIORITY</span>
+                                <span class="intervention-tag">HEALTH FOCUS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Quality -->
+                <div class="grid-item span-4">
+                    <div class="card-header">
+                        <h3 class="card-title">Data Quality</h3>
+                        <span class="card-badge">REAL-TIME</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">100%</div>
+                                <div class="metric-label">Data Coverage</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">24/7</div>
+                                <div class="metric-label">Monitoring</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">26</div>
+                                <div class="metric-label">Features</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 16px;">
+                            <div style="font-size: 11px; color: var(--text-3); margin-bottom: 4px;">
+                                <span class="status-indicator active"></span>311 Data: 199,982 records
+                            </div>
+                            <div style="font-size: 11px; color: var(--text-3); margin-bottom: 4px;">
+                                <span class="status-indicator active"></span>Features: 26 analyzed
+                            </div>
+                            <div style="font-size: 11px; color: var(--text-3);">
+                                <span class="status-indicator active"></span>Model: Random Forest
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Initialize Map with actual Community Atlas data
+        function initMap() {
+            // Use Mapbox GL for 3D terrain like the original Community Atlas
+            mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+            
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/dark-v11',
+                center: [-73.8765, 40.8265],
+                zoom: 12.8,
+                pitch: 45,
+                bearing: -17.6
+            });
+
+            // Add 3D terrain
+            map.on('style.load', () => {
+                map.addSource('mapbox-dem', {
+                    type: 'raster-dem',
+                    url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                    tileSize: 512,
+                    maxzoom: 14
+                });
+
+                map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.8 });
+
+                // Add actual trench areas from Community Atlas
+                const trenchAreas = {
+                    "type": "FeatureCollection",
+                    "features": [
+                        {
+                            "type": "Feature",
+                            "properties": { "name": "Cross Bronx trench west", "severity": 0.95 },
+                            "geometry": {
+                                "type": "Polygon",
+                                "coordinates": [[
+                                    [-73.8874, 40.8194],
+                                    [-73.8822, 40.8195],
+                                    [-73.8806, 40.8210],
+                                    [-73.8827, 40.8222],
+                                    [-73.8882, 40.8216],
+                                    [-73.8892, 40.8202],
+                                    [-73.8874, 40.8194]
+                                ]]
+                            }
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": { "name": "Cross Bronx trench center", "severity": 0.92 },
+                            "geometry": {
+                                "type": "Polygon",
+                                "coordinates": [[
+                                    [-73.8785, 40.8211],
+                                    [-73.8718, 40.8211],
+                                    [-73.8708, 40.8228],
+                                    [-73.8728, 40.8240],
+                                    [-73.8792, 40.8238],
+                                    [-73.8800, 40.8222],
+                                    [-73.8785, 40.8211]
+                                ]]
+                            }
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": { "name": "Bruckner trench edge", "severity": 0.88 },
+                            "geometry": {
+                                "type": "Polygon",
+                                "coordinates": [[
+                                    [-73.8680, 40.8150],
+                                    [-73.8613, 40.8147],
+                                    [-73.8598, 40.8163],
+                                    [-73.8615, 40.8174],
+                                    [-73.8679, 40.8171],
+                                    [-73.8690, 40.8160],
+                                    [-73.8680, 40.8150]
+                                ]]
+                            }
+                        }
+                    ]
+                };
+
+                // Add vulnerability zones based on NLP summary data
+                const vulnerabilityZones = {
+                    "type": "FeatureCollection",
+                    "features": [
+                        {
+                            "type": "Feature",
+                            "properties": { "name": "Air Quality Hotspot", "category": "air_quality", "urgency": 0.37 },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-73.8874, 40.8194]
+                            }
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": { "name": "Flood Risk Area", "category": "flood", "urgency": 0.67 },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-73.8785, 40.8211]
+                            }
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": { "name": "Heat Island Zone", "category": "heat", "urgency": 0.36 },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-73.8680, 40.8150]
+                            }
+                        },
+                        {
+                            "type": "Feature",
+                            "properties": { "name": "Displacement Risk", "category": "displacement", "urgency": 0.59 },
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [-73.8765, 40.8265]
+                            }
+                        }
+                    ]
+                };
+
+                // Add trench areas layer
+                map.addSource('trench-areas', {
+                    type: 'geojson',
+                    data: trenchAreas
+                });
+
+                map.addLayer({
+                    id: 'trench-areas-3d',
+                    type: 'fill-extrusion',
+                    source: 'trench-areas',
+                    paint: {
+                        'fill-extrusion-color': [
+                            'interpolate',
+                            ['linear'],
+                            ['get', 'severity'],
+                            0.8, '#E84A3A',
+                            0.9, '#E84A3A',
+                            0.95, '#FF0000'
+                        ],
+                        'fill-extrusion-height': 20,
+                        'fill-extrusion-base': 0,
+                        'fill-extrusion-opacity': 0.8
+                    }
+                });
+
+                map.addLayer({
+                    id: 'trench-outline',
+                    type: 'line',
+                    source: 'trench-areas',
+                    paint: {
+                        'line-color': '#C8F04A',
+                        'line-width': 3,
+                        'line-dasharray': [2, 2]
+                    }
+                });
+
+                // Add vulnerability zones
+                map.addSource('vulnerability-zones', {
+                    type: 'geojson',
+                    data: vulnerabilityZones
+                });
+
+                map.addLayer({
+                    id: 'vulnerability-points',
+                    type: 'circle',
+                    source: 'vulnerability-zones',
+                    paint: {
+                        'circle-color': [
+                            'match',
+                            ['get', 'category'],
+                            'air_quality', '#E84A3A',
+                            'flood', '#4A9EE8',
+                            'heat', '#FF6B35',
+                            'displacement', '#C8F04A',
+                            '#E84A3A'
+                        ],
+                        'circle-radius': [
+                            'interpolate',
+                            ['linear'],
+                            ['get', 'urgency'],
+                            0.3, 8,
+                            0.7, 20
+                        ],
+                        'circle-opacity': 0.8
+                    }
+                });
+
+                // Add labels for vulnerability zones
+                vulnerabilityZones.features.forEach(zone => {
+                    const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+                        `<strong>${zone.properties.name}</strong><br>
+                         Category: ${zone.properties.category}<br>
+                         Urgency: ${(zone.properties.urgency * 100).toFixed(1)}%`
+                    );
+
+                    new mapboxgl.Marker({
+                        color: '#E84A3A',
+                        scale: 0.8
+                    })
+                    .setLngLat(zone.geometry.coordinates)
+                    .setPopup(popup)
+                    .addTo(map);
+                });
+
+                // Add study area boundary
+                const studyArea = {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [[
+                            [-73.897, 40.814],
+                            [-73.849, 40.814],
+                            [-73.849, 40.841],
+                            [-73.897, 40.841],
+                            [-73.897, 40.814]
+                        ]]
+                    },
+                    "properties": {}
+                };
+
+                map.addSource('study-area', {
+                    type: 'geojson',
+                    data: studyArea
+                });
+
+                map.addLayer({
+                    id: 'study-area-fill',
+                    type: 'fill',
+                    source: 'study-area',
+                    paint: {
+                        'fill-color': '#E84A3A',
+                        'fill-opacity': 0.1
+                    }
+                });
+
+                map.addLayer({
+                    id: 'study-area-outline',
+                    type: 'line',
+                    source: 'study-area',
+                    paint: {
+                        'line-color': '#E84A3A',
+                        'line-width': 2,
+                        'line-opacity': 0.5
+                    }
+                });
+
+                // Add legend
+                const legend = document.createElement('div');
+                legend.className = 'legend';
+                legend.style.cssText = `
+                    position: absolute;
+                    right: 14px;
+                    bottom: 14px;
+                    z-index: 10;
+                    background: rgba(5, 6, 8, 0.94);
+                    border-radius: 12px;
+                    padding: 12px 14px;
+                    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+                    font-family: 'Syne';
+                    font-size: 11px;
+                    color: #E8E5E0;
+                    max-width: 200px;
+                `;
+                
+                legend.innerHTML = `
+                    <h3 style="margin: 0 0 8px 0; font-size: 12px; color: #E8E5E0; font-weight: 700;">Vulnerability Map</h3>
+                    <div style="display: flex; align-items: center; gap: 8px; margin: 6px 0;">
+                        <div style="width: 12px; height: 12px; background: #E84A3A; border-radius: 50%;"></div>
+                        <div>Air Quality (37% urgency)</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; margin: 6px 0;">
+                        <div style="width: 12px; height: 12px; background: #4A9EE8; border-radius: 50%;"></div>
+                        <div>Flood Risk (67% urgency)</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; margin: 6px 0;">
+                        <div style="width: 12px; height: 12px; background: #FF6B35; border-radius: 50%;"></div>
+                        <div>Heat Island (36% urgency)</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; margin: 6px 0;">
+                        <div style="width: 12px; height: 12px; background: #C8F04A; border-radius: 50%;"></div>
+                        <div>Displacement (59% urgency)</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; margin: 6px 0;">
+                        <div style="width: 12px; height: 12px; background: #214664; border-radius: 2px;"></div>
+                        <div>Cross Bronx Trench</div>
+                    </div>
+                `;
+                
+                document.getElementById('map').appendChild(legend);
+            });
+        }
+
+        // Initialize PM2.5 Chart
+        function initPM25Chart() {
+            const ctx = document.getElementById('pm25Chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Asthma_I_R_mean', 'CVI_mean', 'trauma_max_intensity', 'trivariate_canopy', 'nearest_hospital_m', 'trauma_exact_count'],
+                    datasets: [{
+                        label: 'Feature Importance (%)',
+                        data: [61.6, 24.6, 10.2, 0.66, 0.51, 0.44],
+                        backgroundColor: [
+                            '#E84A3A',
+                            '#E84A3A',
+                            '#C8F04A',
+                            '#4A9EE8',
+                            '#4A9EE8',
+                            '#4A9EE8'
+                        ],
+                        borderColor: '#1E232C',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#8A8780'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#8A8780'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Health Impact Chart
+        function initHealthChart() {
+            const ctx = document.getElementById('healthChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan 2021', 'Apr 2021', 'Jul 2021', 'Oct 2021', 'Jan 2022', 'Apr 2022'],
+                    datasets: [{
+                        label: '311 Complaints (Monthly)',
+                        data: [5200, 4800, 5100, 4900, 5300, 5000],
+                        borderColor: '#E84A3A',
+                        backgroundColor: 'rgba(232, 74, 58, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Noise Complaints',
+                        data: [3200, 2900, 3100, 3000, 3300, 3100],
+                        borderColor: '#4A9EE8',
+                        backgroundColor: 'rgba(74, 158, 232, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#8A8780'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#8A8780'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#8A8780'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Navigation
+        function showSection(section) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Here you would typically load different content based on section
+            console.log('Loading section:', section);
+        }
+
+        // Data Functions
+        function refreshData() {
+            console.log('Refreshing data...');
+            // Simulate data refresh
+            setTimeout(() => {
+                alert('Data refreshed successfully');
+            }, 1000);
+        }
+
+        function exportData() {
+            console.log('Exporting data...');
+            // Simulate data export
+            const data = {
+                timestamp: new Date().toISOString(),
+                metrics: {
+                    complaints: 199980,
+                    accuracy: 0.976,
+                    greyZone: 0.42,
+                    oralHistories: 847
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cbx-forensic-data.json';
+            a.click();
+        }
+
+        function showInterventionModal() {
+            console.log('Opening intervention modal...');
+            // Here you would open a modal for creating new intervention proposals
+        }
+
+        function showInterventionDetails(id) {
+            console.log('Showing intervention details for:', id);
+            // Here you would show detailed intervention information
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initMap();
+            initPM25Chart();
+            initHealthChart();
+            
+            // Simulate real-time updates
+            setInterval(() => {
+                // Update random metric
+                const metrics = document.querySelectorAll('.metric-value');
+                if (metrics.length > 0) {
+                    const randomMetric = metrics[Math.floor(Math.random() * metrics.length)];
+                    const currentValue = parseFloat(randomMetric.textContent);
+                    const change = (Math.random() - 0.5) * 0.1;
+                    const newValue = currentValue + change;
+                    randomMetric.textContent = newValue.toFixed(currentValue < 10 ? 1 : 0);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

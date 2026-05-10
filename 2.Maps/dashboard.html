@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBX Ensemble Vulnerability Model — Results Dashboard</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --border: #2a2d3a;
+    --text: #e4e6eb;
+    --muted: #8b8fa3;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --cyan: #06b6d4;
+    --rose: #f43f5e;
+    --purple: #a855f7;
+    --gis: #3b82f6;
+    --trauma: #ef4444;
+    --facilities: #22c55e;
+    --distance: #f59e0b;
+    --zoning: #a855f7;
+    --cv: #06b6d4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 24px;
+    min-height: 100vh;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .header h1 span { color: var(--accent2); }
+  .header .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .hero-metric {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin: 24px 0 8px;
+    flex-wrap: wrap;
+  }
+  .hero-metric .metric {
+    text-align: center;
+  }
+  .hero-metric .metric .value {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+  }
+  .hero-metric .metric .label {
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .card.full { grid-column: 1 / -1; }
+  .card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h2 .icon {
+    width: 20px; height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  /* Model Performance */
+  .model-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+  .model-row .name {
+    width: 160px;
+    font-size: 13px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .model-row .bar-track {
+    flex: 1;
+    height: 28px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .model-row .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    transition: width 1s ease-out;
+  }
+  .model-row .bar-fill.rf { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+  .model-row .bar-fill.xgb { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+  .model-row .bar-fill.gb { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+  .model-row .bar-fill.ens { background: linear-gradient(90deg, var(--accent), var(--cyan)); }
+  .model-row .meta {
+    width: 120px;
+    font-size: 11px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  /* Feature Importance */
+  .feat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+  .feat-row .rank {
+    width: 22px;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .feat-row .fname {
+    width: 180px;
+    font-size: 12px;
+    font-family: 'Consolas', 'SF Mono', monospace;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .feat-row .fbar-track {
+    flex: 1;
+    height: 18px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .feat-row .fbar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease-out;
+  }
+  .feat-row .fval {
+    width: 60px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .feat-row .ftag {
+    width: 60px;
+    font-size: 10px;
+    text-align: center;
+    padding: 1px 6px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .ftag.gis { background: rgba(59,130,246,0.15); color: var(--gis); }
+  .ftag.trauma { background: rgba(239,68,68,0.15); color: var(--trauma); }
+  .ftag.facilities { background: rgba(34,197,94,0.15); color: var(--facilities); }
+  .ftag.distance { background: rgba(245,158,11,0.15); color: var(--distance); }
+  .ftag.zoning { background: rgba(168,85,247,0.15); color: var(--zoning); }
+  .ftag.cv { background: rgba(6,182,212,0.15); color: var(--cv); }
+
+  /* Donut chart */
+  .donut-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .donut-legend .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .donut-legend .swatch {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .donut-legend .pct {
+    font-weight: 700;
+    width: 50px;
+    text-align: right;
+  }
+
+  /* Enclosure bars */
+  .enc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .enc-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .enc-card .cat-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .enc-card .cat-label.noise { color: #f59e0b; }
+  .enc-card .cat-label.air { color: #ef4444; }
+  .enc-card .cat-label.health { color: #22c55e; }
+  .enc-card .cat-label.displacement { color: #a855f7; }
+  .enc-stat {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: var(--muted);
+  }
+  .enc-stat .val { color: var(--text); font-weight: 600; }
+  .enc-bar-track {
+    height: 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .enc-bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 1s ease-out;
+  }
+
+  /* Priority zones */
+  .zone-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .zone-table th {
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+  }
+  .zone-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .zone-table tr:last-child td { border-bottom: none; }
+  .priority-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .priority-badge.p1 { background: rgba(239,68,68,0.15); color: var(--red); }
+  .priority-badge.p2 { background: rgba(245,158,11,0.15); color: var(--amber); }
+  .priority-badge.p3 { background: rgba(34,197,94,0.15); color: var(--green); }
+  .priority-badge.p4 { background: rgba(6,182,212,0.15); color: var(--cyan); }
+  .priority-badge.p5 { background: rgba(168,85,247,0.15); color: var(--purple); }
+  .vuln-bar {
+    display: inline-block;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--green), var(--amber), var(--red));
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+
+  /* Finding callout */
+  .finding {
+    background: rgba(99,102,241,0.08);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .finding strong { color: var(--accent2); }
+
+  /* Methodology */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .method-step {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .method-step .step-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--accent2);
+    margin-bottom: 4px;
+  }
+  .method-step .step-label {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .method-step .step-detail {
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    .enc-grid { grid-template-columns: 1fr; }
+    .method-grid { grid-template-columns: 1fr 1fr; }
+    .hero-metric { gap: 24px; }
+    .hero-metric .metric .value { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>CBX Ensemble <span>Vulnerability Model</span></h1>
+  <div class="subtitle">Community Board X Environmental Justice Vulnerability Assessment &mdash; South Bronx, NYC</div>
+  <div class="hero-metric">
+    <div class="metric">
+      <div class="value">0.976</div>
+      <div class="label">Ensemble R&sup2;</div>
+    </div>
+    <div class="metric">
+      <div class="value">57</div>
+      <div class="label">Zones Analyzed</div>
+    </div>
+    <div class="metric">
+      <div class="value">26</div>
+      <div class="label">Features</div>
+    </div>
+    <div class="metric">
+      <div class="value">4</div>
+      <div class="label">Data Streams</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+
+  <!-- Model Performance -->
+  <div class="card">
+    <h2>Model Performance (Test R&sup2;)</h2>
+    <div class="model-row">
+      <div class="name">Random Forest</div>
+      <div class="bar-track"><div class="bar-fill rf" style="width:91.34%">0.913</div></div>
+      <div class="meta">RMSE 0.043</div>
+    </div>
+    <div class="model-row">
+      <div class="name">Gradient Boosting</div>
+      <div class="bar-track"><div class="bar-fill gb" style="width:96.01%">0.960</div></div>
+      <div class="meta">RMSE 0.029</div>
+    </div>
+    <div class="model-row">
+      <div class="name">XGBoost</div>
+      <div class="bar-track"><div class="bar-fill xgb" style="width:97.22%">0.972</div></div>
+      <div class="meta">RMSE 0.024</div>
+    </div>
+    <div class="model-row">
+      <div class="name" style="font-weight:700">Weighted Ensemble</div>
+      <div class="bar-track"><div class="bar-fill ens" style="width:97.61%">0.976</div></div>
+      <div class="meta" style="color:var(--accent2);font-weight:600">RMSE 0.023</div>
+    </div>
+    <div style="margin-top:14px;font-size:12px;color:var(--muted)">
+      Ensemble weights: RF <b style="color:var(--text)">0.284</b> &middot; XGB <b style="color:var(--text)">0.288</b> &middot; GB <b style="color:var(--text)">0.428</b>
+    </div>
+    <div style="margin-top:8px;font-size:12px;color:var(--muted)">
+      Cross-validation (5-fold): RF 0.544&plusmn;0.278 &middot; XGB 0.552&plusmn;0.509 &middot; GB <b style="color:var(--green)">0.820&plusmn;0.092</b>
+    </div>
+  </div>
+
+  <!-- Feature Group Contribution (Donut) -->
+  <div class="card">
+    <h2>Feature Group Contributions</h2>
+    <div class="donut-container">
+      <svg width="180" height="180" viewBox="0 0 180 180">
+        <!-- GIS: 87.4% -->
+        <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="24"/>
+        <!-- GIS segment: 87.4% = 314.6deg, start at -90deg -->
+        <circle cx="90" cy="90" r="70" fill="none"
+          stroke="#3b82f6" stroke-width="24"
+          stroke-dasharray="383.27 56.55"
+          stroke-dashoffset="0"
+          transform="rotate(-90 90 90)"
+          stroke-linecap="round"/>
+        <!-- Trauma segment: 11.3% = 49.6 of 439.82 -->
+        <circle cx="90" cy="90" r="70" fill="none"
+          stroke="#ef4444" stroke-width="24"
+          stroke-dasharray="49.6 390.22"
+          stroke-dashoffset="-383.27"
+          transform="rotate(-90 90 90)"/>
+        <!-- Facilities segment: 1.0% -->
+        <circle cx="90" cy="90" r="70" fill="none"
+          stroke="#22c55e" stroke-width="24"
+          stroke-dasharray="4.4 435.42"
+          stroke-dashoffset="-432.87"
+          transform="rotate(-90 90 90)"/>
+        <!-- Center text -->
+        <text x="90" y="85" text-anchor="middle" font-size="24" font-weight="800" fill="var(--text)">87.4%</text>
+        <text x="90" y="105" text-anchor="middle" font-size="11" fill="var(--muted)">GIS-driven</text>
+      </svg>
+      <div class="donut-legend">
+        <div class="item">
+          <div class="swatch" style="background:var(--gis)"></div>
+          <span>GIS Indicators</span>
+          <span class="pct">87.4%</span>
+        </div>
+        <div class="item">
+          <div class="swatch" style="background:var(--trauma)"></div>
+          <span>RAG Trauma</span>
+          <span class="pct">10.8%</span>
+        </div>
+        <div class="item">
+          <div class="swatch" style="background:var(--facilities)"></div>
+          <span>Facilities</span>
+          <span class="pct">1.0%</span>
+        </div>
+        <div class="item">
+          <div class="swatch" style="background:var(--distance)"></div>
+          <span>CBE Distance</span>
+          <span class="pct">0.4%</span>
+        </div>
+        <div class="item">
+          <div class="swatch" style="background:var(--cv)"></div>
+          <span>CV Morphology</span>
+          <span class="pct">0.1%</span>
+        </div>
+        <div class="item">
+          <div class="swatch" style="background:var(--zoning)"></div>
+          <span>Zoning</span>
+          <span class="pct">0.1%</span>
+        </div>
+      </div>
+    </div>
+    <div class="finding">
+      <strong>Novel finding:</strong> RAG-derived trauma scores contribute <strong>10.8%</strong> predictive power. Physical/health
+      indicators dominate as expected from literature, but community-reported trauma serves as meaningful corroborating evidence
+      of environmental injustice.
+    </div>
+  </div>
+
+  <!-- Feature Importance Top 10 -->
+  <div class="card full">
+    <h2>Feature Importance &mdash; Random Forest (Top 10)</h2>
+    <div class="feat-row">
+      <div class="rank">1</div>
+      <div class="fname">Asthma_I_R_mean</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:100%;background:var(--gis)"></div></div>
+      <div class="fval">0.6163</div>
+      <div class="ftag gis">GIS</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">2</div>
+      <div class="fname">CVI_mean</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:39.95%;background:var(--gis)"></div></div>
+      <div class="fval">0.2463</div>
+      <div class="ftag gis">GIS</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">3</div>
+      <div class="fname">trauma_max_intensity</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:16.51%;background:var(--trauma)"></div></div>
+      <div class="fval">0.1018</div>
+      <div class="ftag trauma">Trauma</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">4</div>
+      <div class="fname">trivariate_canopy</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:1.07%;background:var(--gis)"></div></div>
+      <div class="fval">0.0066</div>
+      <div class="ftag gis">GIS</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">5</div>
+      <div class="fname">nearest_hospital_m</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:0.82%;background:var(--facilities)"></div></div>
+      <div class="fval">0.0051</div>
+      <div class="ftag facilities">Facil.</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">6</div>
+      <div class="fname">trauma_exact_count</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:0.71%;background:var(--trauma)"></div></div>
+      <div class="fval">0.0044</div>
+      <div class="ftag trauma">Trauma</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">7</div>
+      <div class="fname">dist_to_cbe_m</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:0.64%;background:var(--distance)"></div></div>
+      <div class="fval">0.0040</div>
+      <div class="ftag distance">Dist.</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">8</div>
+      <div class="fname">trauma_noise_density</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:0.58%;background:var(--trauma)"></div></div>
+      <div class="fval">0.0036</div>
+      <div class="ftag trauma">Trauma</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">9</div>
+      <div class="fname">facilities_500m</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:0.46%;background:var(--facilities)"></div></div>
+      <div class="fval">0.0028</div>
+      <div class="ftag facilities">Facil.</div>
+    </div>
+    <div class="feat-row">
+      <div class="rank">10</div>
+      <div class="fname">trauma_air_density</div>
+      <div class="fbar-track"><div class="fbar-fill" style="width:0.41%;background:var(--trauma)"></div></div>
+      <div class="fval">0.0025</div>
+      <div class="ftag trauma">Trauma</div>
+    </div>
+  </div>
+
+  <!-- Enclosure by Trauma Category -->
+  <div class="card">
+    <h2>Urban Enclosure by Trauma Category</h2>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px">
+      Mean trench enclosure (1 &minus; sky_ratio) near RAG-identified trauma points,
+      spatially matched to Mapillary CV segmentation frames within 2 km.
+    </p>
+    <div class="enc-grid">
+      <div class="enc-card">
+        <div class="cat-label noise">Noise</div>
+        <div class="enc-stat"><span>Mean enclosure</span><span class="val">0.633</span></div>
+        <div class="enc-bar-track"><div class="enc-bar-fill" style="width:67.9%;background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div></div>
+        <div class="enc-stat"><span>Mean intensity</span><span class="val">0.550</span></div>
+        <div class="enc-stat"><span>Points</span><span class="val">31</span></div>
+      </div>
+      <div class="enc-card">
+        <div class="cat-label air">Air Quality</div>
+        <div class="enc-stat"><span>Mean enclosure</span><span class="val">0.603</span></div>
+        <div class="enc-bar-track"><div class="enc-bar-fill" style="width:64.7%;background:linear-gradient(90deg,#ef4444,#f87171)"></div></div>
+        <div class="enc-stat"><span>Mean intensity</span><span class="val">0.548</span></div>
+        <div class="enc-stat"><span>Points</span><span class="val">16</span></div>
+      </div>
+      <div class="enc-card">
+        <div class="cat-label displacement">Displacement</div>
+        <div class="enc-stat"><span>Mean enclosure</span><span class="val">0.584</span></div>
+        <div class="enc-bar-track"><div class="enc-bar-fill" style="width:62.6%;background:linear-gradient(90deg,#a855f7,#c084fc)"></div></div>
+        <div class="enc-stat"><span>Mean intensity</span><span class="val">0.568</span></div>
+        <div class="enc-stat"><span>Points</span><span class="val">18</span></div>
+      </div>
+      <div class="enc-card">
+        <div class="cat-label health">Health</div>
+        <div class="enc-stat"><span>Mean enclosure</span><span class="val">0.569</span></div>
+        <div class="enc-bar-track"><div class="enc-bar-fill" style="width:61.1%;background:linear-gradient(90deg,#22c55e,#4ade80)"></div></div>
+        <div class="enc-stat"><span>Mean intensity</span><span class="val">0.486</span></div>
+        <div class="enc-stat"><span>Points</span><span class="val">13</span></div>
+      </div>
+    </div>
+    <div class="finding" style="margin-top:16px">
+      <strong>Pattern:</strong> Noise trauma co-locates with the highest urban enclosure (0.633), consistent with
+      canyon-effect acoustic amplification. Air quality complaints cluster in enclosed zones (0.603) where pollutant
+      dispersion is constrained. Health and displacement show lower but still elevated enclosure.
+    </div>
+  </div>
+
+  <!-- Top Priority Zones -->
+  <div class="card">
+    <h2>Top 5 Priority Intervention Zones</h2>
+    <table class="zone-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Zone</th>
+          <th>Asthma Rate</th>
+          <th>CVI</th>
+          <th>Vulnerability</th>
+          <th>Predicted</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="priority-badge p1">1</div></td>
+          <td style="font-weight:600">fid 41</td>
+          <td>355.8</td>
+          <td>0.69</td>
+          <td><span class="vuln-bar" style="width:100px"></span>0.745</td>
+          <td>0.719</td>
+        </tr>
+        <tr>
+          <td><div class="priority-badge p2">2</div></td>
+          <td style="font-weight:600">fid 6</td>
+          <td>355.8</td>
+          <td>&minus;0.08</td>
+          <td><span class="vuln-bar" style="width:97px"></span>0.723</td>
+          <td>0.704</td>
+        </tr>
+        <tr>
+          <td><div class="priority-badge p3">3</div></td>
+          <td style="font-weight:600">fid 17</td>
+          <td>287.9</td>
+          <td>1.30</td>
+          <td><span class="vuln-bar" style="width:89px"></span>0.666</td>
+          <td>0.655</td>
+        </tr>
+        <tr>
+          <td><div class="priority-badge p4">4</div></td>
+          <td style="font-weight:600">fid 52</td>
+          <td>266.2</td>
+          <td>2.25</td>
+          <td><span class="vuln-bar" style="width:89px"></span>0.662</td>
+          <td>0.653</td>
+        </tr>
+        <tr>
+          <td><div class="priority-badge p5">5</div></td>
+          <td style="font-weight:600">fid 29</td>
+          <td>199.5</td>
+          <td>0.69</td>
+          <td><span class="vuln-bar" style="width:70px"></span>0.525</td>
+          <td>0.551</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:14px;font-size:12px;color:var(--muted)">
+      <b style="color:var(--text)">Target formula:</b>
+      Vulnerability = (Asthma_rate / 355.8) &times; 0.50 + CVI_norm &times; 0.30 + trauma_max &times; 0.20
+    </div>
+  </div>
+
+  <!-- Methodology Pipeline -->
+  <div class="card full">
+    <h2>Methodology Pipeline</h2>
+    <div class="method-grid">
+      <div class="method-step">
+        <div class="step-num">1</div>
+        <div class="step-label">RAG Extraction</div>
+        <div class="step-detail">CBX board minutes &rarr; NLP trauma scoring via RAG pipeline (noise, air, health, displacement)</div>
+      </div>
+      <div class="method-step">
+        <div class="step-num">2</div>
+        <div class="step-label">GIS Integration</div>
+        <div class="step-detail">Asthma rates (DOHMH), CVI, canopy cover, trivariate vulnerability zones from NYC open data</div>
+      </div>
+      <div class="method-step">
+        <div class="step-num">3</div>
+        <div class="step-label">CV Morphology</div>
+        <div class="step-detail">Mapillary street-level segmentation: sky ratio, vegetation, concrete, canyon aspect ratio</div>
+      </div>
+      <div class="method-step">
+        <div class="step-num">4</div>
+        <div class="step-label">Ensemble Model</div>
+        <div class="step-detail">RF + XGBoost + Gradient Boosting weighted ensemble predicting composite vulnerability</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;font-size:12px;color:var(--muted);text-align:center">
+      Dataset: 57 zones &middot; Train/test split: 39/18 &middot; 5-fold cross-validation &middot; 200K+ 311 complaints &middot; 100+ CV frames
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  CBX Ensemble Vulnerability Model &mdash; Generated April 2026 &middot; South Bronx Environmental Justice Assessment &middot; Zero external dependencies
+</div>
+
+</body>
+</html>

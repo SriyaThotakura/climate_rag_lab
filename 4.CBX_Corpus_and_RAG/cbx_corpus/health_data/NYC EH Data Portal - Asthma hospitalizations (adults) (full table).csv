@@ -1,0 +1,1161 @@
+TimePeriod,GeoType,GeoID,GeoRank,Geography,"Age-adjusted rate per 10,000","Estimated annual rate per 10,000",Number
+2023,CD,101,6,Financial District (CD1),2.1*,1.5*,8*
+2023,CD,102,6,Greenwich Village and Soho (CD2),0.8*,0.9*,7*
+2023,CD,103,6,Lower East Side and Chinatown (CD3),6.6,7.1,104
+2023,CD,104,6,Clinton and Chelsea (CD4),2.5,2.4,31
+2023,CD,105,6,Midtown (CD5),1.6*,1.6*,9*
+2023,CD,106,6,Stuyvesant Town and Turtle Bay (CD6),2.8,2.6,33
+2023,CD,107,6,Upper West Side (CD7),4.5,4.5,79
+2023,CD,108,6,Upper East Side (CD8),1.5,1.7,31
+2023,CD,109,6,Morningside Heights and Hamilton Heights (CD9),9.0,8.6,75
+2023,CD,110,6,Central Harlem (CD10),15.7,15.2,136
+2023,CD,111,6,East Harlem (CD11),13.4,13.7,129
+2023,CD,112,6,Washington Heights and Inwood (CD12),6.4,6.7,100
+2023,CD,201,6,Mott Haven and Melrose (CD1),25.4,25.6,172
+2023,CD,202,6,Hunts Point and Longwood (CD2),18.4,18.5,71
+2023,CD,203,6,Morrisania and Crotona (CD3),22.4,22.4,137
+2023,CD,204,6,Highbridge and Concourse (CD4),14.3,14.6,159
+2023,CD,205,6,Fordham and University Heights (CD5),15.8,15.9,147
+2023,CD,206,6,Belmont and East Tremont (CD6),26.7,26.3,154
+2023,CD,207,6,Kingsbridge Heights and Bedford (CD7),17.1,17.1,178
+2023,CD,208,6,Riverdale and Fieldston (CD8),7.2,8.0,62
+2023,CD,209,6,Parkchester and Soundview (CD9),18.8,19.7,266
+2023,CD,210,6,Throgs Neck and Co-op City (CD10),13.4,13.8,129
+2023,CD,211,6,Morris Park and Bronxdale (CD11),20.5,21.4,183
+2023,CD,212,6,Williamsbridge and Baychester (CD12),22.2,22.9,263
+2023,CD,301,6,Greenpoint and Williamsburg (CD1),4.7,4.1,62
+2023,CD,302,6,Fort Greene and Brooklyn Heights (CD2),7.7,7.2,82
+2023,CD,303,6,Bedford Stuyvesant (CD3),11.6,11.6,129
+2023,CD,304,6,Bushwick (CD4),8.5,8.4,69
+2023,CD,305,6,East New York and Starrett City (CD5),11.4,11.4,146
+2023,CD,306,6,Park Slope and Carroll Gardens (CD6),7.5,6.0,54
+2023,CD,307,6,Sunset Park (CD7),5.3,5.0,51
+2023,CD,308,6,Crown Heights and Prospect Heights (CD8),11.4,10.8,82
+2023,CD,309,6,South Crown Heights and Lefferts Gardens (CD9),9.0,9.3,70
+2023,CD,310,6,Bay Ridge and Dyker Heights (CD10),2.5,2.6,30
+2023,CD,311,6,Bensonhurst (CD11),1.5,1.6,26
+2023,CD,312,6,Borough Park (CD12),1.8,1.9,25
+2023,CD,313,6,Coney Island (CD13),9.6,9.5,84
+2023,CD,314,6,Flatbush and Midwood (CD14),5.5,5.9,72
+2023,CD,315,6,Sheepshead Bay (CD15),2.3,2.5,35
+2023,CD,316,6,Brownsville (CD16),17.7,18.1,106
+2023,CD,317,6,East Flatbush (CD17),8.6,9.1,108
+2023,CD,318,6,Flatlands and Canarsie (CD18),7.3,7.5,108
+2023,CD,401,6,Long Island City and Astoria (CD1),6.4,6.6,103
+2023,CD,402,6,Woodside and Sunnyside (CD2),3.1,3.3,41
+2023,CD,403,6,Jackson Heights (CD3),4.9,5.0,68
+2023,CD,404,6,Elmhurst and Corona (CD4),3.9,4.2,61
+2023,CD,405,6,Ridgewood and Maspeth (CD5),5.0,5.2,63
+2023,CD,406,6,Rego Park and Forest Hills (CD6),2.8,3.3,31
+2023,CD,407,6,Flushing and Whitestone (CD7),3.3,3.5,77
+2023,CD,408,6,Hillcrest and Fresh Meadows (CD8),5.0,5.4,66
+2023,CD,409,6,Kew Gardens and Woodhaven (CD9),7.1,7.4,81
+2023,CD,410,6,South Ozone Park and Howard Beach (CD10),6.3,6.5,62
+2023,CD,411,6,Bayside and Little Neck (CD11),3.7,3.8,36
+2023,CD,412,6,Jamaica and Hollis (CD12),10.1,10.7,191
+2023,CD,413,6,Queens Village (CD13),6.7,6.9,106
+2023,CD,414,6,Rockaway and Broad Channel (CD14),10.4,10.8,88
+2023,CD,501,6,St. George and Stapleton (CD1),9.6,9.8,145
+2023,CD,502,6,South Beach and Willowbrook (CD2),6.8,7.5,86
+2023,CD,503,6,Tottenville and Great Kills (CD3),3.1,3.3,41
+2023,UHF42,101,4,Kingsbridge - Riverdale,6.5,7.1,51
+2023,UHF42,102,4,Northeast Bronx,18.7,19.5,303
+2023,UHF42,103,4,Fordham - Bronx Pk,18.4,18.5,341
+2023,UHF42,104,4,Pelham - Throgs Neck,18.8,19.4,430
+2023,UHF42,105,4,Crotona - Tremont,19.8,19.9,299
+2023,UHF42,106,4,High Bridge - Morrisania,16.9,17.2,262
+2023,UHF42,107,4,Hunts Point - Mott Haven,22.9,23.0,235
+2023,UHF42,201,4,Greenpoint,3.9,3.4,38
+2023,UHF42,202,4,Downtown - Heights - Slope,7.4,6.6,142
+2023,UHF42,203,4,Bedford Stuyvesant - Crown Heights,11.3,11.1,301
+2023,UHF42,204,4,East New York,10.0,10.0,148
+2023,UHF42,205,4,Sunset Park,5.3,5.1,47
+2023,UHF42,206,4,Borough Park,2.2,2.4,55
+2023,UHF42,207,4,East Flatbush - Flatbush,7.6,8.1,186
+2023,UHF42,208,4,Canarsie - Flatlands,7.8,7.9,125
+2023,UHF42,209,4,Bensonhurst - Bay Ridge,2.4,2.6,42
+2023,UHF42,210,4,Coney Island - Sheepshead Bay,5.1,5.3,120
+2023,UHF42,211,4,Williamsburg - Bushwick,8.4,8.1,135
+2023,UHF42,301,4,Washington Heights,6.7,6.9,143
+2023,UHF42,302,4,Central Harlem - Morningside Heights,12.2,12.0,177
+2023,UHF42,303,4,East Harlem,12.5,12.8,114
+2023,UHF42,304,4,Upper West Side,4.2,4.4,85
+2023,UHF42,305,4,Upper East Side,1.5,1.7,31
+2023,UHF42,306,4,Chelsea - Clinton,2.6,2.5,36
+2023,UHF42,307,4,Gramercy Park - Murray Hill,2.8,2.5,31
+2023,UHF42,308,4,Greenwich Village - SoHo,1.0*,1.1*,8*
+2023,UHF42,309,4,Union Square - Lower East Side,6.1,6.3,104
+2023,UHF42,310,4,Lower Manhattan,2.8,2.4,13
+2023,UHF42,401,4,Long Island City - Astoria,5.8,6.0,101
+2023,UHF42,402,4,West Queens,4.9,5.2,185
+2023,UHF42,403,4,Flushing - Clearview,3.6,3.8,80
+2023,UHF42,404,4,Bayside - Little Neck,4.0,4.1,30
+2023,UHF42,405,4,Ridgewood - Forest Hills,3.7,3.9,81
+2023,UHF42,406,4,Fresh Meadows,3.5,3.7,29
+2023,UHF42,407,4,Southwest Queens,6.4,6.6,141
+2023,UHF42,408,4,Jamaica,8.5,9.0,228
+2023,UHF42,409,4,Southeast Queens,6.1,6.5,112
+2023,UHF42,410,4,Rockaways,8.6,8.9,88
+2023,UHF42,501,4,Port Richmond,12.7,12.7,68
+2023,UHF42,502,4,Stapleton - St. George,9.6,10.4,106
+2023,UHF42,503,4,Willowbrook,4.9,5.4,41
+2023,UHF42,504,4,South Beach - Tottenville,3.5,3.7,57
+2023,Borough,1,1,Bronx,18.3,18.8,"1,947"
+2023,Borough,2,1,Brooklyn,6.6,6.7,"1,355"
+2023,Borough,3,1,Manhattan,5.4,5.5,757
+2023,Borough,4,1,Queens,6.1,6.4,"1,163"
+2023,Borough,5,1,Staten Island,6.8,7.1,276
+2023,Citywide,1,0,New York City,8.0,8.3,"5,498"
+2022,CD,101,6,Financial District (CD1),2.1*,1.6*,8*
+2022,CD,102,6,Greenwich Village and Soho (CD2),0.8*,0.9*,7*
+2022,CD,103,6,Lower East Side and Chinatown (CD3),5.5,5.6,82
+2022,CD,104,6,Clinton and Chelsea (CD4),3.1,3.0,38
+2022,CD,105,6,Midtown (CD5),1.5*,1.3*,7*
+2022,CD,106,6,Stuyvesant Town and Turtle Bay (CD6),2.0,2.0,25
+2022,CD,107,6,Upper West Side (CD7),4.4,3.9,69
+2022,CD,108,6,Upper East Side (CD8),1.2,1.3,24
+2022,CD,109,6,Morningside Heights and Hamilton Heights (CD9),9.1,8.6,75
+2022,CD,110,6,Central Harlem (CD10),14.1,13.9,125
+2022,CD,111,6,East Harlem (CD11),12.1,12.5,117
+2022,CD,112,6,Washington Heights and Inwood (CD12),6.6,6.7,100
+2022,CD,201,6,Mott Haven and Melrose (CD1),31.8,32.0,218
+2022,CD,202,6,Hunts Point and Longwood (CD2),20.3,20.3,79
+2022,CD,203,6,Morrisania and Crotona (CD3),22.1,22.0,137
+2022,CD,204,6,Highbridge and Concourse (CD4),15.3,15.2,168
+2022,CD,205,6,Fordham and University Heights (CD5),18.8,18.5,174
+2022,CD,206,6,Belmont and East Tremont (CD6),23.6,23.2,138
+2022,CD,207,6,Kingsbridge Heights and Bedford (CD7),13.7,13.6,143
+2022,CD,208,6,Riverdale and Fieldston (CD8),6.5,7.2,57
+2022,CD,209,6,Parkchester and Soundview (CD9),15.1,15.6,213
+2022,CD,210,6,Throgs Neck and Co-op City (CD10),8.5,9.3,88
+2022,CD,211,6,Morris Park and Bronxdale (CD11),15.8,16.5,143
+2022,CD,212,6,Williamsbridge and Baychester (CD12),16.6,17.1,200
+2022,CD,301,6,Greenpoint and Williamsburg (CD1),6.1,5.3,80
+2022,CD,302,6,Fort Greene and Brooklyn Heights (CD2),5.7,5.3,60
+2022,CD,303,6,Bedford Stuyvesant (CD3),10.9,10.7,120
+2022,CD,304,6,Bushwick (CD4),8.9,8.5,71
+2022,CD,305,6,East New York and Starrett City (CD5),9.3,9.6,124
+2022,CD,306,6,Park Slope and Carroll Gardens (CD6),5.8,5.0,45
+2022,CD,307,6,Sunset Park (CD7),3.4,3.3,34
+2022,CD,308,6,Crown Heights and Prospect Heights (CD8),7.8,7.9,60
+2022,CD,309,6,South Crown Heights and Lefferts Gardens (CD9),6.6,6.9,53
+2022,CD,310,6,Bay Ridge and Dyker Heights (CD10),1.7,1.8,21
+2022,CD,311,6,Bensonhurst (CD11),1.4,1.4,23
+2022,CD,312,6,Borough Park (CD12),2.3,2.3,30
+2022,CD,313,6,Coney Island (CD13),8.3,8.4,75
+2022,CD,314,6,Flatbush and Midwood (CD14),4.3,4.4,54
+2022,CD,315,6,Sheepshead Bay (CD15),1.5,1.7,24
+2022,CD,316,6,Brownsville (CD16),16.7,16.5,98
+2022,CD,317,6,East Flatbush (CD17),8.3,8.5,103
+2022,CD,318,6,Flatlands and Canarsie (CD18),6.3,6.3,92
+2022,CD,401,6,Long Island City and Astoria (CD1),4.2,4.2,66
+2022,CD,402,6,Woodside and Sunnyside (CD2),2.7,2.7,34
+2022,CD,403,6,Jackson Heights (CD3),3.3,3.4,46
+2022,CD,404,6,Elmhurst and Corona (CD4),3.3,3.5,51
+2022,CD,405,6,Ridgewood and Maspeth (CD5),4.0,3.9,48
+2022,CD,406,6,Rego Park and Forest Hills (CD6),2.0,2.1,20
+2022,CD,407,6,Flushing and Whitestone (CD7),2.7,2.7,59
+2022,CD,408,6,Hillcrest and Fresh Meadows (CD8),6.4,6.9,84
+2022,CD,409,6,Kew Gardens and Woodhaven (CD9),4.3,4.3,48
+2022,CD,410,6,South Ozone Park and Howard Beach (CD10),4.7,5.1,49
+2022,CD,411,6,Bayside and Little Neck (CD11),2.2,2.5,24
+2022,CD,412,6,Jamaica and Hollis (CD12),9.1,9.6,172
+2022,CD,413,6,Queens Village (CD13),5.8,6.0,92
+2022,CD,414,6,Rockaway and Broad Channel (CD14),7.4,7.9,65
+2022,CD,501,6,St. George and Stapleton (CD1),9.5,9.7,143
+2022,CD,502,6,South Beach and Willowbrook (CD2),4.6,5.3,61
+2022,CD,503,6,Tottenville and Great Kills (CD3),2.8,3.0,37
+2022,UHF42,101,4,Kingsbridge - Riverdale,6.2,7.0,51
+2022,UHF42,102,4,Northeast Bronx,12.3,13.2,208
+2022,UHF42,103,4,Fordham - Bronx Pk,16.2,16.1,302
+2022,UHF42,104,4,Pelham - Throgs Neck,14.0,14.4,324
+2022,UHF42,105,4,Crotona - Tremont,21.2,21.0,321
+2022,UHF42,106,4,High Bridge - Morrisania,19.3,19.4,301
+2022,UHF42,107,4,Hunts Point - Mott Haven,24.2,24.3,251
+2022,UHF42,201,4,Greenpoint,4.7,4.1,46
+2022,UHF42,202,4,Downtown - Heights - Slope,5.7,5.2,111
+2022,UHF42,203,4,Bedford Stuyvesant - Crown Heights,9.1,9.0,246
+2022,UHF42,204,4,East New York,8.4,8.6,128
+2022,UHF42,205,4,Sunset Park,4.3,4.3,39
+2022,UHF42,206,4,Borough Park,1.8,1.9,44
+2022,UHF42,207,4,East Flatbush - Flatbush,7.5,7.7,179
+2022,UHF42,208,4,Canarsie - Flatlands,5.9,5.8,93
+2022,UHF42,209,4,Bensonhurst - Bay Ridge,1.8,1.9,30
+2022,UHF42,210,4,Coney Island - Sheepshead Bay,4.2,4.5,102
+2022,UHF42,211,4,Williamsburg - Bushwick,9.3,8.8,149
+2022,UHF42,301,4,Washington Heights,6.8,6.8,142
+2022,UHF42,302,4,Central Harlem - Morningside Heights,11.6,11.2,165
+2022,UHF42,303,4,East Harlem,11.7,12.1,107
+2022,UHF42,304,4,Upper West Side,3.9,3.7,72
+2022,UHF42,305,4,Upper East Side,1.2,1.4,24
+2022,UHF42,306,4,Chelsea - Clinton,3.2,3.1,44
+2022,UHF42,307,4,Gramercy Park - Murray Hill,2.1,2.0,24
+2022,UHF42,308,4,Greenwich Village - SoHo,0.8*,0.9*,6*
+2022,UHF42,309,4,Union Square - Lower East Side,4.7,4.7,77
+2022,UHF42,310,4,Lower Manhattan,3.5,3.0,16
+2022,UHF42,401,4,Long Island City - Astoria,3.7,3.7,63
+2022,UHF42,402,4,West Queens,3.8,3.9,140
+2022,UHF42,403,4,Flushing - Clearview,2.7,2.8,59
+2022,UHF42,404,4,Bayside - Little Neck,2.2,2.5,18
+2022,UHF42,405,4,Ridgewood - Forest Hills,3.1,3.0,62
+2022,UHF42,406,4,Fresh Meadows,4.6,4.9,39
+2022,UHF42,407,4,Southwest Queens,4.4,4.5,97
+2022,UHF42,408,4,Jamaica,8.1,8.5,218
+2022,UHF42,409,4,Southeast Queens,5.4,5.6,97
+2022,UHF42,410,4,Rockaways,6.1,6.5,65
+2022,UHF42,501,4,Port Richmond,11.5,11.7,63
+2022,UHF42,502,4,Stapleton - St. George,9.0,9.8,99
+2022,UHF42,503,4,Willowbrook,4.2,4.4,33
+2022,UHF42,504,4,South Beach - Tottenville,2.7,3.0,46
+2022,Borough,1,1,Bronx,16.6,17.0,"1,785"
+2022,Borough,2,1,Brooklyn,5.8,5.8,"1,180"
+2022,Borough,3,1,Manhattan,5.0,5.0,693
+2022,Borough,4,1,Queens,4.9,5.1,932
+2022,Borough,5,1,Staten Island,6.0,6.3,243
+2022,Citywide,1,0,New York City,7.0,7.2,"4,833"
+2021,CD,101,6,Financial District (CD1),2.1*,1.8*,9*
+2021,CD,102,6,Greenwich Village and Soho (CD2),0.7*,0.7*,5*
+2021,CD,103,6,Lower East Side and Chinatown (CD3),5.1,5.4,77
+2021,CD,104,6,Clinton and Chelsea (CD4),2.8,2.7,34
+2021,CD,105,6,Midtown (CD5),3.9,3.6,19
+2021,CD,106,6,Stuyvesant Town and Turtle Bay (CD6),2.3,2.0,24
+2021,CD,107,6,Upper West Side (CD7),2.4,2.2,37
+2021,CD,108,6,Upper East Side (CD8),1.7,1.6,29
+2021,CD,109,6,Morningside Heights and Hamilton Heights (CD9),8.1,7.7,67
+2021,CD,110,6,Central Harlem (CD10),12.2,12.0,107
+2021,CD,111,6,East Harlem (CD11),9.0,9.1,87
+2021,CD,112,6,Washington Heights and Inwood (CD12),5.8,6.0,92
+2021,CD,201,6,Mott Haven and Melrose (CD1),23.2,23.3,164
+2021,CD,202,6,Hunts Point and Longwood (CD2),15.6,15.6,63
+2021,CD,203,6,Morrisania and Crotona (CD3),20.7,20.6,132
+2021,CD,204,6,Highbridge and Concourse (CD4),12.2,12.2,138
+2021,CD,205,6,Fordham and University Heights (CD5),16.5,15.8,153
+2021,CD,206,6,Belmont and East Tremont (CD6),22.0,21.3,131
+2021,CD,207,6,Kingsbridge Heights and Bedford (CD7),10.9,10.6,115
+2021,CD,208,6,Riverdale and Fieldston (CD8),5.8,6.2,50
+2021,CD,209,6,Parkchester and Soundview (CD9),13.9,14.3,200
+2021,CD,210,6,Throgs Neck and Co-op City (CD10),6.4,7.1,68
+2021,CD,211,6,Morris Park and Bronxdale (CD11),12.0,12.4,109
+2021,CD,212,6,Williamsbridge and Baychester (CD12),15.6,16.0,187
+2021,CD,301,6,Greenpoint and Williamsburg (CD1),2.8,2.4,37
+2021,CD,302,6,Fort Greene and Brooklyn Heights (CD2),4.9,4.5,52
+2021,CD,303,6,Bedford Stuyvesant (CD3),5.9,5.7,66
+2021,CD,304,6,Bushwick (CD4),8.2,7.9,67
+2021,CD,305,6,East New York and Starrett City (CD5),8.4,8.6,113
+2021,CD,306,6,Park Slope and Carroll Gardens (CD6),4.4,3.3,30
+2021,CD,307,6,Sunset Park (CD7),3.6,3.4,35
+2021,CD,308,6,Crown Heights and Prospect Heights (CD8),5.1,5.0,39
+2021,CD,309,6,South Crown Heights and Lefferts Gardens (CD9),4.0,4.1,32
+2021,CD,310,6,Bay Ridge and Dyker Heights (CD10),1.3,1.3,15
+2021,CD,311,6,Bensonhurst (CD11),1.1,1.2,20
+2021,CD,312,6,Borough Park (CD12),1.1,1.1,15
+2021,CD,313,6,Coney Island (CD13),8.1,7.5,67
+2021,CD,314,6,Flatbush and Midwood (CD14),4.8,4.9,62
+2021,CD,315,6,Sheepshead Bay (CD15),1.7,1.9,27
+2021,CD,316,6,Brownsville (CD16),12.9,13.1,80
+2021,CD,317,6,East Flatbush (CD17),6.9,6.9,85
+2021,CD,318,6,Flatlands and Canarsie (CD18),5.5,5.6,83
+2021,CD,401,6,Long Island City and Astoria (CD1),3.0,3.0,48
+2021,CD,402,6,Woodside and Sunnyside (CD2),2.2,2.3,29
+2021,CD,403,6,Jackson Heights (CD3),3.2,3.3,46
+2021,CD,404,6,Elmhurst and Corona (CD4),2.9,3.0,45
+2021,CD,405,6,Ridgewood and Maspeth (CD5),2.2,2.2,27
+2021,CD,406,6,Rego Park and Forest Hills (CD6),2.0,1.7,16
+2021,CD,407,6,Flushing and Whitestone (CD7),1.7,1.7,38
+2021,CD,408,6,Hillcrest and Fresh Meadows (CD8),4.4,4.7,58
+2021,CD,409,6,Kew Gardens and Woodhaven (CD9),6.4,6.4,72
+2021,CD,410,6,South Ozone Park and Howard Beach (CD10),3.0,3.3,32
+2021,CD,411,6,Bayside and Little Neck (CD11),2.2,2.4,23
+2021,CD,412,6,Jamaica and Hollis (CD12),8.7,9.0,166
+2021,CD,413,6,Queens Village (CD13),4.9,5.1,81
+2021,CD,414,6,Rockaway and Broad Channel (CD14),4.9,5.0,42
+2021,CD,501,6,St. George and Stapleton (CD1),5.1,5.1,75
+2021,CD,502,6,South Beach and Willowbrook (CD2),3.6,3.9,45
+2021,CD,503,6,Tottenville and Great Kills (CD3),2.6,2.2,28
+2021,UHF42,101,4,Kingsbridge - Riverdale,5.5,5.8,43
+2021,UHF42,102,4,Northeast Bronx,11.8,12.2,197
+2021,UHF42,103,4,Fordham - Bronx Pk,11.9,11.6,229
+2021,UHF42,104,4,Pelham - Throgs Neck,11.8,12.3,281
+2021,UHF42,105,4,Crotona - Tremont,18.8,18.5,287
+2021,UHF42,106,4,High Bridge - Morrisania,17.0,17.0,269
+2021,UHF42,107,4,Hunts Point - Mott Haven,19.9,19.9,204
+2021,UHF42,201,4,Greenpoint,1.4,1.3,14
+2021,UHF42,202,4,Downtown - Heights - Slope,4.7,4.1,89
+2021,UHF42,203,4,Bedford Stuyvesant - Crown Heights,6.5,6.4,174
+2021,UHF42,204,4,East New York,8.0,8.1,122
+2021,UHF42,205,4,Sunset Park,3.7,3.5,33
+2021,UHF42,206,4,Borough Park,1.9,1.9,45
+2021,UHF42,207,4,East Flatbush - Flatbush,5.7,5.9,139
+2021,UHF42,208,4,Canarsie - Flatlands,5.0,5.0,83
+2021,UHF42,209,4,Bensonhurst - Bay Ridge,1.2,1.3,22
+2021,UHF42,210,4,Coney Island - Sheepshead Bay,4.3,4.3,100
+2021,UHF42,211,4,Williamsburg - Bushwick,6.6,6.1,104
+2021,UHF42,301,4,Washington Heights,5.9,6.0,131
+2021,UHF42,302,4,Central Harlem - Morningside Heights,9.3,9.1,132
+2021,UHF42,303,4,East Harlem,9.5,9.7,87
+2021,UHF42,304,4,Upper West Side,2.3,2.1,39
+2021,UHF42,305,4,Upper East Side,1.8,1.7,29
+2021,UHF42,306,4,Chelsea - Clinton,3.6,3.6,49
+2021,UHF42,307,4,Gramercy Park - Murray Hill,2.0,1.8,21
+2021,UHF42,308,4,Greenwich Village - SoHo,0.9*,0.7*,5*
+2021,UHF42,309,4,Union Square - Lower East Side,4.9,5.1,81
+2021,UHF42,310,4,Lower Manhattan,2.7,2.3,12
+2021,UHF42,401,4,Long Island City - Astoria,3.0,3.0,51
+2021,UHF42,402,4,West Queens,3.2,3.3,120
+2021,UHF42,403,4,Flushing - Clearview,1.8,1.9,40
+2021,UHF42,404,4,Bayside - Little Neck,2.4,2.7,20
+2021,UHF42,405,4,Ridgewood - Forest Hills,1.8,1.9,40
+2021,UHF42,406,4,Fresh Meadows,4.0,4.1,32
+2021,UHF42,407,4,Southwest Queens,4.6,4.7,104
+2021,UHF42,408,4,Jamaica,7.0,7.2,189
+2021,UHF42,409,4,Southeast Queens,4.5,4.8,85
+2021,UHF42,410,4,Rockaways,4.1,4.2,42
+2021,UHF42,501,4,Port Richmond,4.7,4.7,25
+2021,UHF42,502,4,Stapleton - St. George,6.7,6.9,70
+2021,UHF42,503,4,Willowbrook,1.7,2.0,15
+2021,UHF42,504,4,South Beach - Tottenville,2.3,2.4,38
+2021,Borough,1,1,Bronx,14.0,14.3,"1,535"
+2021,Borough,2,1,Brooklyn,4.6,4.6,947
+2021,Borough,3,1,Manhattan,4.4,4.4,601
+2021,Borough,4,1,Queens,3.8,4.0,742
+2021,Borough,5,1,Staten Island,3.8,3.9,150
+2021,Citywide,1,0,New York City,5.7,5.9,"3,975"
+2020,CD,101,6,Financial District (CD1),1.2*,1.1*,6*
+2020,CD,102,6,Greenwich Village and Soho (CD2),0.6*,0.6*,5*
+2020,CD,103,6,Lower East Side and Chinatown (CD3),3.9,4.0,60
+2020,CD,104,6,Clinton and Chelsea (CD4),2.3,2.1,29
+2020,CD,105,6,Midtown (CD5),3.2,3.1,18
+2020,CD,106,6,Stuyvesant Town and Turtle Bay (CD6),1.2,1.2,16
+2020,CD,107,6,Upper West Side (CD7),2.3,2.5,47
+2020,CD,108,6,Upper East Side (CD8),1.5,1.7,34
+2020,CD,109,6,Morningside Heights and Hamilton Heights (CD9),5.3,4.9,45
+2020,CD,110,6,Central Harlem (CD10),12.1,11.9,109
+2020,CD,111,6,East Harlem (CD11),10.1,10.1,99
+2020,CD,112,6,Washington Heights and Inwood (CD12),5.3,5.5,87
+2020,CD,201,6,Mott Haven and Melrose (CD1),26.3,26.2,189
+2020,CD,202,6,Hunts Point and Longwood (CD2),16.4,16.2,67
+2020,CD,203,6,Morrisania and Crotona (CD3),17.3,17.1,112
+2020,CD,204,6,Highbridge and Concourse (CD4),14.0,14.0,162
+2020,CD,205,6,Fordham and University Heights (CD5),14.3,13.6,135
+2020,CD,206,6,Belmont and East Tremont (CD6),21.3,20.5,129
+2020,CD,207,6,Kingsbridge Heights and Bedford (CD7),12.3,12.0,134
+2020,CD,208,6,Riverdale and Fieldston (CD8),3.3,3.7,31
+2020,CD,209,6,Parkchester and Soundview (CD9),13.8,14.2,202
+2020,CD,210,6,Throgs Neck and Co-op City (CD10),6.2,7.0,69
+2020,CD,211,6,Morris Park and Bronxdale (CD11),9.7,10.0,91
+2020,CD,212,6,Williamsbridge and Baychester (CD12),13.1,13.5,162
+2020,CD,301,6,Greenpoint and Williamsburg (CD1),3.6,2.9,47
+2020,CD,302,6,Fort Greene and Brooklyn Heights (CD2),4.3,3.7,44
+2020,CD,303,6,Bedford Stuyvesant (CD3),9.2,9.0,106
+2020,CD,304,6,Bushwick (CD4),7.0,6.6,57
+2020,CD,305,6,East New York and Starrett City (CD5),9.5,9.6,129
+2020,CD,306,6,Park Slope and Carroll Gardens (CD6),4.7,3.9,37
+2020,CD,307,6,Sunset Park (CD7),4.0,3.6,38
+2020,CD,308,6,Crown Heights and Prospect Heights (CD8),6.3,6.1,49
+2020,CD,309,6,South Crown Heights and Lefferts Gardens (CD9),7.0,7.2,57
+2020,CD,310,6,Bay Ridge and Dyker Heights (CD10),0.9,1.0,12
+2020,CD,311,6,Bensonhurst (CD11),1.4,1.5,25
+2020,CD,312,6,Borough Park (CD12),1.5,1.5,21
+2020,CD,313,6,Coney Island (CD13),5.7,6.4,59
+2020,CD,314,6,Flatbush and Midwood (CD14),5.0,5.1,66
+2020,CD,315,6,Sheepshead Bay (CD15),1.9,1.9,28
+2020,CD,316,6,Brownsville (CD16),14.5,14.6,90
+2020,CD,317,6,East Flatbush (CD17),7.1,7.1,89
+2020,CD,318,6,Flatlands and Canarsie (CD18),4.8,5.0,76
+2020,CD,401,6,Long Island City and Astoria (CD1),2.5,2.4,41
+2020,CD,402,6,Woodside and Sunnyside (CD2),1.2,1.1,15
+2020,CD,403,6,Jackson Heights (CD3),2.6,2.7,39
+2020,CD,404,6,Elmhurst and Corona (CD4),3.6,3.7,55
+2020,CD,405,6,Ridgewood and Maspeth (CD5),2.7,2.7,35
+2020,CD,406,6,Rego Park and Forest Hills (CD6),1.8,2.1,21
+2020,CD,407,6,Flushing and Whitestone (CD7),1.9,2.0,44
+2020,CD,408,6,Hillcrest and Fresh Meadows (CD8),2.5,2.5,32
+2020,CD,409,6,Kew Gardens and Woodhaven (CD9),3.9,4.0,46
+2020,CD,410,6,South Ozone Park and Howard Beach (CD10),3.4,3.8,38
+2020,CD,411,6,Bayside and Little Neck (CD11),1.0,1.3,13
+2020,CD,412,6,Jamaica and Hollis (CD12),5.9,6.4,120
+2020,CD,413,6,Queens Village (CD13),4.6,4.9,78
+2020,CD,414,6,Rockaway and Broad Channel (CD14),5.8,5.9,51
+2020,CD,501,6,St. George and Stapleton (CD1),4.7,4.7,69
+2020,CD,502,6,South Beach and Willowbrook (CD2),3.6,3.9,44
+2020,CD,503,6,Tottenville and Great Kills (CD3),1.9,2.0,26
+2020,UHF42,101,4,Kingsbridge - Riverdale,3.4,3.7,28
+2020,UHF42,102,4,Northeast Bronx,9.0,9.6,159
+2020,UHF42,103,4,Fordham - Bronx Pk,13.4,13.1,266
+2020,UHF42,104,4,Pelham - Throgs Neck,10.8,11.3,268
+2020,UHF42,105,4,Crotona - Tremont,16.6,16.1,253
+2020,UHF42,106,4,High Bridge - Morrisania,17.8,17.8,288
+2020,UHF42,107,4,Hunts Point - Mott Haven,21.6,21.4,221
+2020,UHF42,201,4,Greenpoint,2.9,2.4,28
+2020,UHF42,202,4,Downtown - Heights - Slope,4.1,3.5,79
+2020,UHF42,203,4,Bedford Stuyvesant - Crown Heights,8.0,7.9,218
+2020,UHF42,204,4,East New York,8.5,8.6,130
+2020,UHF42,205,4,Sunset Park,3.7,3.5,34
+2020,UHF42,206,4,Borough Park,2.0,2.1,51
+2020,UHF42,207,4,East Flatbush - Flatbush,6.6,6.9,167
+2020,UHF42,208,4,Canarsie - Flatlands,5.0,5.2,87
+2020,UHF42,209,4,Bensonhurst - Bay Ridge,1.3,1.5,25
+2020,UHF42,210,4,Coney Island - Sheepshead Bay,3.5,3.9,93
+2020,UHF42,211,4,Williamsburg - Bushwick,7.3,6.7,118
+2020,UHF42,301,4,Washington Heights,4.7,4.8,108
+2020,UHF42,302,4,Central Harlem - Morningside Heights,9.1,8.8,133
+2020,UHF42,303,4,East Harlem,10.3,10.3,95
+2020,UHF42,304,4,Upper West Side,2.3,2.6,51
+2020,UHF42,305,4,Upper East Side,1.6,1.8,34
+2020,UHF42,306,4,Chelsea - Clinton,3.1,2.9,44
+2020,UHF42,307,4,Gramercy Park - Murray Hill,1.5,1.5,19
+2020,UHF42,308,4,Greenwich Village - SoHo,0.6*,0.5*,4*
+2020,UHF42,309,4,Union Square - Lower East Side,3.4,3.4,58
+2020,UHF42,310,4,Lower Manhattan,1.9*,1.6*,9*
+2020,UHF42,401,4,Long Island City - Astoria,2.5,2.3,42
+2020,UHF42,402,4,West Queens,2.9,3.0,112
+2020,UHF42,403,4,Flushing - Clearview,1.9,2.1,46
+2020,UHF42,404,4,Bayside - Little Neck,0.9*,1.2*,9*
+2020,UHF42,405,4,Ridgewood - Forest Hills,2.2,2.4,52
+2020,UHF42,406,4,Fresh Meadows,2.8,2.8,23
+2020,UHF42,407,4,Southwest Queens,3.6,3.7,84
+2020,UHF42,408,4,Jamaica,4.6,4.9,130
+2020,UHF42,409,4,Southeast Queens,4.1,4.4,79
+2020,UHF42,410,4,Rockaways,4.9,4.9,51
+2020,UHF42,501,4,Port Richmond,4.4,4.3,23
+2020,UHF42,502,4,Stapleton - St. George,6.0,6.4,65
+2020,UHF42,503,4,Willowbrook,2.6,2.7,20
+2020,UHF42,504,4,South Beach - Tottenville,1.8,2.0,31
+2020,Borough,1,1,Bronx,13.4,13.7,"1,514"
+2020,Borough,2,1,Brooklyn,5.0,5.0,"1,066"
+2020,Borough,3,1,Manhattan,4.0,4.0,575
+2020,Borough,4,1,Queens,3.2,3.4,644
+2020,Borough,5,1,Staten Island,3.4,3.6,140
+2020,Citywide,1,0,New York City,5.5,5.7,"3,939"
+2019,CD,101,6,Financial District (CD1),1.1*,0.9*,5*
+2019,CD,102,6,Greenwich Village and Soho (CD2),0.7*,0.6*,5*
+2019,CD,103,6,Lower East Side and Chinatown (CD3),6.3,6.6,102
+2019,CD,104,6,Clinton and Chelsea (CD4),3.1,2.9,40
+2019,CD,105,6,Midtown (CD5),5.6,5.1,30
+2019,CD,106,6,Stuyvesant Town and Turtle Bay (CD6),3.4,3.4,46
+2019,CD,107,6,Upper West Side (CD7),2.8,2.9,54
+2019,CD,108,6,Upper East Side (CD8),2.1,1.8,36
+2019,CD,109,6,Morningside Heights and Hamilton Heights (CD9),6.5,5.9,56
+2019,CD,110,6,Central Harlem (CD10),20.0,19.3,182
+2019,CD,111,6,East Harlem (CD11),16.2,16.3,164
+2019,CD,112,6,Washington Heights and Inwood (CD12),8.2,8.4,137
+2019,CD,201,6,Mott Haven and Melrose (CD1),40.7,40.1,296
+2019,CD,202,6,Hunts Point and Longwood (CD2),28.8,28.1,119
+2019,CD,203,6,Morrisania and Crotona (CD3),28.8,28.6,192
+2019,CD,204,6,Highbridge and Concourse (CD4),22.2,22.0,261
+2019,CD,205,6,Fordham and University Heights (CD5),25.4,23.7,241
+2019,CD,206,6,Belmont and East Tremont (CD6),26.7,25.6,165
+2019,CD,207,6,Kingsbridge Heights and Bedford (CD7),21.6,20.6,236
+2019,CD,208,6,Riverdale and Fieldston (CD8),7.0,7.4,63
+2019,CD,209,6,Parkchester and Soundview (CD9),20.3,20.8,303
+2019,CD,210,6,Throgs Neck and Co-op City (CD10),13.2,13.5,137
+2019,CD,211,6,Morris Park and Bronxdale (CD11),16.2,16.4,153
+2019,CD,212,6,Williamsbridge and Baychester (CD12),23.4,24.4,300
+2019,CD,301,6,Greenpoint and Williamsburg (CD1),6.5,5.5,87
+2019,CD,302,6,Fort Greene and Brooklyn Heights (CD2),8.0,6.9,82
+2019,CD,303,6,Bedford Stuyvesant (CD3),14.3,13.9,165
+2019,CD,304,6,Bushwick (CD4),10.1,9.8,85
+2019,CD,305,6,East New York and Starrett City (CD5),16.7,17.0,229
+2019,CD,306,6,Park Slope and Carroll Gardens (CD6),7.5,6.1,57
+2019,CD,307,6,Sunset Park (CD7),7.6,6.7,71
+2019,CD,308,6,Crown Heights and Prospect Heights (CD8),12.3,11.7,94
+2019,CD,309,6,South Crown Heights and Lefferts Gardens (CD9),6.8,6.9,55
+2019,CD,310,6,Bay Ridge and Dyker Heights (CD10),2.8,2.8,33
+2019,CD,311,6,Bensonhurst (CD11),1.7,1.8,31
+2019,CD,312,6,Borough Park (CD12),2.6,2.6,35
+2019,CD,313,6,Coney Island (CD13),7.8,8.7,79
+2019,CD,314,6,Flatbush and Midwood (CD14),6.5,6.8,87
+2019,CD,315,6,Sheepshead Bay (CD15),2.4,2.8,40
+2019,CD,316,6,Brownsville (CD16),16.6,16.8,105
+2019,CD,317,6,East Flatbush (CD17),8.3,8.7,110
+2019,CD,318,6,Flatlands and Canarsie (CD18),8.9,9.4,143
+2019,CD,401,6,Long Island City and Astoria (CD1),5.4,5.0,85
+2019,CD,402,6,Woodside and Sunnyside (CD2),2.8,2.6,34
+2019,CD,403,6,Jackson Heights (CD3),4.9,4.8,69
+2019,CD,404,6,Elmhurst and Corona (CD4),6.8,6.8,103
+2019,CD,405,6,Ridgewood and Maspeth (CD5),4.3,4.5,58
+2019,CD,406,6,Rego Park and Forest Hills (CD6),4.7,5.2,51
+2019,CD,407,6,Flushing and Whitestone (CD7),2.5,2.9,64
+2019,CD,408,6,Hillcrest and Fresh Meadows (CD8),6.2,6.7,85
+2019,CD,409,6,Kew Gardens and Woodhaven (CD9),6.8,7.0,80
+2019,CD,410,6,South Ozone Park and Howard Beach (CD10),6.5,7.0,70
+2019,CD,411,6,Bayside and Little Neck (CD11),2.6,2.7,27
+2019,CD,412,6,Jamaica and Hollis (CD12),11.9,12.5,234
+2019,CD,413,6,Queens Village (CD13),7.6,8.4,134
+2019,CD,414,6,Rockaway and Broad Channel (CD14),7.3,7.5,65
+2019,CD,501,6,St. George and Stapleton (CD1),9.0,9.2,136
+2019,CD,502,6,South Beach and Willowbrook (CD2),7.2,7.3,85
+2019,CD,503,6,Tottenville and Great Kills (CD3),3.6,3.8,50
+2019,UHF42,101,4,Kingsbridge - Riverdale,7.5,7.7,61
+2019,UHF42,102,4,Northeast Bronx,18.2,19.2,325
+2019,UHF42,103,4,Fordham - Bronx Pk,21.9,21.1,438
+2019,UHF42,104,4,Pelham - Throgs Neck,17.2,17.7,429
+2019,UHF42,105,4,Crotona - Tremont,24.0,23.2,380
+2019,UHF42,106,4,High Bridge - Morrisania,29.2,29.3,486
+2019,UHF42,107,4,Hunts Point - Mott Haven,33.2,32.5,347
+2019,UHF42,201,4,Greenpoint,4.5,3.8,45
+2019,UHF42,202,4,Downtown - Heights - Slope,8.3,7.2,159
+2019,UHF42,203,4,Bedford Stuyvesant - Crown Heights,12.2,11.8,324
+2019,UHF42,204,4,East New York,15.1,15.2,226
+2019,UHF42,205,4,Sunset Park,6.8,6.3,61
+2019,UHF42,206,4,Borough Park,2.9,3.0,73
+2019,UHF42,207,4,East Flatbush - Flatbush,7.5,7.9,193
+2019,UHF42,208,4,Canarsie - Flatlands,8.6,9.2,157
+2019,UHF42,209,4,Bensonhurst - Bay Ridge,2.6,2.8,48
+2019,UHF42,210,4,Coney Island - Sheepshead Bay,4.1,4.8,116
+2019,UHF42,211,4,Williamsburg - Bushwick,11.6,10.7,186
+2019,UHF42,301,4,Washington Heights,7.2,7.3,168
+2019,UHF42,302,4,Central Harlem - Morningside Heights,15.3,14.4,223
+2019,UHF42,303,4,East Harlem,15.5,15.6,147
+2019,UHF42,304,4,Upper West Side,2.7,2.8,55
+2019,UHF42,305,4,Upper East Side,2.2,1.9,36
+2019,UHF42,306,4,Chelsea - Clinton,4.6,4.4,69
+2019,UHF42,307,4,Gramercy Park - Murray Hill,3.3,3.0,40
+2019,UHF42,308,4,Greenwich Village - SoHo,0.7*,0.6*,5*
+2019,UHF42,309,4,Union Square - Lower East Side,5.2,5.3,91
+2019,UHF42,310,4,Lower Manhattan,5.2,3.9,23
+2019,UHF42,401,4,Long Island City - Astoria,5.3,4.7,85
+2019,UHF42,402,4,West Queens,5.7,5.7,215
+2019,UHF42,403,4,Flushing - Clearview,2.6,3.0,65
+2019,UHF42,404,4,Bayside - Little Neck,2.8,3.1,23
+2019,UHF42,405,4,Ridgewood - Forest Hills,4.2,4.6,100
+2019,UHF42,406,4,Fresh Meadows,6.5,6.8,56
+2019,UHF42,407,4,Southwest Queens,6.3,6.6,150
+2019,UHF42,408,4,Jamaica,9.4,9.9,262
+2019,UHF42,409,4,Southeast Queens,7.0,7.6,138
+2019,UHF42,410,4,Rockaways,6.2,6.4,65
+2019,UHF42,501,4,Port Richmond,11.4,11.5,63
+2019,UHF42,502,4,Stapleton - St. George,9.6,9.7,100
+2019,UHF42,503,4,Willowbrook,5.0,5.3,41
+2019,UHF42,504,4,South Beach - Tottenville,3.9,4.2,67
+2019,Borough,1,1,Bronx,21.8,22.2,"2,518"
+2019,Borough,2,1,Brooklyn,7.7,7.7,"1,628"
+2019,Borough,3,1,Manhattan,6.0,6.0,885
+2019,Borough,4,1,Queens,5.9,6.2,"1,184"
+2019,Borough,5,1,Staten Island,6.7,6.9,274
+2019,Citywide,1,0,New York City,9.0,9.2,"6,489"
+2018,UHF42,101,4,Kingsbridge - Riverdale,10.2,10.5,79
+2018,UHF42,102,4,Northeast Bronx,17.2,18.4,295
+2018,UHF42,103,4,Fordham - Bronx Pk,27.8,25.7,507
+2018,UHF42,104,4,Pelham - Throgs Neck,21.0,20.9,487
+2018,UHF42,105,4,Crotona - Tremont,31.4,30.5,469
+2018,UHF42,106,4,High Bridge - Morrisania,32.5,32.2,510
+2018,UHF42,107,4,Hunts Point - Mott Haven,42.4,41.7,425
+2018,UHF42,201,4,Greenpoint,6.3,5.0,54
+2018,UHF42,202,4,Downtown - Heights - Slope,6.9,5.9,124
+2018,UHF42,203,4,Bedford Stuyvesant - Crown Heights,12.6,12.0,306
+2018,UHF42,204,4,East New York,12.1,11.9,164
+2018,UHF42,205,4,Sunset Park,6.3,5.5,52
+2018,UHF42,206,4,Borough Park,2.9,3.0,69
+2018,UHF42,207,4,East Flatbush - Flatbush,8.8,8.8,206
+2018,UHF42,208,4,Canarsie - Flatlands,7.9,8.3,134
+2018,UHF42,209,4,Bensonhurst - Bay Ridge,3.2,3.3,54
+2018,UHF42,210,4,Coney Island - Sheepshead Bay,6.1,6.9,160
+2018,UHF42,211,4,Williamsburg - Bushwick,15.6,13.1,217
+2018,UHF42,301,4,Washington Heights,8.7,8.6,190
+2018,UHF42,302,4,Central Harlem - Morningside Heights,19.4,18.8,274
+2018,UHF42,303,4,East Harlem,16.8,17.1,156
+2018,UHF42,304,4,Upper West Side,4.0,4.4,81
+2018,UHF42,305,4,Upper East Side,1.8,2.1,39
+2018,UHF42,306,4,Chelsea - Clinton,3.1,2.8,41
+2018,UHF42,307,4,Gramercy Park - Murray Hill,2.9,2.3,28
+2018,UHF42,308,4,Greenwich Village - SoHo,0.8*,0.8*,6*
+2018,UHF42,309,4,Union Square - Lower East Side,5.8,6.0,98
+2018,UHF42,310,4,Lower Manhattan,5.1,3.9,20
+2018,UHF42,401,4,Long Island City - Astoria,4.8,4.2,74
+2018,UHF42,402,4,West Queens,6.2,6.2,224
+2018,UHF42,403,4,Flushing - Clearview,4.6,5.0,104
+2018,UHF42,404,4,Bayside - Little Neck,3.1,3.2,23
+2018,UHF42,405,4,Ridgewood - Forest Hills,4.5,4.7,97
+2018,UHF42,406,4,Fresh Meadows,6.6,6.6,52
+2018,UHF42,407,4,Southwest Queens,6.6,6.8,149
+2018,UHF42,408,4,Jamaica,7.9,8.7,216
+2018,UHF42,409,4,Southeast Queens,6.8,7.4,127
+2018,UHF42,410,4,Rockaways,7.8,8.3,78
+2018,UHF42,501,4,Port Richmond,11.6,11.7,59
+2018,UHF42,502,4,Stapleton - St. George,12.2,11.5,112
+2018,UHF42,503,4,Willowbrook,7.2,7.5,55
+2018,UHF42,504,4,South Beach - Tottenville,4.8,4.7,72
+2018,Borough,1,1,Bronx,26.6,26.5,"2,854"
+2018,Borough,2,1,Brooklyn,8.1,8.0,"1,587"
+2018,Borough,3,1,Manhattan,6.9,6.9,961
+2018,Borough,4,1,Queens,6.1,6.5,"1,181"
+2018,Borough,5,1,Staten Island,8.3,8.2,305
+2018,Citywide,1,0,New York City,10.3,10.3,"6,888"
+2017,UHF42,101,4,Kingsbridge - Riverdale,7.7,8.2,65
+2017,UHF42,102,4,Northeast Bronx,14.4,15.1,254
+2017,UHF42,103,4,Fordham - Bronx Pk,21.6,20.9,432
+2017,UHF42,104,4,Pelham - Throgs Neck,16.5,17.0,410
+2017,UHF42,105,4,Crotona - Tremont,25.3,24.4,397
+2017,UHF42,106,4,High Bridge - Morrisania,34.0,33.5,552
+2017,UHF42,107,4,Hunts Point - Mott Haven,42.6,41.6,441
+2017,UHF42,201,4,Greenpoint,2.8,2.3,27
+2017,UHF42,202,4,Downtown - Heights - Slope,6.2,5.3,116
+2017,UHF42,203,4,Bedford Stuyvesant - Crown Heights,10.8,10.5,288
+2017,UHF42,204,4,East New York,9.1,9.0,135
+2017,UHF42,205,4,Sunset Park,6.7,5.9,57
+2017,UHF42,206,4,Borough Park,2.9,3.1,74
+2017,UHF42,207,4,East Flatbush - Flatbush,7.2,7.5,183
+2017,UHF42,208,4,Canarsie - Flatlands,6.6,6.9,118
+2017,UHF42,209,4,Bensonhurst - Bay Ridge,2.0,2.2,37
+2017,UHF42,210,4,Coney Island - Sheepshead Bay,6.4,7.0,167
+2017,UHF42,211,4,Williamsburg - Bushwick,11.9,11.0,191
+2017,UHF42,301,4,Washington Heights,8.3,8.3,191
+2017,UHF42,302,4,Central Harlem - Morningside Heights,14.8,14.2,218
+2017,UHF42,303,4,East Harlem,18.9,18.7,175
+2017,UHF42,304,4,Upper West Side,3.1,3.3,63
+2017,UHF42,305,4,Upper East Side,1.6,1.6,31
+2017,UHF42,306,4,Chelsea - Clinton,2.5,2.5,38
+2017,UHF42,307,4,Gramercy Park - Murray Hill,2.1,2.0,26
+2017,UHF42,308,4,Greenwich Village - SoHo,1.0,0.9,7
+2017,UHF42,309,4,Union Square - Lower East Side,7.0,7.0,120
+2017,UHF42,310,4,Lower Manhattan,5.6,4.2,24
+2017,UHF42,401,4,Long Island City - Astoria,5.4,4.9,90
+2017,UHF42,402,4,West Queens,6.4,6.4,241
+2017,UHF42,403,4,Flushing - Clearview,3.5,3.8,83
+2017,UHF42,404,4,Bayside - Little Neck,4.6,4.9,37
+2017,UHF42,405,4,Ridgewood - Forest Hills,4.4,4.6,101
+2017,UHF42,406,4,Fresh Meadows,6.3,6.9,57
+2017,UHF42,407,4,Southwest Queens,7.1,7.4,169
+2017,UHF42,408,4,Jamaica,11.3,11.9,314
+2017,UHF42,409,4,Southeast Queens,6.9,7.4,134
+2017,UHF42,410,4,Rockaways,6.6,6.7,69
+2017,UHF42,501,4,Port Richmond,15.1,15.3,82
+2017,UHF42,502,4,Stapleton - St. George,10.1,10.5,106
+2017,UHF42,503,4,Willowbrook,4.2,4.7,35
+2017,UHF42,504,4,South Beach - Tottenville,3.8,4.0,64
+2017,Borough,1,1,Bronx,23.0,23.2,"2,621"
+2017,Borough,2,1,Brooklyn,6.8,6.8,"1,427"
+2017,Borough,3,1,Manhattan,6.3,6.3,919
+2017,Borough,4,1,Queens,6.6,6.9,"1,321"
+2017,Borough,5,1,Staten Island,7.2,7.5,290
+2017,Citywide,1,0,New York City,9.2,9.4,"6,578"
+2016,UHF42,101,4,Kingsbridge - Riverdale,10.8,11.7,87
+2016,UHF42,102,4,Northeast Bronx,18.0,18.6,298
+2016,UHF42,103,4,Fordham - Bronx Pk,27.8,26.7,516
+2016,UHF42,104,4,Pelham - Throgs Neck,22.2,22.6,538
+2016,UHF42,105,4,Crotona - Tremont,32.2,30.4,480
+2016,UHF42,106,4,High Bridge - Morrisania,40.0,39.4,633
+2016,UHF42,107,4,Hunts Point - Mott Haven,50.8,48.9,513
+2016,UHF42,201,4,Greenpoint,4.6,3.3,37
+2016,UHF42,202,4,Downtown - Heights - Slope,8.7,7.0,149
+2016,UHF42,203,4,Bedford Stuyvesant - Crown Heights,14.3,13.9,354
+2016,UHF42,204,4,East New York,12.1,12.0,164
+2016,UHF42,205,4,Sunset Park,6.1,5.2,53
+2016,UHF42,206,4,Borough Park,4.6,4.7,115
+2016,UHF42,207,4,East Flatbush - Flatbush,10.2,10.5,249
+2016,UHF42,208,4,Canarsie - Flatlands,8.1,8.6,138
+2016,UHF42,209,4,Bensonhurst - Bay Ridge,2.8,3.0,51
+2016,UHF42,210,4,Coney Island - Sheepshead Bay,7.6,8.0,183
+2016,UHF42,211,4,Williamsburg - Bushwick,14.0,12.6,208
+2016,UHF42,301,4,Washington Heights,9.8,9.6,211
+2016,UHF42,302,4,Central Harlem - Morningside Heights,20.3,19.3,272
+2016,UHF42,303,4,East Harlem,26.4,26.1,233
+2016,UHF42,304,4,Upper West Side,3.5,3.6,67
+2016,UHF42,305,4,Upper East Side,1.8,1.9,36
+2016,UHF42,306,4,Chelsea - Clinton,3.8,3.3,48
+2016,UHF42,307,4,Gramercy Park - Murray Hill,1.9,1.8,22
+2016,UHF42,308,4,Greenwich Village - SoHo,1.3*,1.2*,**
+2016,UHF42,309,4,Union Square - Lower East Side,7.5,7.1,124
+2016,UHF42,310,4,Lower Manhattan,5.6,3.9,21
+2016,UHF42,401,4,Long Island City - Astoria,7.0,6.3,114
+2016,UHF42,402,4,West Queens,6.1,5.9,225
+2016,UHF42,403,4,Flushing - Clearview,4.5,4.9,107
+2016,UHF42,404,4,Bayside - Little Neck,4.1,4.3,32
+2016,UHF42,405,4,Ridgewood - Forest Hills,4.2,4.4,89
+2016,UHF42,406,4,Fresh Meadows,6.5,6.9,55
+2016,UHF42,407,4,Southwest Queens,7.4,7.6,172
+2016,UHF42,408,4,Jamaica,11.5,11.9,297
+2016,UHF42,409,4,Southeast Queens,7.4,8.1,139
+2016,UHF42,410,4,Rockaways,8.2,8.6,77
+2016,UHF42,501,4,Port Richmond,26.4,26.8,133
+2016,UHF42,502,4,Stapleton - St. George,14.8,14.5,142
+2016,UHF42,503,4,Willowbrook,7.0,7.4,52
+2016,UHF42,504,4,South Beach - Tottenville,5.6,5.8,89
+2016,Borough,1,1,Bronx,27.9,27.9,"3,038"
+2016,Borough,2,1,Brooklyn,8.6,8.5,"1,719"
+2016,Borough,3,1,Manhattan,7.6,7.4,"1,045"
+2016,Borough,4,1,Queens,6.8,7.0,"1,307"
+2016,Borough,5,1,Staten Island,11.0,11.2,416
+2016,Citywide,1,0,New York City,11.1,11.1,"7,525"
+2015,Citywide,1,0,New York City,†,†,†
+2014,UHF42,101,4,Kingsbridge - Riverdale,17.0,18.6,138
+2014,UHF42,102,4,Northeast Bronx,30.1,32.2,510
+2014,UHF42,103,4,Fordham - Bronx Pk,48.3,44.8,849
+2014,UHF42,104,4,Pelham - Throgs Neck,33.2,33.8,794
+2014,UHF42,105,4,Crotona - Tremont,52.6,48.7,751
+2014,UHF42,106,4,High Bridge - Morrisania,56.4,54.7,860
+2014,UHF42,107,4,Hunts Point - Mott Haven,75.6,71.9,736
+2014,UHF42,201,4,Greenpoint,13.7,10.0,108
+2014,UHF42,202,4,Downtown - Heights - Slope,17.9,14.7,303
+2014,UHF42,203,4,Bedford Stuyvesant - Crown Heights,37.4,35.7,912
+2014,UHF42,204,4,East New York,42.7,41.5,568
+2014,UHF42,205,4,Sunset Park,20.5,17.2,173
+2014,UHF42,206,4,Borough Park,9.1,9.4,229
+2014,UHF42,207,4,East Flatbush - Flatbush,20.6,20.9,493
+2014,UHF42,208,4,Canarsie - Flatlands,18.9,20.4,329
+2014,UHF42,209,4,Bensonhurst - Bay Ridge,7.1,7.8,132
+2014,UHF42,210,4,Coney Island - Sheepshead Bay,16.2,18.2,412
+2014,UHF42,211,4,Williamsburg - Bushwick,45.0,36.8,608
+2014,UHF42,301,4,Washington Heights,18.0,17.5,382
+2014,UHF42,302,4,Central Harlem - Morningside Heights,42.6,39.0,551
+2014,UHF42,303,4,East Harlem,46.0,44.5,396
+2014,UHF42,304,4,Upper West Side,10.6,12.0,225
+2014,UHF42,305,4,Upper East Side,4.9,5.3,99
+2014,UHF42,306,4,Chelsea - Clinton,11.7,10.4,147
+2014,UHF42,307,4,Gramercy Park - Murray Hill,7.6,6.7,80
+2014,UHF42,308,4,Greenwich Village - SoHo,3.7,3.3,24
+2014,UHF42,309,4,Union Square - Lower East Side,19.9,19.2,332
+2014,UHF42,310,4,Lower Manhattan,10.7,7.8,41
+2014,UHF42,401,4,Long Island City - Astoria,20.1,17.4,314
+2014,UHF42,402,4,West Queens,13.3,12.6,473
+2014,UHF42,403,4,Flushing - Clearview,7.9,9.1,196
+2014,UHF42,404,4,Bayside - Little Neck,7.2,8.3,61
+2014,UHF42,405,4,Ridgewood - Forest Hills,10.3,11.2,228
+2014,UHF42,406,4,Fresh Meadows,10.9,11.8,93
+2014,UHF42,407,4,Southwest Queens,13.0,12.7,286
+2014,UHF42,408,4,Jamaica,16.0,16.7,412
+2014,UHF42,409,4,Southeast Queens,10.2,11.1,187
+2014,UHF42,410,4,Rockaways,18.4,20.2,181
+2014,UHF42,501,4,Port Richmond,27.8,28.5,139
+2014,UHF42,502,4,Stapleton - St. George,22.1,23.3,224
+2014,UHF42,503,4,Willowbrook,10.5,11.3,79
+2014,UHF42,504,4,South Beach - Tottenville,9.7,10.2,157
+2014,Borough,1,1,Bronx,44.8,44.4,"4,764"
+2014,Borough,2,1,Brooklyn,22.1,21.8,"4,385"
+2014,Borough,3,1,Manhattan,17.4,16.9,"2,359"
+2014,Borough,4,1,Queens,12.9,13.5,"2,483"
+2014,Borough,5,1,Staten Island,15.7,16.6,612
+2014,Citywide,1,0,New York City,21.7,21.8,"14,603"
+2013,UHF42,101,4,Kingsbridge - Riverdale,17.7,20.6,153
+2013,UHF42,102,4,Northeast Bronx,26.7,28.8,451
+2013,UHF42,103,4,Fordham - Bronx Pk,49.9,46.6,872
+2013,UHF42,104,4,Pelham - Throgs Neck,30.3,30.9,719
+2013,UHF42,105,4,Crotona - Tremont,56.8,51.5,783
+2013,UHF42,106,4,High Bridge - Morrisania,59.2,56.7,878
+2013,UHF42,107,4,Hunts Point - Mott Haven,75.8,71.6,721
+2013,UHF42,201,4,Greenpoint,19.3,14.4,152
+2013,UHF42,202,4,Downtown - Heights - Slope,22.1,18.2,370
+2013,UHF42,203,4,Bedford Stuyvesant - Crown Heights,42.3,40.0,"1,016"
+2013,UHF42,204,4,East New York,44.1,42.7,583
+2013,UHF42,205,4,Sunset Park,25.5,20.9,207
+2013,UHF42,206,4,Borough Park,8.8,9.3,223
+2013,UHF42,207,4,East Flatbush - Flatbush,24.4,24.7,579
+2013,UHF42,208,4,Canarsie - Flatlands,17.9,19.2,309
+2013,UHF42,209,4,Bensonhurst - Bay Ridge,8.9,10.0,166
+2013,UHF42,210,4,Coney Island - Sheepshead Bay,17.4,20.6,463
+2013,UHF42,211,4,Williamsburg - Bushwick,51.1,42.6,700
+2013,UHF42,301,4,Washington Heights,18.8,18.2,396
+2013,UHF42,302,4,Central Harlem - Morningside Heights,42.0,38.4,543
+2013,UHF42,303,4,East Harlem,56.7,55.1,489
+2013,UHF42,304,4,Upper West Side,11.5,12.7,238
+2013,UHF42,305,4,Upper East Side,5.4,5.9,111
+2013,UHF42,306,4,Chelsea - Clinton,13.5,11.8,166
+2013,UHF42,307,4,Gramercy Park - Murray Hill,7.3,6.5,78
+2013,UHF42,308,4,Greenwich Village - SoHo,3.3,2.9,21
+2013,UHF42,309,4,Union Square - Lower East Side,22.3,21.4,368
+2013,UHF42,310,4,Lower Manhattan,10.0,6.6,34
+2013,UHF42,401,4,Long Island City - Astoria,17.9,15.5,278
+2013,UHF42,402,4,West Queens,13.1,12.3,457
+2013,UHF42,403,4,Flushing - Clearview,7.1,8.3,176
+2013,UHF42,404,4,Bayside - Little Neck,5.5,6.3,46
+2013,UHF42,405,4,Ridgewood - Forest Hills,11.6,12.5,255
+2013,UHF42,406,4,Fresh Meadows,10.6,11.6,91
+2013,UHF42,407,4,Southwest Queens,14.7,14.6,324
+2013,UHF42,408,4,Jamaica,15.6,16.3,397
+2013,UHF42,409,4,Southeast Queens,11.6,12.4,209
+2013,UHF42,410,4,Rockaways,23.2,24.9,223
+2013,UHF42,501,4,Port Richmond,32.6,32.9,159
+2013,UHF42,502,4,Stapleton - St. George,23.7,24.7,236
+2013,UHF42,503,4,Willowbrook,11.0,12.7,88
+2013,UHF42,504,4,South Beach - Tottenville,9.5,10.0,153
+2013,Borough,1,1,Bronx,45.1,44.6,"4,724"
+2013,Borough,2,1,Brooklyn,25.1,24.7,"4,921"
+2013,Borough,3,1,Manhattan,18.6,18.0,"2,508"
+2013,Borough,4,1,Queens,13.3,13.8,"2,527"
+2013,Borough,5,1,Staten Island,16.7,17.8,651
+2013,Citywide,1,0,New York City,23.0,23.1,"15,331"
+2012,UHF42,101,4,Kingsbridge - Riverdale,20.6,22.8,169
+2012,UHF42,102,4,Northeast Bronx,32.5,34.6,537
+2012,UHF42,103,4,Fordham - Bronx Pk,57.7,53.5,986
+2012,UHF42,104,4,Pelham - Throgs Neck,37.0,37.6,866
+2012,UHF42,105,4,Crotona - Tremont,69.3,63.1,943
+2012,UHF42,106,4,High Bridge - Morrisania,66.4,62.6,954
+2012,UHF42,107,4,Hunts Point - Mott Haven,67.4,64.6,638
+2012,UHF42,201,4,Greenpoint,16.0,12.0,125
+2012,UHF42,202,4,Downtown - Heights - Slope,22.9,18.9,375
+2012,UHF42,203,4,Bedford Stuyvesant - Crown Heights,43.2,40.5,"1,023"
+2012,UHF42,204,4,East New York,42.0,39.7,539
+2012,UHF42,205,4,Sunset Park,26.4,21.5,210
+2012,UHF42,206,4,Borough Park,11.2,11.4,273
+2012,UHF42,207,4,East Flatbush - Flatbush,25.9,26.1,608
+2012,UHF42,208,4,Canarsie - Flatlands,18.2,19.4,311
+2012,UHF42,209,4,Bensonhurst - Bay Ridge,7.8,8.5,140
+2012,UHF42,210,4,Coney Island - Sheepshead Bay,18.1,21.1,472
+2012,UHF42,211,4,Williamsburg - Bushwick,61.7,51.5,841
+2012,UHF42,301,4,Washington Heights,21.7,20.9,454
+2012,UHF42,302,4,Central Harlem - Morningside Heights,41.0,37.7,534
+2012,UHF42,303,4,East Harlem,61.8,60.4,534
+2012,UHF42,304,4,Upper West Side,12.1,13.2,246
+2012,UHF42,305,4,Upper East Side,4.8,5.1,96
+2012,UHF42,306,4,Chelsea - Clinton,13.5,11.7,162
+2012,UHF42,307,4,Gramercy Park - Murray Hill,6.3,5.6,67
+2012,UHF42,308,4,Greenwich Village - SoHo,4.6,4.0,29
+2012,UHF42,309,4,Union Square - Lower East Side,22.2,21.4,369
+2012,UHF42,310,4,Lower Manhattan,12.5,9.0,46
+2012,UHF42,401,4,Long Island City - Astoria,19.9,17.3,307
+2012,UHF42,402,4,West Queens,13.6,12.6,466
+2012,UHF42,403,4,Flushing - Clearview,8.6,9.9,208
+2012,UHF42,404,4,Bayside - Little Neck,5.4,6.4,46
+2012,UHF42,405,4,Ridgewood - Forest Hills,12.6,13.5,274
+2012,UHF42,406,4,Fresh Meadows,9.4,10.3,80
+2012,UHF42,407,4,Southwest Queens,14.2,13.9,306
+2012,UHF42,408,4,Jamaica,19.4,19.8,477
+2012,UHF42,409,4,Southeast Queens,11.4,12.5,208
+2012,UHF42,410,4,Rockaways,23.0,24.5,219
+2012,UHF42,501,4,Port Richmond,39.4,39.6,189
+2012,UHF42,502,4,Stapleton - St. George,27.7,28.9,273
+2012,UHF42,503,4,Willowbrook,11.5,12.9,89
+2012,UHF42,504,4,South Beach - Tottenville,14.4,15.7,241
+2012,Borough,1,1,Bronx,50.6,50.0,"5,232"
+2012,Borough,2,1,Brooklyn,26.2,25.8,"5,076"
+2012,Borough,3,1,Manhattan,19.7,19.0,"2,639"
+2012,Borough,4,1,Queens,14.2,14.7,"2,662"
+2012,Borough,5,1,Staten Island,20.9,22.3,813
+2012,Citywide,1,0,New York City,24.9,25.0,"16,422"
+2011,UHF42,101,4,Kingsbridge - Riverdale,22.6,24.8,183
+2011,UHF42,102,4,Northeast Bronx,29.7,32.2,494
+2011,UHF42,103,4,Fordham - Bronx Pk,59.2,54.4,987
+2011,UHF42,104,4,Pelham - Throgs Neck,42.0,42.7,971
+2011,UHF42,105,4,Crotona - Tremont,76.1,68.6,"1,005"
+2011,UHF42,106,4,High Bridge - Morrisania,66.4,62.2,929
+2011,UHF42,107,4,Hunts Point - Mott Haven,74.4,69.5,672
+2011,UHF42,201,4,Greenpoint,18.7,14.5,147
+2011,UHF42,202,4,Downtown - Heights - Slope,28.3,23.6,456
+2011,UHF42,203,4,Bedford Stuyvesant - Crown Heights,43.3,40.3,"1,007"
+2011,UHF42,204,4,East New York,46.1,43.4,585
+2011,UHF42,205,4,Sunset Park,30.2,24.7,237
+2011,UHF42,206,4,Borough Park,13.1,13.7,323
+2011,UHF42,207,4,East Flatbush - Flatbush,25.9,26.0,601
+2011,UHF42,208,4,Canarsie - Flatlands,20.7,21.8,346
+2011,UHF42,209,4,Bensonhurst - Bay Ridge,8.8,9.6,156
+2011,UHF42,210,4,Coney Island - Sheepshead Bay,18.3,21.2,469
+2011,UHF42,211,4,Williamsburg - Bushwick,59.1,49.5,801
+2011,UHF42,301,4,Washington Heights,23.1,22.1,473
+2011,UHF42,302,4,Central Harlem - Morningside Heights,39.5,36.4,514
+2011,UHF42,303,4,East Harlem,68.3,66.2,579
+2011,UHF42,304,4,Upper West Side,10.4,11.6,215
+2011,UHF42,305,4,Upper East Side,6.0,6.5,121
+2011,UHF42,306,4,Chelsea - Clinton,11.9,10.7,146
+2011,UHF42,307,4,Gramercy Park - Murray Hill,8.2,7.3,86
+2011,UHF42,308,4,Greenwich Village - SoHo,4.4,3.7,27
+2011,UHF42,309,4,Union Square - Lower East Side,23.1,21.8,373
+2011,UHF42,310,4,Lower Manhattan,8.3,5.8,29
+2011,UHF42,401,4,Long Island City - Astoria,20.0,17.6,310
+2011,UHF42,402,4,West Queens,13.6,12.4,454
+2011,UHF42,403,4,Flushing - Clearview,10.0,11.5,238
+2011,UHF42,404,4,Bayside - Little Neck,6.8,8.2,59
+2011,UHF42,405,4,Ridgewood - Forest Hills,11.4,12.3,249
+2011,UHF42,406,4,Fresh Meadows,10.9,11.6,90
+2011,UHF42,407,4,Southwest Queens,12.6,12.4,271
+2011,UHF42,408,4,Jamaica,20.7,21.3,507
+2011,UHF42,409,4,Southeast Queens,12.4,13.4,221
+2011,UHF42,410,4,Rockaways,29.5,31.3,279
+2011,UHF42,501,4,Port Richmond,33.5,32.8,156
+2011,UHF42,502,4,Stapleton - St. George,28.4,29.6,279
+2011,UHF42,503,4,Willowbrook,12.7,13.9,95
+2011,UHF42,504,4,South Beach - Tottenville,13.8,15.3,234
+2011,Borough,1,1,Bronx,52.8,52.0,"5,370"
+2011,Borough,2,1,Brooklyn,27.7,27.2,"5,294"
+2011,Borough,3,1,Manhattan,20.3,19.6,"2,686"
+2011,Borough,4,1,Queens,15.0,15.4,"2,772"
+2011,Borough,5,1,Staten Island,20.2,21.5,782
+2011,Citywide,1,0,New York City,26.0,26.0,"16,904"
+2010,UHF42,101,4,Kingsbridge - Riverdale,25.8,28.7,211
+2010,UHF42,102,4,Northeast Bronx,33.5,35.6,523
+2010,UHF42,103,4,Fordham - Bronx Pk,55.2,51.0,940
+2010,UHF42,104,4,Pelham - Throgs Neck,44.1,44.7,"1,011"
+2010,UHF42,105,4,Crotona - Tremont,87.7,78.8,"1,135"
+2010,UHF42,106,4,High Bridge - Morrisania,70.5,66.6,986
+2010,UHF42,107,4,Hunts Point - Mott Haven,77.6,71.8,686
+2010,UHF42,201,4,Greenpoint,20.6,15.4,160
+2010,UHF42,202,4,Downtown - Heights - Slope,27.4,22.6,414
+2010,UHF42,203,4,Bedford Stuyvesant - Crown Heights,49.4,46.9,"1,134"
+2010,UHF42,204,4,East New York,46.2,43.9,590
+2010,UHF42,205,4,Sunset Park,30.3,24.1,238
+2010,UHF42,206,4,Borough Park,12.8,13.5,328
+2010,UHF42,207,4,East Flatbush - Flatbush,26.3,26.6,610
+2010,UHF42,208,4,Canarsie - Flatlands,21.7,23.0,349
+2010,UHF42,209,4,Bensonhurst - Bay Ridge,8.9,9.7,168
+2010,UHF42,210,4,Coney Island - Sheepshead Bay,16.7,19.7,471
+2010,UHF42,211,4,Williamsburg - Bushwick,60.1,51.3,797
+2010,UHF42,301,4,Washington Heights,23.7,22.9,460
+2010,UHF42,302,4,Central Harlem - Morningside Heights,48.1,45.3,589
+2010,UHF42,303,4,East Harlem,69.7,67.9,585
+2010,UHF42,304,4,Upper West Side,11.2,12.6,237
+2010,UHF42,305,4,Upper East Side,5.3,5.4,101
+2010,UHF42,306,4,Chelsea - Clinton,14.4,12.7,174
+2010,UHF42,307,4,Gramercy Park - Murray Hill,10.2,8.7,107
+2010,UHF42,308,4,Greenwich Village - SoHo,4.3,3.8,28
+2010,UHF42,309,4,Union Square - Lower East Side,24.9,23.4,406
+2010,UHF42,310,4,Lower Manhattan,14.1,10.3,48
+2010,UHF42,401,4,Long Island City - Astoria,17.1,14.9,269
+2010,UHF42,402,4,West Queens,12.3,11.2,432
+2010,UHF42,403,4,Flushing - Clearview,8.3,9.7,209
+2010,UHF42,404,4,Bayside - Little Neck,4.8,5.7,41
+2010,UHF42,405,4,Ridgewood - Forest Hills,11.8,12.6,251
+2010,UHF42,406,4,Fresh Meadows,10.8,11.5,88
+2010,UHF42,407,4,Southwest Queens,15.7,15.7,321
+2010,UHF42,408,4,Jamaica,25.9,26.7,590
+2010,UHF42,409,4,Southeast Queens,14.6,16.0,245
+2010,UHF42,410,4,Rockaways,29.1,30.9,260
+2010,UHF42,501,4,Port Richmond,32.6,32.5,164
+2010,UHF42,502,4,Stapleton - St. George,26.4,27.4,261
+2010,UHF42,503,4,Willowbrook,13.1,14.1,95
+2010,UHF42,504,4,South Beach - Tottenville,13.0,13.5,199
+2010,Borough,1,1,Bronx,56.3,55.4,"5,641"
+2010,Borough,2,1,Brooklyn,28.1,27.7,"5,412"
+2010,Borough,3,1,Manhattan,21.9,21.0,"2,845"
+2010,Borough,4,1,Queens,15.2,15.6,"2,798"
+2010,Borough,5,1,Staten Island,19.3,20.2,727
+2010,Citywide,1,0,New York City,27.0,26.9,"17,423"
+2009,UHF42,101,4,Kingsbridge - Riverdale,30.0,33.1,242
+2009,UHF42,102,4,Northeast Bronx,39.9,42.4,619
+2009,UHF42,103,4,Fordham - Bronx Pk,67.2,62.2,"1,136"
+2009,UHF42,104,4,Pelham - Throgs Neck,47.4,47.9,"1,075"
+2009,UHF42,105,4,Crotona - Tremont,87.9,79.7,"1,135"
+2009,UHF42,106,4,High Bridge - Morrisania,83.1,77.1,"1,111"
+2009,UHF42,107,4,Hunts Point - Mott Haven,88.4,83.1,779
+2009,UHF42,201,4,Greenpoint,25.8,20.1,198
+2009,UHF42,202,4,Downtown - Heights - Slope,32.7,27.6,501
+2009,UHF42,203,4,Bedford Stuyvesant - Crown Heights,56.4,53.8,"1,284"
+2009,UHF42,204,4,East New York,46.5,44.4,585
+2009,UHF42,205,4,Sunset Park,30.5,24.7,240
+2009,UHF42,206,4,Borough Park,12.2,12.3,298
+2009,UHF42,207,4,East Flatbush - Flatbush,26.5,26.6,607
+2009,UHF42,208,4,Canarsie - Flatlands,24.5,25.4,382
+2009,UHF42,209,4,Bensonhurst - Bay Ridge,9.9,10.7,183
+2009,UHF42,210,4,Coney Island - Sheepshead Bay,17.0,19.7,468
+2009,UHF42,211,4,Williamsburg - Bushwick,66.2,56.6,861
+2009,UHF42,301,4,Washington Heights,26.0,25.0,502
+2009,UHF42,302,4,Central Harlem - Morningside Heights,51.7,48.7,623
+2009,UHF42,303,4,East Harlem,88.3,85.7,728
+2009,UHF42,304,4,Upper West Side,14.3,15.1,284
+2009,UHF42,305,4,Upper East Side,5.6,5.4,103
+2009,UHF42,306,4,Chelsea - Clinton,15.6,13.9,184
+2009,UHF42,307,4,Gramercy Park - Murray Hill,8.5,7.4,92
+2009,UHF42,308,4,Greenwich Village - SoHo,8.4,7.2,54
+2009,UHF42,309,4,Union Square - Lower East Side,28.9,26.8,466
+2009,UHF42,310,4,Lower Manhattan,11.5,8.5,38
+2009,UHF42,401,4,Long Island City - Astoria,19.0,16.7,299
+2009,UHF42,402,4,West Queens,14.0,12.7,485
+2009,UHF42,403,4,Flushing - Clearview,7.9,9.4,200
+2009,UHF42,404,4,Bayside - Little Neck,8.4,10.0,71
+2009,UHF42,405,4,Ridgewood - Forest Hills,10.3,10.8,215
+2009,UHF42,406,4,Fresh Meadows,12.5,13.1,99
+2009,UHF42,407,4,Southwest Queens,15.5,15.5,315
+2009,UHF42,408,4,Jamaica,24.7,25.3,552
+2009,UHF42,409,4,Southeast Queens,13.9,15.0,227
+2009,UHF42,410,4,Rockaways,28.4,30.2,250
+2009,UHF42,501,4,Port Richmond,39.7,39.5,197
+2009,UHF42,502,4,Stapleton - St. George,30.9,31.5,298
+2009,UHF42,503,4,Willowbrook,12.6,14.5,97
+2009,UHF42,504,4,South Beach - Tottenville,11.6,12.6,184
+2009,Borough,1,1,Bronx,63.3,62.4,"6,279"
+2009,Borough,2,1,Brooklyn,30.2,29.8,"5,753"
+2009,Borough,3,1,Manhattan,24.9,23.8,"3,210"
+2009,Borough,4,1,Queens,15.7,16.0,"2,835"
+2009,Borough,5,1,Staten Island,21.4,22.4,801
+2009,Citywide,1,0,New York City,29.6,29.5,"18,878"
+2008,UHF42,101,4,Kingsbridge - Riverdale,27.2,30.3,220
+2008,UHF42,102,4,Northeast Bronx,35.0,37.1,537
+2008,UHF42,103,4,Fordham - Bronx Pk,61.5,56.8,"1,026"
+2008,UHF42,104,4,Pelham - Throgs Neck,45.4,46.0,"1,020"
+2008,UHF42,105,4,Crotona - Tremont,92.6,81.9,"1,149"
+2008,UHF42,106,4,High Bridge - Morrisania,76.9,72.0,"1,018"
+2008,UHF42,107,4,Hunts Point - Mott Haven,94.1,86.2,790
+2008,UHF42,201,4,Greenpoint,24.0,18.9,182
+2008,UHF42,202,4,Downtown - Heights - Slope,34.3,29.6,528
+2008,UHF42,203,4,Bedford Stuyvesant - Crown Heights,49.2,46.6,"1,096"
+2008,UHF42,204,4,East New York,44.5,43.0,556
+2008,UHF42,205,4,Sunset Park,28.4,23.2,221
+2008,UHF42,206,4,Borough Park,11.5,11.9,282
+2008,UHF42,207,4,East Flatbush - Flatbush,24.0,23.8,540
+2008,UHF42,208,4,Canarsie - Flatlands,21.1,21.9,326
+2008,UHF42,209,4,Bensonhurst - Bay Ridge,7.6,8.3,139
+2008,UHF42,210,4,Coney Island - Sheepshead Bay,14.4,16.7,390
+2008,UHF42,211,4,Williamsburg - Bushwick,69.9,60.6,901
+2008,UHF42,301,4,Washington Heights,28.5,27.0,545
+2008,UHF42,302,4,Central Harlem - Morningside Heights,55.2,51.0,647
+2008,UHF42,303,4,East Harlem,85.6,83.1,703
+2008,UHF42,304,4,Upper West Side,13.6,14.4,273
+2008,UHF42,305,4,Upper East Side,5.4,5.3,101
+2008,UHF42,306,4,Chelsea - Clinton,15.9,13.8,181
+2008,UHF42,307,4,Gramercy Park - Murray Hill,9.7,8.6,106
+2008,UHF42,308,4,Greenwich Village - SoHo,6.7,5.7,43
+2008,UHF42,309,4,Union Square - Lower East Side,27.4,25.2,439
+2008,UHF42,310,4,Lower Manhattan,11.4,8.6,37
+2008,UHF42,401,4,Long Island City - Astoria,17.5,15.4,274
+2008,UHF42,402,4,West Queens,13.6,12.4,466
+2008,UHF42,403,4,Flushing - Clearview,8.1,9.1,192
+2008,UHF42,404,4,Bayside - Little Neck,5.8,7.1,50
+2008,UHF42,405,4,Ridgewood - Forest Hills,13.9,14.7,289
+2008,UHF42,406,4,Fresh Meadows,13.3,14.1,105
+2008,UHF42,407,4,Southwest Queens,16.6,16.6,332
+2008,UHF42,408,4,Jamaica,26.2,26.7,574
+2008,UHF42,409,4,Southeast Queens,15.3,16.2,243
+2008,UHF42,410,4,Rockaways,28.2,29.8,242
+2008,UHF42,501,4,Port Richmond,33.8,34.0,167
+2008,UHF42,502,4,Stapleton - St. George,25.9,26.8,251
+2008,UHF42,503,4,Willowbrook,12.9,14.1,94
+2008,UHF42,504,4,South Beach - Tottenville,10.0,10.6,154
+2008,Borough,1,1,Bronx,60.9,59.8,"5,941"
+2008,Borough,2,1,Brooklyn,28.5,28.1,"5,339"
+2008,Borough,3,1,Manhattan,24.8,23.7,"3,192"
+2008,Borough,4,1,Queens,16.1,16.4,"2,873"
+2008,Borough,5,1,Staten Island,18.5,19.5,691
+2008,Citywide,1,0,New York City,28.6,28.5,"18,036"
+2007,UHF42,101,4,Kingsbridge - Riverdale,18.2,19.5,141
+2007,UHF42,102,4,Northeast Bronx,29.3,31.2,448
+2007,UHF42,103,4,Fordham - Bronx Pk,55.1,51.1,915
+2007,UHF42,104,4,Pelham - Throgs Neck,36.7,37.0,815
+2007,UHF42,105,4,Crotona - Tremont,83.7,75.5,"1,049"
+2007,UHF42,106,4,High Bridge - Morrisania,77.9,74.2,"1,032"
+2007,UHF42,107,4,Hunts Point - Mott Haven,94.1,88.5,797
+2007,UHF42,201,4,Greenpoint,31.3,25.0,236
+2007,UHF42,202,4,Downtown - Heights - Slope,29.2,25.2,443
+2007,UHF42,203,4,Bedford Stuyvesant - Crown Heights,50.9,48.3,"1,124"
+2007,UHF42,204,4,East New York,42.2,40.8,518
+2007,UHF42,205,4,Sunset Park,24.8,21.4,200
+2007,UHF42,206,4,Borough Park,11.1,11.2,264
+2007,UHF42,207,4,East Flatbush - Flatbush,22.9,22.9,519
+2007,UHF42,208,4,Canarsie - Flatlands,17.1,17.5,258
+2007,UHF42,209,4,Bensonhurst - Bay Ridge,7.3,8.0,132
+2007,UHF42,210,4,Coney Island - Sheepshead Bay,15.6,17.1,394
+2007,UHF42,211,4,Williamsburg - Bushwick,68.5,59.5,866
+2007,UHF42,301,4,Washington Heights,27.6,26.0,523
+2007,UHF42,302,4,Central Harlem - Morningside Heights,47.3,44.1,552
+2007,UHF42,303,4,East Harlem,71.7,69.4,581
+2007,UHF42,304,4,Upper West Side,12.7,13.1,249
+2007,UHF42,305,4,Upper East Side,5.3,5.3,102
+2007,UHF42,306,4,Chelsea - Clinton,15.1,13.3,172
+2007,UHF42,307,4,Gramercy Park - Murray Hill,9.3,8.6,105
+2007,UHF42,308,4,Greenwich Village - SoHo,5.6,4.8,36
+2007,UHF42,309,4,Union Square - Lower East Side,24.0,22.4,387
+2007,UHF42,310,4,Lower Manhattan,8.0,6.6,27
+2007,UHF42,401,4,Long Island City - Astoria,15.4,13.8,243
+2007,UHF42,402,4,West Queens,12.9,11.9,442
+2007,UHF42,403,4,Flushing - Clearview,8.6,9.7,203
+2007,UHF42,404,4,Bayside - Little Neck,6.4,7.3,51
+2007,UHF42,405,4,Ridgewood - Forest Hills,12.8,13.4,262
+2007,UHF42,406,4,Fresh Meadows,12.5,13.6,100
+2007,UHF42,407,4,Southwest Queens,14.8,14.3,284
+2007,UHF42,408,4,Jamaica,25.1,25.5,543
+2007,UHF42,409,4,Southeast Queens,14.7,15.3,229
+2007,UHF42,410,4,Rockaways,17.1,18.4,147
+2007,UHF42,501,4,Port Richmond,29.6,28.4,137
+2007,UHF42,502,4,Stapleton - St. George,19.1,19.6,181
+2007,UHF42,503,4,Willowbrook,10.4,11.0,73
+2007,UHF42,504,4,South Beach - Tottenville,9.1,9.6,138
+2007,Borough,1,1,Bronx,57.7,56.7,"5,579"
+2007,Borough,2,1,Brooklyn,28.1,27.9,"5,218"
+2007,Borough,3,1,Manhattan,22.7,21.7,"2,898"
+2007,Borough,4,1,Queens,15.6,15.8,"2,744"
+2007,Borough,5,1,Staten Island,15.7,16.1,564
+2007,Citywide,1,0,New York City,27.3,27.1,"17,003"
+2006,UHF42,101,4,Kingsbridge - Riverdale,21.3,22.7,163
+2006,UHF42,102,4,Northeast Bronx,29.8,31.3,448
+2006,UHF42,103,4,Fordham - Bronx Pk,52.1,48.1,855
+2006,UHF42,104,4,Pelham - Throgs Neck,35.0,35.4,774
+2006,UHF42,105,4,Crotona - Tremont,79.6,72.3,995
+2006,UHF42,106,4,High Bridge - Morrisania,74.4,69.1,947
+2006,UHF42,107,4,Hunts Point - Mott Haven,93.3,87.9,778
+2006,UHF42,201,4,Greenpoint,23.8,19.5,181
+2006,UHF42,202,4,Downtown - Heights - Slope,29.6,26.6,465
+2006,UHF42,203,4,Bedford Stuyvesant - Crown Heights,44.1,42.2,977
+2006,UHF42,204,4,East New York,41.6,39.7,500
+2006,UHF42,205,4,Sunset Park,23.6,20.4,189
+2006,UHF42,206,4,Borough Park,11.5,11.5,267
+2006,UHF42,207,4,East Flatbush - Flatbush,23.7,23.4,532
+2006,UHF42,208,4,Canarsie - Flatlands,17.1,17.4,256
+2006,UHF42,209,4,Bensonhurst - Bay Ridge,6.7,7.3,118
+2006,UHF42,210,4,Coney Island - Sheepshead Bay,17.7,20.0,457
+2006,UHF42,211,4,Williamsburg - Bushwick,69.1,60.0,861
+2006,UHF42,301,4,Washington Heights,26.7,25.3,511
+2006,UHF42,302,4,Central Harlem - Morningside Heights,48.2,45.0,558
+2006,UHF42,303,4,East Harlem,81.8,79.4,662
+2006,UHF42,304,4,Upper West Side,14.6,15.2,288
+2006,UHF42,305,4,Upper East Side,6.6,6.0,114
+2006,UHF42,306,4,Chelsea - Clinton,15.6,13.8,176
+2006,UHF42,307,4,Gramercy Park - Murray Hill,10.9,10.0,121
+2006,UHF42,308,4,Greenwich Village - SoHo,4.5,4.1,31
+2006,UHF42,309,4,Union Square - Lower East Side,25.1,23.5,404
+2006,UHF42,310,4,Lower Manhattan,9.2,7.7,30
+2006,UHF42,401,4,Long Island City - Astoria,19.3,17.2,301
+2006,UHF42,402,4,West Queens,13.3,12.2,451
+2006,UHF42,403,4,Flushing - Clearview,7.6,8.4,174
+2006,UHF42,404,4,Bayside - Little Neck,6.2,7.2,50
+2006,UHF42,405,4,Ridgewood - Forest Hills,11.3,12.0,233
+2006,UHF42,406,4,Fresh Meadows,12.8,13.6,99
+2006,UHF42,407,4,Southwest Queens,17.1,16.7,330
+2006,UHF42,408,4,Jamaica,24.2,24.7,524
+2006,UHF42,409,4,Southeast Queens,15.2,16.1,240
+2006,UHF42,410,4,Rockaways,23.4,24.5,194
+2006,UHF42,501,4,Port Richmond,29.0,28.4,135
+2006,UHF42,502,4,Stapleton - St. George,17.9,18.2,167
+2006,UHF42,503,4,Willowbrook,7.7,8.5,56
+2006,UHF42,504,4,South Beach - Tottenville,10.0,10.7,153
+2006,Borough,1,1,Bronx,55.8,55.0,"5,357"
+2006,Borough,2,1,Brooklyn,27.7,27.4,"5,091"
+2006,Borough,3,1,Manhattan,24.0,23.0,"3,065"
+2006,Borough,4,1,Queens,16.2,16.5,"2,843"
+2006,Borough,5,1,Staten Island,14.7,15.3,531
+2006,Citywide,1,0,New York City,27.2,27.1,"16,887"
+2005,UHF42,101,4,Kingsbridge - Riverdale,21.4,23.3,168
+2005,UHF42,102,4,Northeast Bronx,27.7,28.8,412
+2005,UHF42,103,4,Fordham - Bronx Pk,47.4,44.0,782
+2005,UHF42,104,4,Pelham - Throgs Neck,33.6,33.9,740
+2005,UHF42,105,4,Crotona - Tremont,76.1,68.8,945
+2005,UHF42,106,4,High Bridge - Morrisania,74.3,68.8,935
+2005,UHF42,107,4,Hunts Point - Mott Haven,91.8,85.7,751
+2005,UHF42,201,4,Greenpoint,25.4,20.7,191
+2005,UHF42,202,4,Downtown - Heights - Slope,29.9,26.4,460
+2005,UHF42,203,4,Bedford Stuyvesant - Crown Heights,44.8,42.6,984
+2005,UHF42,204,4,East New York,41.7,38.8,485
+2005,UHF42,205,4,Sunset Park,26.7,22.4,206
+2005,UHF42,206,4,Borough Park,13.6,13.7,318
+2005,UHF42,207,4,East Flatbush - Flatbush,22.5,21.9,502
+2005,UHF42,208,4,Canarsie - Flatlands,17.4,17.6,259
+2005,UHF42,209,4,Bensonhurst - Bay Ridge,7.3,8.3,134
+2005,UHF42,210,4,Coney Island - Sheepshead Bay,15.5,17.3,394
+2005,UHF42,211,4,Williamsburg - Bushwick,76.7,68.0,966
+2005,UHF42,301,4,Washington Heights,25.4,23.8,481
+2005,UHF42,302,4,Central Harlem - Morningside Heights,42.0,39.6,485
+2005,UHF42,303,4,East Harlem,71.2,68.3,566
+2005,UHF42,304,4,Upper West Side,12.2,12.3,234
+2005,UHF42,305,4,Upper East Side,6.0,6.0,114
+2005,UHF42,306,4,Chelsea - Clinton,16.2,14.4,180
+2005,UHF42,307,4,Gramercy Park - Murray Hill,12.9,11.5,139
+2005,UHF42,308,4,Greenwich Village - SoHo,4.5,4.0,30
+2005,UHF42,309,4,Union Square - Lower East Side,25.0,23.3,398
+2005,UHF42,310,4,Lower Manhattan,14.6,11.6,43
+2005,UHF42,401,4,Long Island City - Astoria,17.5,15.7,275
+2005,UHF42,402,4,West Queens,13.6,12.2,453
+2005,UHF42,403,4,Flushing - Clearview,6.1,6.8,142
+2005,UHF42,404,4,Bayside - Little Neck,5.3,5.9,41
+2005,UHF42,405,4,Ridgewood - Forest Hills,14.9,15.9,311
+2005,UHF42,406,4,Fresh Meadows,12.3,13.0,95
+2005,UHF42,407,4,Southwest Queens,17.3,16.8,333
+2005,UHF42,408,4,Jamaica,24.0,24.3,517
+2005,UHF42,409,4,Southeast Queens,13.7,14.7,220
+2005,UHF42,410,4,Rockaways,20.8,22.0,173
+2005,UHF42,501,4,Port Richmond,21.4,22.1,104
+2005,UHF42,502,4,Stapleton - St. George,17.2,17.4,159
+2005,UHF42,503,4,Willowbrook,10.6,11.3,75
+2005,UHF42,504,4,South Beach - Tottenville,10.1,10.5,149
+2005,Borough,1,1,Bronx,53.9,52.8,"5,130"
+2005,Borough,2,1,Brooklyn,28.6,28.2,"5,231"
+2005,Borough,3,1,Manhattan,22.2,21.3,"2,812"
+2005,Borough,4,1,Queens,16.0,16.2,"2,795"
+2005,Borough,5,1,Staten Island,14.3,14.8,512
+2005,Citywide,1,0,New York City,26.7,26.5,"16,480"

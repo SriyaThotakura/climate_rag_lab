@@ -1,0 +1,65 @@
+FILE: ejscreen_report_summary.txt
+SOURCE: EPA EJScreen Community Report (EJAM Version 2.32.7)
+DATE: April 27, 2026
+STUDY AREA: Cross Bronx Expressway (CBE) Corridor (4.94 sq miles)
+TOTAL POPULATION: 229,211
+LINK: https://ejamapi-84652557241.us-central1.run.app/report?shape={%22type%22:%22FeatureCollection%22,%22features%22:[{%22type%22:%22Feature%22,%22properties%22:{},%22geometry%22:{%22coordinates%22:[[[-73.935238,40.850555],[-73.924767,40.847308],[-73.90411,40.848564],[-73.887573,40.846399],[-73.876987,40.838781],[-73.864742,40.838045],[-73.839737,40.829646],[-73.843742,40.82497],[-73.884197,40.820726],[-73.898903,40.808471],[-73.903366,40.804486],[-73.91481,40.797166],[-73.921963,40.799678],[-73.916927,40.806738],[-73.906227,40.811199],[-73.892609,40.823194],[-73.890835,40.832893],[-73.88763,40.836963],[-73.89587,40.840512],[-73.915382,40.841638],[-73.931862,40.840945],[-73.940445,40.844538],[-73.935238,40.850555]]],%22type%22:%22Polygon%22}}]}&buffer=0
+
+I. CORE ENVIRONMENTAL BURDEN INDICATORS
+The following values represent the official federal "Burden Scores" for the CBE corridor.
+
+Traffic Proximity and Volume: 8,600,000. This is in the 97th percentile for the USA and represents 5.1 times the national average.
+
+Nitrogen Dioxide (NO2): 18.8 ppb. This is in the 99th percentile of the USA and 2.4 times the national average.
+
+Diesel Particulate Matter: 0.632 ug/m3. This is in the 97th percentile of the USA and 3.3 times the national average.
+
+Hazardous Waste Proximity: 12.8 facility count/km. This is in the 93rd percentile of the USA and 3.6 times the national average.
+
+Underground Storage Tanks: 21.4. This is in the 96th percentile of the USA and 5.9 times the national average.
+
+II. RESIDENTIAL POPULATION INDICATORS (SPATIAL JUSTICE DATA)
+The demographic makeup of the residents within the corridor shows extreme disparity compared to national averages.
+
+People of Color: 98% (95th percentile in USA; 2.5x national average).
+
+Low Income: 57% (86th percentile in USA; 1.9x national average).
+
+Limited English-Speaking Households: 21% (93rd percentile in USA; 4.4x national average).
+
+Less Than High School Education: 30% (92nd percentile in USA; 2.7x national average).
+
+Unemployment: 12% (88th percentile in USA; 2.2x national average).
+
+III. POPULATION BREAKDOWN
+
+Hispanic or Latino: 63% (3.6x national average).
+
+Black or African American: 27% (2.2x national average).
+
+White (non-Hispanic): 2%.
+
+Language: 53% of households speak Spanish; 88% of all limited English households are Spanish-speaking.
+
+IV. HEALTH & COMMUNITY ASSETS
+
+Adult Asthma Prevalence: 13.0%.
+
+Low Life Expectancy: 20% (1.2x national average).
+
+Total Life Expectancy: 75 years.
+
+Per Capita Income: $20,991.
+
+Vulnerable Sites: 65 Schools, 50 Worship Places, and 15 Hospitals are located within this high-impact 4.94 sq mile polygon.
+
+V. EJ INDEX SUMMARY
+The "Summary Index" combines environmental data with demographic vulnerability.
+
+NO2 Summary Index: 98th percentile in USA.
+
+Diesel PM Summary Index: 98th percentile in USA.
+
+Traffic Proximity Summary Index: 98th percentile in USA.
+
+Hazardous Waste Summary Index: 98th percentile in USA.

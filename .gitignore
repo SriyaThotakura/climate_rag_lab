@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# ChromaDB / vector stores
+chroma_db/
+*.sqlite3
+
+# Large data / media files
+*.mp4
+*.zip
+*.tar.gz
+*.pdf
+*.mov
+*.avi
+
+# Node
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Claude
+.claude/
+
+# Nested git repos (these have their own repos)
+2.Maps/CommunityAtlas/
+2.Maps/Final_GIS/
+2.Maps/Scroll/
+2.Maps/TRENCH/
+
+# Large geojson (keep small ones)
+*.pack

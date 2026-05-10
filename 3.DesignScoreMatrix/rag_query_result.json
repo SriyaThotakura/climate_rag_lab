@@ -1,0 +1,35 @@
+{
+  "query": "air quality diesel exhaust Cross Bronx",
+  "timestamp": 1777418039.613138,
+  "top_k": 4,
+  "results": [
+    {
+      "text": "ell at a press conference on congestion pricing and air quality in the Bronx. Photo: Dave Colon Rep. Ritchie Torres with Loving the Bronx Founder Nilka Martell at a press conference on congestion pricing and air quality in the Bronx. Photo: Dave Colon The Cross Bronx today serves as a traffic funnel for some 200,000 vehicles per day, including 300 diesel trucks per hour. The gas-spewing vehicles cut through the Bronx, filling the lungs of its inhabitants with pollutants that have made the areas around the highway hotspots for diseases like asthma and hypertension.",
+      "source": "unknown",
+      "score": 0.8452,
+      "start_char": 3324,
+      "end_char": 3894
+    },
+    {
+      "text": "reimagine the highway in December 2022. The city also received federal funding to explore the plan. A 2018 Columbia University study found that decking the Cross Bronx would decrease noise and air pollution, vastly increase access to green space, improve mental and physical health, boost property values, and open up opportunities for new businesses and additional housing. Of course, covering the highway won’t improve traffic conditions on the road itself. And while new green space would improve air quality, filtration would also be necessary to clear air out from the tunnel into the air.",
+      "source": "unknown",
+      "score": 0.7899,
+      "start_char": 3822,
+      "end_char": 4417
+    },
+    {
+      "text": "Truck Pollution: Focus on the \"Asthma Alley\" and diesel idling. How should NYC fix Cross Bronx Expressway pollution and 'Asthma Alley' issues? By Naim Ali-Pacheco Published Jun 8, 2024 47 comments Spencer Platt/Getty Images We rely on your support to make local news available to all Make your contribution now and help Gothamist thrive in 2026. Donate today Gothamist is funded by sponsors and member donations When a government study group asked Cross Bronx Expressway neighbors about conditions in communities along the corridor, many named the same ills: dirty air, grime, automobile chop shops,",
+      "source": "unknown",
+      "score": 0.7883,
+      "start_char": 0,
+      "end_char": 600
+    },
+    {
+      "text": "Opinion/Testimony: Local view on air quality and congestion pricing. Congestion Pricing Opinion: The Bronx Had Air Quality Issues Long Before Congestion Pricing The MTA forecasts additional trucks traffic on the Cross Bronx Expressway — but the solutions to the Bronx's air quality challenges lie elsewhere. Photo of Austin Celestin By Austin Celestin 12:02 AM EST on March 5, 2024 Share on Facebook Share on X (Twitter) Share on Reddit Share via Email Share on Bluesky Opinion: The Bronx Had Air Quality Issues Long Before Congestion Pricing Writer Austin Celestin puts this in perspective.",
+      "source": "unknown",
+      "score": 0.7849,
+      "start_char": 0,
+      "end_char": 591
+    }
+  ]
+}
